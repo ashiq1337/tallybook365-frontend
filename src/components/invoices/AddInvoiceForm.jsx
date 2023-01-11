@@ -9,7 +9,7 @@ export default function AddInvoiceForm() {
   const [data, setData] = useState({});
   const [response, error, loading, axiosFetch, message] = useAxios();
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
-  useAxios();
+    useAxios();
   const [
     responseClientData,
     errorClientData,
@@ -65,28 +65,28 @@ export default function AddInvoiceForm() {
     getSelf();
   }, []);
 
-    // handle input change
-    const handleInputChange = (e, index) => {
-      const { name, value } = e.target;
-      const list = [...inputList];
-      list[index][name] = value;
-      setInputList(list);
-    };
-  
-    // handle click event of the Remove button
-    const handleRemoveClick = (index) => {
-      const list = [...inputList];
-      list.splice(index, 1);
-      setInputList(list);
-    };
-  
-    // handle click event of the Add button
-    const handleAddClick = () => {
-      setInputList([
-        ...inputList,
-        { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
-      ]);
-    };
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([
+      ...inputList,
+      { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
+    ]);
+  };
 
   // items...
   const itemsAddInObject = inputList.map((x, i) => {
@@ -140,7 +140,7 @@ export default function AddInvoiceForm() {
   return (
     <div className={Styles.main}>
       <form onSubmit={addClientsAsync} id="addInvoiceForm">
-      <input
+        <input
           type="text"
           placeholder="Enter User id"
           name="user_id"
@@ -150,7 +150,7 @@ export default function AddInvoiceForm() {
         />
         <br />
         <label>Client info</label>
-       <select
+        <select
           name="client_id"
           onChange={(e) => {
             setSelectedClientIndex(e.target.value);
@@ -218,19 +218,17 @@ export default function AddInvoiceForm() {
           name="job_no"
           onChange={handleChange}
         />
-<input
+        <input
           type="text"
           placeholder="Enter Brand name"
           name="brand"
           onChange={handleChange}
-      
         />
         <input
           type="text"
           placeholder="Enter Job type"
           name="job_type"
           onChange={handleChange}
-   
         />
         <input
           type="date"
@@ -238,7 +236,7 @@ export default function AddInvoiceForm() {
           name="date"
           onChange={handleChange}
         />
-<br />
+        <br />
         <label>Add items</label>
         {itemsAddInObject}
 
