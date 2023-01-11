@@ -241,6 +241,22 @@ export default function AddInvoiceForm() {
         {itemsAddInObject}
 
         <br />
+        <label>Due and advance</label>
+        
+        <input
+          type="text"
+          placeholder="Enter due amount"
+          name="due"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Enter advance amount"
+          name="advance"
+          onChange={handleChange}
+        />
+
+        <br />
         <label>Bank Account info</label>
         <input
           type="text"

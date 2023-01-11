@@ -224,6 +224,23 @@ export default function EditInvoice() {
           <label>Add items</label>
           {itemsAddInObject}
           <br />
+          <label>Due and advance</label>
+
+          <input
+            type="text"
+            placeholder="Enter due amount"
+            name="due"
+            onChange={handleChange}
+            value={data?.due}
+          />
+          <input
+            type="text"
+            placeholder="Enter advance amount"
+            name="advance"
+            onChange={handleChange}
+            value={data?.advance}
+          />
+          <br />
           <label>Bank Account info</label>
           <input
             type="text"
