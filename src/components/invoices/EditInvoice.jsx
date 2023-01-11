@@ -192,7 +192,7 @@ export default function EditInvoice() {
 
           <input
             type="number"
-            placeholder="Enter job_no"
+            placeholder="Enter job no"
             name="job_no"
             onChange={handleChange}
             value={data?.job_no}
