@@ -4,8 +4,8 @@ import Styles from "./EditInvoice.module.scss";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
-import { toast } from "react-toastify";
 import useToggler from "../../hooks/useToggler";
+import { MdAddCircle, MdDelete } from "react-icons/md";
 
 export default function EditInvoice() {
   const { invoiceId } = useParams();
@@ -18,8 +18,11 @@ export default function EditInvoice() {
     messageUpdate,
   ] = useAxios();
   const [data, setData] = useState({});
+  const [inputList, setInputList] = useState([
+    { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
+  ]);
   const [getData, setGetData] = useToggler();
-  
+
   function handleChange(event) {
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
@@ -50,8 +53,91 @@ export default function EditInvoice() {
   }, [getData]);
 
   useEffect(() => {
-    setData(response.data);
+    //checking if response has its values
+    if (response.data) {
+      //setting data to data
+      setData(response?.data);
+      //setting items values to inputlist to view on client site
+      setInputList(response?.data?.items);
+    }
   }, [response]);
+
+  useEffect(() => {
+    //setting items data into the data object
+    setData({ ...data, items: inputList });
+  }, [inputList]);
+
+  // handle input change
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([
+      ...inputList,
+      { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
+    ]);
+  };
+
+  // items...
+  const itemsAddInObject = inputList.map((x, i) => {
+    return (
+      <div className={Styles.itemsContainer} key={i}>
+        <input
+          name="particulars"
+          placeholder="Enter Particulars"
+          value={x.particulars}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <input
+          name="quantity"
+          placeholder="Enter Last quantity"
+          value={x.quantity}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <input
+          name="day"
+          placeholder="Enter day"
+          value={x.day}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <input
+          name="unitPrice"
+          placeholder="Enter unit price"
+          value={x.unitPrice}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <input
+          name="totalPrice"
+          placeholder="Enter total price"
+          value={x.totalPrice}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <div className={Styles.btnBox}>
+          {inputList.length !== 1 && (
+            <MdDelete
+              className={Styles.remove}
+              onClick={() => handleRemoveClick(i)}
+            />
+          )}
+          {inputList.length - 1 === i && (
+            <MdAddCircle className={Styles.add} onClick={handleAddClick} />
+          )}
+        </div>
+      </div>
+    );
+  });
 
   return (
     <div className={Styles.main}>
@@ -60,10 +146,11 @@ export default function EditInvoice() {
         <form onSubmit={editInvoiceAsync}>
           <input
             type="text"
-            placeholder="Enter user id"
+            placeholder="Enter User id"
             name="user_id"
             onChange={handleChange}
             value={data?.user_id}
+            readOnly
           />
           <br />
           <label>Client info</label>
@@ -112,13 +199,30 @@ export default function EditInvoice() {
           />
 
           <input
+            type="text"
+            placeholder="Enter Brand name"
+            name="brand"
+            onChange={handleChange}
+            value={data?.brand}
+          />
+          <input
+            type="text"
+            placeholder="Enter Job type"
+            name="job_type"
+            onChange={handleChange}
+            value={data?.job_type}
+          />
+
+          <input
             type="date"
             placeholder="Enter date"
             name="date"
             onChange={handleChange}
             value={data?.date?.slice(0, 10)}
           />
-
+          <br />
+          <label>Add items</label>
+          {itemsAddInObject}
           <br />
           <label>Bank Account info</label>
           <input
