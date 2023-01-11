@@ -18,7 +18,6 @@ export default function AddQuotationForm() {
     messageClientData,
   ] = useAxios();
   const [selectedClientIndex, setSelectedClientIndex] = useState();
-  const [grandTotal, setGrandTotal] = useState(0);
 
   const [inputList, setInputList] = useState([
     { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
@@ -42,8 +41,13 @@ export default function AddQuotationForm() {
   };
 
   useEffect(() => {
-    //setting items data into the data object
-    setData({ ...data, items: inputList });
+    // calculating total from items
+    var sum = 0;
+    inputList.map((input, i) => {
+      sum = sum + parseInt(input.totalPrice);
+    });
+    //setting the grand total in data object and the items array in data object
+    setData({ ...data, grand_total: sum, items: inputList });
   }, [inputList]);
 
   const getClientsData = () => {
@@ -53,6 +57,7 @@ export default function AddQuotationForm() {
       url: configuration.clients,
     });
   };
+
   const getSelf = () => {
     axiosFetchSelf({
       axiosInstance: instance,
@@ -66,9 +71,15 @@ export default function AddQuotationForm() {
     getSelf();
   }, []);
 
-  useEffect(()=>{
-    console.log(inputList);
-  },[inputList])
+  // useEffect(() => {
+  //   // calculating total from items
+  //   var sum = 0;
+  //   inputList.map((input, i) => {
+  //     sum = sum + parseInt(input.totalPrice) ;
+  //   });
+  //   //setting the grand total in data object
+  //   setData({ ...data, grand_total: sum});
+  // }, [inputList]);
 
   // handle input change
   const handleInputChange = (e, index) => {

@@ -25,6 +25,7 @@ export default function Preview({
     title: "",
     jobType: "",
     productionCost: "",
+    grand_total:"",
     items: [
       {
         day: "",
@@ -79,7 +80,7 @@ export default function Preview({
               jobType={data?.job_type}
             />
 
-            <Table productionCost={data?.productionCost} lists={data.items} />
+            <Table productionCost={data?.grand_total} lists={data.items} />
             <Terms />
             <BankInfo
               accountNo={data?.bank_account}
