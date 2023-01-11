@@ -246,16 +246,16 @@ export default function AddInvoiceForm() {
         {itemsAddInObject}
 
         <br />
-        <label>Due and advance</label>
+        <label>Advance</label>
         
-        <input
+        {/* <input
           type="text"
           placeholder="Enter due amount"
           name="due"
           onChange={handleChange}
-        />
+        /> */}
         <input
-          type="text"
+          type="number"
           placeholder="Enter advance amount"
           name="advance"
           onChange={handleChange}

@@ -54,7 +54,7 @@ export default function AllInvoices() {
       <td>{invoice.client_address}</td>
       <td>{invoice.job_no}</td>
       <td>
-        <Preview data={invoice}/>
+        <Preview data={invoice} />
       </td>
       <td>
         <MdEdit

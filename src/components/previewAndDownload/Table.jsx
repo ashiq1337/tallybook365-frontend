@@ -1,13 +1,18 @@
 import React from "react";
 import classes from "./Table.module.scss";
 
-export default function Table({ lists, productionCost }) {
+export default function Table({ lists, productionCost, advance = 0 }) {
   //Calculate other amounts with grand total
   let agencyFees = productionCost * 0.1;
   let subTotal = productionCost + agencyFees;
   let vat = subTotal * 0.15;
   let gTotal = subTotal + vat;
-
+  let due = 0;
+  if (advance) {
+    due = gTotal - advance;
+  }else {
+    due = gTotal;
+  }
   return (
     <div className={classes.container}>
       <table className={classes.table}>
@@ -58,6 +63,19 @@ export default function Table({ lists, productionCost }) {
           <p>VAT 15%</p>
           <p>{(Math.round(vat * 100) / 100).toFixed(2)}</p>
         </div>
+        {due ? (
+          <div className={classes.calculation}>
+            <p>Due</p>
+            <p>{(Math.round(due * 100) / 100).toFixed(2)}</p>
+          </div>
+        ) : null}
+        {advance ? (
+          <div className={classes.calculation}>
+            <p>Advance</p>
+            <p>{(Math.round(advance * 100) / 100).toFixed(2)}</p>
+          </div>
+        ) : null}
+
         <div className={classes.calculationGrandTotal}>
           <p>
             <b>Grand Total Amount</b>
