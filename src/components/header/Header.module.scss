@@ -1,0 +1,21 @@
+@use "../../global/colors" as c;
+.main{
+  //background-color: red;
+ // height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  //border: solid;
+  button{
+    color: white;
+    background-color: c.$Color-primary-green;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .date{
+    color: c.$Color-primary-accent-gray;
+  }
+}

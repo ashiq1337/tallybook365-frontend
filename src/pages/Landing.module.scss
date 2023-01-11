@@ -1,0 +1,7 @@
+@use "../global/colors" as c;
+
+.main {
+  width: 100%;
+  background-color: c.$Color-background;
+  height: 100vh;
+}

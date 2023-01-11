@@ -1,0 +1,71 @@
+@use "../../global/colors" as c;
+@use "../../global/mixin" as m;
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  background-color: c.$Color-background;
+
+  .container {
+    border-radius: 10px;
+    padding: 5%;
+    box-shadow: c.$Color-box-shadow;
+    background-color: c.$Color-background-white;
+
+    .title {
+      font-size: 1rem;
+      //color: c.$Color-primary-green;
+      color: c.$Color-primary-accent-gray;
+      font-weight: bold;
+    }
+
+    .img {
+      width: 140px;
+    }
+
+    small {
+      color: c.$Color-primary-accent-gray;
+
+      span {
+        color: c.$Color-primary-green;
+        cursor: pointer;
+      }
+    }
+  }
+
+  form {
+
+    @include m.globalForm();
+
+    input {
+      @include m.globalInput();
+      padding-left: 2px;
+    }
+
+    button {
+
+      @include m.globalButton(c.$Color-primary-green);
+      margin-top: 50px;
+    }
+    .msg{
+      color: red;
+      margin-top: 10px;
+      height: 10px;
+    }
+  }
+
+  .link {
+    color: c.$Color-primary-green;
+    transition: all 0.6s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

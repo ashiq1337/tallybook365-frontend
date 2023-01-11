@@ -1,0 +1,66 @@
+.container {
+  width: auto;
+  //padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.calculation1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 8px;
+  /* border-top: 1px solid black; */
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.calculation {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+
+.calculationGrandTotal {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 5px 8px;
+}
+
+.table {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
+  tr,
+  th,
+  td {
+    border: 1px solid;
+    padding: 8px;
+  }
+
+  thead {
+    text-align: center;
+  }
+
+}
+
+
+
+
+.itemCentered {
+  text-align: center;
+}
+
+.itemRight {
+  text-align: right;
+}

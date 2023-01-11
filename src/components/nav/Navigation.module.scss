@@ -1,0 +1,54 @@
+@use "../../global/colors" as c;
+@use "../../global/mixin" as m;
+
+.main {
+  background-color: white;
+  width: 300px !important;
+  //height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  //border: solid;
+  .head {
+    width: 300px;
+    //border: solid;
+    padding: 20px 0px 20px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+
+    .logo {
+      margin-top: 7px;
+      //border: solid;
+      width: 150px;
+    }
+
+    .icon {
+      cursor: pointer;
+    }
+  }
+
+  .link {
+    text-decoration: none;
+    color: c.$Color-primary-accent;
+    padding: 10px 10px 10px 30px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    //border: solid 1px transparent;
+    transition: background-color 0.0s ease-in-out;
+    transition: padding 0.6s ease-in-out;
+
+    &:hover {
+      background-color: c.$Color-primary-green;
+      //border: solid 1px c.$Color-primary-green;
+      //color: c.$Color-primary-green;
+      color: white;
+      //padding: 10px 10px 10px 40px;
+    }
+  }
+}
