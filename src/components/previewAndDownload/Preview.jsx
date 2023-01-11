@@ -18,6 +18,8 @@ export default function Preview({
     client_name: "",
     date: "",
     job_no: "",
+    brand:"",
+    job_type:"",
     swift: "",
     t_and_c: "",
     title: "",
@@ -73,8 +75,8 @@ export default function Preview({
               address={data?.client_address}
               invoiceDate={data?.date?.slice(0, 10)}
               jobNumber={data?.job_no}
-              brand={data?.client_name}
-              jobType={data?.jobType}
+              brand={data?.brand}
+              jobType={data?.job_type}
             />
 
             <Table productionCost={data?.productionCost} lists={data.items} />

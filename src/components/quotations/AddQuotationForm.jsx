@@ -18,6 +18,7 @@ export default function AddQuotationForm() {
     messageClientData,
   ] = useAxios();
   const [selectedClientIndex, setSelectedClientIndex] = useState();
+  const [grandTotal, setGrandTotal] = useState(0);
 
   const [inputList, setInputList] = useState([
     { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
@@ -64,6 +65,10 @@ export default function AddQuotationForm() {
     getClientsData();
     getSelf();
   }, []);
+
+  useEffect(()=>{
+    console.log(inputList);
+  },[inputList])
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -216,6 +221,19 @@ export default function AddQuotationForm() {
           name="job_no"
           onChange={handleChange}
         />
+        <input
+          type="text"
+          placeholder="Enter Brand name"
+          name="brand"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Enter Job type"
+          name="job_type"
+          onChange={handleChange}
+        />
+
         <input type="date" name="date" onChange={handleChange} />
 
         <br />

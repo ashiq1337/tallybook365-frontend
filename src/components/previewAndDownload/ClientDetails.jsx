@@ -28,7 +28,7 @@ export default function ClientDetails({
           <div className={classes.row}>
             <p className={classes.cell}>Brand: {brand}</p>
             <p className={classes.cell}>
-              Job Type: {jobType} of {title}
+              Job Type: {jobType} 
             </p>
             <p className={classes.cell}>Job No: {jobNumber}</p>
           </div>

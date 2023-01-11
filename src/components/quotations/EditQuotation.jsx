@@ -190,6 +190,20 @@ export default function EditQuotation() {
           value={data?.job_no}
         />
         <input
+          type="text"
+          placeholder="Enter Brand name"
+          name="brand"
+          onChange={handleChange}
+          value={data?.brand}
+        />
+        <input
+          type="text"
+          placeholder="Enter Job type"
+          name="job_type"
+          onChange={handleChange}
+          value={data?.job_type}
+        />
+        <input
           type="date"
           name="date"
           onChange={handleChange}
