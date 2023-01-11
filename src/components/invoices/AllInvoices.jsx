@@ -6,6 +6,7 @@ import { instance } from "../../utilities/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
+import Preview from "../previewAndDownload/Preview";
 
 export default function AllInvoices() {
   const navigate = useNavigate();
@@ -53,6 +54,9 @@ export default function AllInvoices() {
       <td>{invoice.client_address}</td>
       <td>{invoice.job_no}</td>
       <td>
+        <Preview data={invoice}/>
+      </td>
+      <td>
         <MdEdit
           className={Styles.editIcon}
           onClick={() => {
@@ -82,6 +86,7 @@ export default function AllInvoices() {
                 <th>Name</th>
                 <th>Address</th>
                 <th>Job no</th>
+                <th></th>
                 <th></th>
                 <th></th>
               </tr>

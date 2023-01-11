@@ -63,8 +63,13 @@ export default function EditInvoice() {
   }, [response]);
 
   useEffect(() => {
-    //setting items data into the data object
-    setData({ ...data, items: inputList });
+    // calculating total from items
+    var sum = 0;
+    inputList.map((input, i) => {
+      sum = sum + parseInt(input.totalPrice);
+    });
+    //setting the grand total in data object and the items array in data object
+    setData({ ...data, grand_total: sum, items: inputList });
   }, [inputList]);
 
   // handle input change
