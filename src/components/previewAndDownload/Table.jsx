@@ -20,7 +20,8 @@ export default function Table({ lists, productionCost, advance = 0, valueAddedTa
         <tbody>
           <tr>
             <th>Sl</th>
-            <th>Particulars</th>
+            <th>Items</th>
+            <th>Details</th>
             <th>Quantity</th>
             <th>Day</th>
             <th>Unit Price (BDT)</th>
@@ -31,6 +32,7 @@ export default function Table({ lists, productionCost, advance = 0, valueAddedTa
             <tr key={i}>
               <td className={classes.itemCentered}>{i + 1} </td>
               <td>{list?.particulars}</td>
+              <td>{list?.details}</td>
               <td className={classes.itemCentered}>{list?.quantity}</td>
               <td className={classes.itemCentered}>{list?.day}</td>
               <td className={classes.itemRight}>{list?.unitPrice}</td>
