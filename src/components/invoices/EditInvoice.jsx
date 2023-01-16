@@ -19,7 +19,14 @@ export default function EditInvoice() {
   ] = useAxios();
   const [data, setData] = useState({});
   const [inputList, setInputList] = useState([
-    { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
+    {
+      particulars: "",
+      details: "",
+      quantity: "",
+      day: "",
+      unitPrice: "",
+      totalPrice: "",
+    },
   ]);
   const [getData, setGetData] = useToggler();
 
@@ -91,7 +98,14 @@ export default function EditInvoice() {
   const handleAddClick = () => {
     setInputList([
       ...inputList,
-      { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
+      {
+        particulars: "",
+        details: "",
+        quantity: "",
+        day: "",
+        unitPrice: "",
+        totalPrice: "",
+      },
     ]);
   };
 
@@ -103,6 +117,12 @@ export default function EditInvoice() {
           name="particulars"
           placeholder="Enter Particulars"
           value={x.particulars}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <input
+          name="details"
+          placeholder="Enter details"
+          value={x.details}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input

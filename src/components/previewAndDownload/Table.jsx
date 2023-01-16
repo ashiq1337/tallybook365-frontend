@@ -1,11 +1,11 @@
 import React from "react";
 import classes from "./Table.module.scss";
 
-export default function Table({ lists, productionCost, advance = 0 }) {
+export default function Table({ lists, productionCost, advance = 0,  valueAddedTax = 0.15}) {
   //Calculate other amounts with grand total
   let agencyFees = productionCost * 0.1;
   let subTotal = productionCost + agencyFees;
-  let vat = subTotal * 0.15;
+  let vat = subTotal * valueAddedTax;
   let gTotal = subTotal + vat;
   let due = 0;
   if (advance) {

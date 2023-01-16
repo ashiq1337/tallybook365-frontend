@@ -20,7 +20,14 @@ export default function AddInvoiceForm() {
   const [selectedClientIndex, setSelectedClientIndex] = useState();
 
   const [inputList, setInputList] = useState([
-    { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
+    {
+      particulars: "",
+      details: "",
+      quantity: "",
+      day: "",
+      unitPrice: "",
+      totalPrice: "",
+    },
   ]);
 
   function handleChange(event) {
@@ -89,7 +96,14 @@ export default function AddInvoiceForm() {
   const handleAddClick = () => {
     setInputList([
       ...inputList,
-      { particulars: "", quantity: "", day: "", unitPrice: "", totalPrice: "" },
+      {
+        particulars: "",
+        details: "",
+        quantity: "",
+        day: "",
+        unitPrice: "",
+        totalPrice: "",
+      },
     ]);
   };
 
@@ -99,8 +113,14 @@ export default function AddInvoiceForm() {
       <div className={Styles.itemsContainer} key={i}>
         <input
           name="particulars"
-          placeholder="Enter Particulars"
+          placeholder="Enter items"
           value={x.particulars}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <input
+          name="details"
+          placeholder="Enter details"
+          value={x.details}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
@@ -247,7 +267,7 @@ export default function AddInvoiceForm() {
 
         <br />
         <label>Advance</label>
-        
+
         {/* <input
           type="text"
           placeholder="Enter due amount"
@@ -287,6 +307,14 @@ export default function AddInvoiceForm() {
           name="routing_no"
           onChange={handleChange}
         />
+        <select name="vat" onChange={handleChange}>
+          <option value="" disabled selected>
+            Enter vat percentage
+          </option>
+          <option value="0.15">15%</option>
+          <option value="0.10">10%</option>
+          <option value="0.05">05%</option>
+        </select>
         <br />
         <label>Terms and condition</label>
         <textarea
