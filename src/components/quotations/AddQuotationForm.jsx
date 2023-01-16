@@ -287,14 +287,18 @@ export default function AddQuotationForm() {
           name="routing_no"
           onChange={handleChange}
         />
-        <select name="vat" onChange={handleChange}>
-          <option value="" disabled selected>
-            Enter vat percentage
-          </option>
-          <option value="0.15">15%</option>
-          <option value="0.10">10%</option>
-          <option value="0.05">05%</option>
-        </select>
+        <input
+          type="number"
+          placeholder="Enter ASF percentage"
+          name="asf"
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          placeholder="Enter vat percentage"
+          name="vat"
+          onChange={handleChange}
+        />
         <br />
         <label>Terms and condition</label>
         <textarea

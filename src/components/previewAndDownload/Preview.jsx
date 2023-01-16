@@ -87,6 +87,7 @@ export default function Preview({
               lists={data.items}
               advance={data?.advance}
               valueAddedTax={data?.vat}
+              asf={data?.asf}
             />
             <Terms />
             <BankInfo

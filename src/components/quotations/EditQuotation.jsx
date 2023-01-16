@@ -267,6 +267,20 @@ export default function EditQuotation() {
           onChange={handleChange}
           value={data?.routing_no}
         />
+        <input
+          type="number"
+          placeholder="Enter ASF percentage"
+          name="asf"
+          value={data?.asf}
+          onChange={handleChange}
+        />
+         <input
+          type="number"
+          placeholder="Enter vat percentage"
+          name="vat"
+          onChange={handleChange}
+          value={data?.vat}
+        />
         <br />
         <label>Terms and condition</label>
         <textarea

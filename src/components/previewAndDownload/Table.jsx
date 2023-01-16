@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./Table.module.scss";
 
-export default function Table({ lists, productionCost, advance = 0, valueAddedTax = 0.15}) {
+export default function Table({ lists, productionCost, advance = 0, valueAddedTax = 0.15, asf =10}) {
   //Calculate other amounts with grand total
-  let agencyFees = productionCost * 0.1;
+  let agencyFees = productionCost * (asf/100);
   let subTotal = productionCost + agencyFees;
   let vat = subTotal * valueAddedTax ;
   let gTotal = subTotal + vat;
@@ -51,7 +51,7 @@ export default function Table({ lists, productionCost, advance = 0, valueAddedTa
           </p>
         </div>
         <div className={classes.calculation}>
-          <p>Agency Management Fees 10%</p>
+          <p>Agency Management Fees {asf}%</p>
           <p>{(Math.round(agencyFees * 100) / 100).toFixed(2)}</p>
         </div>
         <div className={classes.calculation}>
