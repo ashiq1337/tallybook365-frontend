@@ -115,7 +115,7 @@ export default function EditQuotation() {
       <div className={Styles.itemsContainer} key={i}>
         <input
           name="particulars"
-          placeholder="Enter Particulars"
+          placeholder="Enter items"
           value={x.particulars}
           onChange={(e) => handleInputChange(e, i)}
         />

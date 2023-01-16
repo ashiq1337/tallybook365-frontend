@@ -86,7 +86,7 @@ export default function Preview({
               productionCost={data?.grand_total}
               lists={data.items}
               advance={data?.advance}
-              valueAddedTax={data?.tax}
+              valueAddedTax={data?.vat}
             />
             <Terms />
             <BankInfo

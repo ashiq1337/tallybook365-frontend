@@ -114,7 +114,7 @@ export default function AddQuotationForm() {
       <div className={Styles.itemsContainer} key={i}>
         <input
           name="particulars"
-          placeholder="Enter itemss"
+          placeholder="Enter items"
           value={x.particulars}
           onChange={(e) => handleInputChange(e, i)}
         />
