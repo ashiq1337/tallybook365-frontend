@@ -4,7 +4,7 @@ import Styles from "./Navigation.module.scss";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoPersonAddOutline } from "react-icons/io5";
 import Logo from "../../assets/logo.png";
-import { HiMenu } from "react-icons/hi";
+import { HiMenu, HiDocumentText } from "react-icons/hi";
 import { MdOutlineAddBusiness, MdOutlineLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { BsWindowDock } from "react-icons/bs";
@@ -20,6 +20,7 @@ export default function Navigation() {
       return;
     }
   }
+
   return (
     <div className={Styles.main}>
       <div className={Styles.head}>
@@ -57,6 +58,15 @@ export default function Navigation() {
       <NavLink to="invoice/addInvoice" className={Styles.link}>
         <BsWindowDock />
         Create Invoice
+      </NavLink>
+
+      <NavLink to="chalan/chalans" className={Styles.link}>
+        <HiDocumentText /> Chalans
+      </NavLink>
+
+      <NavLink to="chalan/addChalan" className={Styles.link}>
+        <HiDocumentText />
+        Create Chalan
       </NavLink>
 
       <div className={Styles.link} onClick={onLogOutClick}>

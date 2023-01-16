@@ -18,15 +18,15 @@ export default function Preview({
     client_name: "",
     date: "",
     job_no: "",
-    brand:"",
-    job_type:"",
+    brand: "",
+    job_type: "",
     swift: "",
     t_and_c: "",
     title: "",
     advance: 0,
     jobType: "",
     productionCost: "",
-    grand_total:"",
+    grand_total: "",
     items: [
       {
         day: "",
@@ -57,6 +57,7 @@ export default function Preview({
     }
   }
 `;
+
   return (
     <div className={Styles.main}>
       {/* Invoice Preview */}
@@ -81,7 +82,11 @@ export default function Preview({
               jobType={data?.job_type}
             />
 
-            <Table productionCost={data?.grand_total} lists={data.items} advance={data?.advance}/>
+            <Table
+              productionCost={data?.grand_total}
+              lists={data.items}
+              advance={data?.advance}
+            />
             <Terms />
             <BankInfo
               accountNo={data?.bank_account}

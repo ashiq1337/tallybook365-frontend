@@ -21,6 +21,9 @@ import InvoiceDetails from "../pages/invoices/InvoiceDetails";
 import ClientDetails from "../pages/clients/ClientDetails";
 import QuotationDetails from "../pages/quotations/QuotationDetails";
 import Preview from "../components/previewAndDownload/Preview";
+import Chalans from "../pages/chalans/Chalans";
+import AddChalan from "../pages/chalans/AddChalan";
+import ChalanDetails from "../pages/chalans/ChalanDetails";
 
 export default function Routers() {
   const router = createBrowserRouter(
@@ -28,12 +31,15 @@ export default function Routers() {
       <Route path="/" errorElement={<ErrorPage />}>
         <Route errorElement={<ErrorPage />} element={<RootLayout />}>
           <Route index element={<Landing />} />
-          
+
           <Route errorElement={<ErrorPage />}>
             <Route path="quotation/quotations" element={<Quotations />} />
             <Route path="quotation/addQuotation" element={<AddQuotations />} />
-            <Route path="quotation/:quotationId" element={<QuotationDetails />} />
-            <Route path="quotationPreview/:quotationId" element={<Preview/>}/>
+            <Route
+              path="quotation/:quotationId"
+              element={<QuotationDetails />}
+            />
+            <Route path="quotationPreview/:quotationId" element={<Preview />} />
           </Route>
 
           <Route errorElement={<ErrorPage />}>
@@ -46,6 +52,12 @@ export default function Routers() {
             <Route path="invoice/invoices" element={<Invoices />} />
             <Route path="invoice/addInvoice" element={<AddInvoice />} />
             <Route path="invoice/:invoiceId" element={<InvoiceDetails />} />
+          </Route>
+
+          <Route errorElement={<ErrorPage />}>
+            <Route path="chalan/chalans" element={<Chalans />} />
+            <Route path="chalan/addChalan" element={<AddChalan />} />
+            <Route path="chalan/:chalanId" element={<ChalanDetails />} />
           </Route>
         </Route>
         <Route path="login" element={<Login />}></Route>

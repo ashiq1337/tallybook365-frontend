@@ -7,6 +7,7 @@ export default function Header({ title, link, btnName }) {
   function buttonClickHandler() {
     navigate(link);
   }
+
   return (
     <div className={Styles.main}>
       <div>
