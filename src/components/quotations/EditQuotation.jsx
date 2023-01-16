@@ -274,7 +274,7 @@ export default function EditQuotation() {
           value={data?.asf}
           onChange={handleChange}
         />
-         <input
+        <input
           type="number"
           placeholder="Enter vat percentage"
           name="vat"
