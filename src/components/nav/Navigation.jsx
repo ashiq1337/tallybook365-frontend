@@ -4,12 +4,23 @@ import Styles from "./Navigation.module.scss";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoPersonAddOutline } from "react-icons/io5";
 import Logo from "../../assets/logo.png";
-import { HiMenu, HiDocumentText } from "react-icons/hi";
-import { MdOutlineAddBusiness, MdOutlineLogout } from "react-icons/md";
+import { HiMenu } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { BsWindowDock } from "react-icons/bs";
+import {
+  BiDockBottom,
+  BiUserPlus,
+  BiTask,
+  BiHome,
+  BiDockLeft,
+  BiLogOut,
+  BiUser,
+  BiFolder,
+  BiFolderPlus,
+  BiListUl,
+  BiListPlus
+} from "react-icons/bi";
 
-export default function Navigation() {
+export default function Navigation({ closeBtn }) {
   const navigate = useNavigate();
 
   function onLogOutClick() {
@@ -24,53 +35,58 @@ export default function Navigation() {
   return (
     <div className={Styles.main}>
       <div className={Styles.head}>
-        {/* <HiMenu className={Styles.icon} /> */}
+        <HiMenu
+          className={Styles.icon}
+          onClick={() => {
+            closeBtn();
+          }}
+        />
         <Link to="/">
           <img className={Styles.logo} src={Logo} alt="logo" />
         </Link>
       </div>
 
       <NavLink to="/" className={Styles.link}>
-        <AiOutlineHome /> Overview
+        <BiHome /> Overview
       </NavLink>
 
       <NavLink to="clients/clients" className={Styles.link}>
-        <IoPersonAddOutline /> Clients
+        <BiUser /> Clients
       </NavLink>
 
       <NavLink to="clients/addClient" className={Styles.link}>
-        <IoPersonAddOutline /> Create Client
+        <BiUserPlus /> Create Client
       </NavLink>
 
       <NavLink to="quotation/quotations" className={Styles.link}>
-        <MdOutlineAddBusiness /> Quotations
+        <BiFolder /> Quotations
       </NavLink>
 
       <NavLink to="quotation/addQuotation" className={Styles.link}>
-        <MdOutlineAddBusiness />
+        <BiFolderPlus />
         Create Quotation
       </NavLink>
 
       <NavLink to="invoice/invoices" className={Styles.link}>
-        <BsWindowDock /> Invoices
+        <BiTask /> Invoices
       </NavLink>
 
       <NavLink to="invoice/addInvoice" className={Styles.link}>
-        <BsWindowDock />
+        <BiTask />
         Create Invoice
       </NavLink>
 
       <NavLink to="chalan/chalans" className={Styles.link}>
-        <HiDocumentText /> Chalans
+        <BiDockLeft /> Chalans
       </NavLink>
 
       <NavLink to="chalan/addChalan" className={Styles.link}>
-        <HiDocumentText />
+        <BiDockLeft />
         Create Chalan
       </NavLink>
 
       <div className={Styles.link} onClick={onLogOutClick}>
-        <MdOutlineLogout /> Logout
+        <BiLogOut /> Logout
       </div>
     </div>
   );
