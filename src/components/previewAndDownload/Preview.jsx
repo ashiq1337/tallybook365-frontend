@@ -37,6 +37,7 @@ export default function Preview({
       },
     ],
   },
+  title = "",
 }) {
   const componentRef = useRef();
 
@@ -73,6 +74,7 @@ export default function Preview({
           <div ref={componentRef}>
             <Header />
             <ClientDetails
+              docType={title}
               title={data?.title}
               company={data?.client_name}
               address={data?.client_address}

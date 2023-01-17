@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./ClientDetails.module.scss";
 
 export default function ClientDetails({
+  docType,
   title,
   company,
   address,
@@ -13,7 +14,7 @@ export default function ClientDetails({
   return (
     <div className={classes.container}>
       <section>
-        <h3 className={classes.titleHeader}>Estimate - {title}</h3>
+        <h3 className={classes.titleHeader}>{docType} - {title}</h3>
         <div className={classes.companyDetails}>
           <div className={classes.row}>
             <p className={classes.cell}>Company: {company}</p>

@@ -56,7 +56,7 @@ export default function AllQuotations() {
       <td>{quote.date?.slice(0, 10)}</td>
       <td>{quote.client_name}</td>
       <td>
-        <Preview data={quote}/>
+        <Preview data={quote} title="Estimate"/>
       </td>
       <td>
         <MdEdit
