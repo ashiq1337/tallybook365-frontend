@@ -84,6 +84,17 @@ export default function EditInvoice() {
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
+
+    //summation of total in a single row
+    let rowSum =
+      (inputList[index]?.quantity ? inputList[index]?.quantity : 1) *
+      (inputList[index]?.day ? inputList[index]?.day : 1) *
+      (inputList[index]?.unitPrice ? inputList[index]?.unitPrice : 1);
+
+    //saving total price in list
+    list[index]["totalPrice"] = rowSum;
+
+    //updating input list
     setInputList(list);
   };
 
@@ -114,40 +125,46 @@ export default function EditInvoice() {
     return (
       <div className={Styles.itemsContainer} key={i}>
         <input
+          type="text"
           name="particulars"
           placeholder="Enter items"
           value={x.particulars}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="text"
           name="details"
           placeholder="Enter details"
           value={x.details}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="number"
           name="quantity"
           placeholder="Enter Last quantity"
           value={x.quantity}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="number"
           name="day"
           placeholder="Enter day"
           value={x.day}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="number"
           name="unitPrice"
           placeholder="Enter unit price"
           value={x.unitPrice}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="number"
           name="totalPrice"
+          readOnly
           placeholder="Enter total price"
-          value={x.totalPrice}
-          onChange={(e) => handleInputChange(e, i)}
+          value={inputList[i]?.totalPrice}
         />
         <div className={Styles.btnBox}>
           {inputList.length !== 1 && (
@@ -302,13 +319,13 @@ export default function EditInvoice() {
             value={data?.asf}
             onChange={handleChange}
           />
-           <input
-          type="number"
-          placeholder="Enter vat percentage"
-          name="vat"
-          onChange={handleChange}
-          value={data?.vat}
-        />
+          <input
+            type="number"
+            placeholder="Enter vat percentage"
+            name="vat"
+            onChange={handleChange}
+            value={data?.vat}
+          />
           <br />
           <label>Terms and condition</label>
           <textarea
