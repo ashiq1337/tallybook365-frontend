@@ -186,85 +186,97 @@ export default function EditInvoice() {
       {loading && <p>Loading</p>}
       {response && !loading && !error && (
         <form onSubmit={editInvoiceAsync}>
+          <label className={Styles.inputLabel}>User ID</label>
           <input
             type="text"
-            placeholder="Enter User id"
+            placeholder="Enter User ID"
             name="user_id"
             onChange={handleChange}
             value={data?.user_id}
             readOnly
           />
-          <br />
-          <label>Client info</label>
 
+          <br />
+          <label>Client Information</label>
+
+          <label className={Styles.inputLabel}>Client</label>
           <input
             type="text"
-            placeholder="Enter client id"
+            placeholder="Enter Client"
             name="client_id"
             onChange={handleChange}
             value={data?.client_id}
           />
 
+          <label className={Styles.inputLabel}>Client's Name</label>
           <input
             type="text"
-            placeholder="Enter client name"
+            placeholder="Enter Client's Name"
             name="client_name"
             onChange={handleChange}
             value={data?.client_name}
           />
 
+          <label className={Styles.inputLabel}>Client's Address</label>
           <input
             type="text"
-            placeholder="Enter Client's address"
+            placeholder="Enter Client's Address"
             name="client_address"
             onChange={handleChange}
             value={data?.client_address}
           />
 
           <br />
-          <label>Invoice info</label>
+          <label>Invoice Information</label>
 
+          <label className={Styles.inputLabel}>Title</label>
           <input
             type="text"
-            placeholder="Enter title"
+            placeholder="Enter Title"
             name="title"
             onChange={handleChange}
             value={data?.title}
           />
 
+          <label className={Styles.inputLabel}>Job No</label>
           <input
             type="number"
-            placeholder="Enter job no"
+            placeholder="Enter Job No"
             name="job_no"
             onChange={handleChange}
             value={data?.job_no}
           />
 
+          <label className={Styles.inputLabel}>Brand Name</label>
           <input
             type="text"
-            placeholder="Enter Brand name"
+            placeholder="Enter Brand Name"
             name="brand"
             onChange={handleChange}
             value={data?.brand}
           />
+
+          <label className={Styles.inputLabel}>Job Type</label>
           <input
             type="text"
-            placeholder="Enter Job type"
+            placeholder="Enter Job Type"
             name="job_type"
             onChange={handleChange}
             value={data?.job_type}
           />
 
+          <label className={Styles.inputLabel}>Date</label>
           <input
             type="date"
-            placeholder="Enter date"
             name="date"
             onChange={handleChange}
             value={data?.date?.slice(0, 10)}
           />
+
           <br />
           <label>Add items</label>
           {itemsAddInObject}
+
           <br />
           <label>Advance</label>
 
@@ -275,59 +287,77 @@ export default function EditInvoice() {
             onChange={handleChange}
             value={data?.due}
           /> */}
+
+          <label className={Styles.inputLabel}>Advance Amount</label>
           <input
             type="number"
-            placeholder="Enter advance amount"
+            placeholder="Enter Advance Amount"
             name="advance"
             onChange={handleChange}
             value={data?.advance}
           />
+
           <br />
-          <label>Bank Account info</label>
+
+          <label>Bank Account Information</label>
+
+          <label className={Styles.inputLabel}>Bank Account</label>
           <input
             type="text"
-            placeholder="Enter bank account"
+            placeholder="Enter Bank Accoun"
             name="bank_account"
             onChange={handleChange}
             value={data?.bank_account}
           />
+
+          <label className={Styles.inputLabel}>Bank Name & Address</label>
           <input
             type="text"
-            placeholder="Enter bank name address"
+            placeholder="Enter Bank Name & Address"
             name="bank_name_address"
             onChange={handleChange}
             value={data?.bank_name_address}
           />
+
+          <label className={Styles.inputLabel}>Swift No</label>
           <input
             type="text"
-            placeholder="Enter swift no"
+            placeholder="Enter Swift No"
             name="swift"
             onChange={handleChange}
             value={data?.swift}
           />
+
+          <label className={Styles.inputLabel}>Routing No</label>
           <input
             type="text"
-            placeholder="Enter routing no"
+            placeholder="Enter Routing No"
             name="routing_no"
             onChange={handleChange}
             value={data?.routing_no}
           />
+
+          <label className={Styles.inputLabel}>ASF Percentage</label>
           <input
             type="number"
-            placeholder="Enter ASF percentage"
+            placeholder="Enter ASF Percentage"
             name="asf"
             value={data?.asf}
             onChange={handleChange}
           />
+
+          <label className={Styles.inputLabel}>VAT Percentage</label>
           <input
             type="number"
-            placeholder="Enter vat percentage"
+            placeholder="Enter VAT Percentage"
             name="vat"
             onChange={handleChange}
             value={data?.vat}
           />
+
           <br />
-          <label>Terms and condition</label>
+
+          <label>TTerms & Conditions</label>
           <textarea
             name="t_and_c"
             cols="30"

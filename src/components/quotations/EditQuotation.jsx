@@ -79,20 +79,17 @@ export default function EditQuotation() {
     setData({ ...data, grand_total: sum, items: inputList });
   }, [inputList]);
 
-   // handle input change
-   const handleInputChange = (e, index) => {
+  // handle input change
+  const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
 
     //summation of total in a single row
-    let rowSum = (inputList[index]?.quantity
-      ? inputList[index]?.quantity
-      : 1) * (inputList[index]?.day
-      ? inputList[index]?.day
-      : 1 )* (inputList[index]?.unitPrice
-      ? inputList[index]?.unitPrice
-      : 1);
+    let rowSum =
+      (inputList[index]?.quantity ? inputList[index]?.quantity : 1) *
+      (inputList[index]?.day ? inputList[index]?.day : 1) *
+      (inputList[index]?.unitPrice ? inputList[index]?.unitPrice : 1);
 
     //saving total price in list
     list[index]["totalPrice"] = rowSum;
@@ -130,35 +127,35 @@ export default function EditQuotation() {
         <input
           type="text"
           name="particulars"
-          placeholder="Enter items"
+          placeholder="Enter Items"
           value={x.particulars}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
           type="text"
           name="details"
-          placeholder="Enter details"
+          placeholder="Enter Details"
           value={x.details}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
           type="number"
           name="quantity"
-          placeholder="Enter Last quantity"
+          placeholder="Enter Quantity"
           value={x.quantity}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
           type="number"
           name="day"
-          placeholder="Enter day"
+          placeholder="Enter Day"
           value={x.day}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
           type="number"
           name="unitPrice"
-          placeholder="Enter unit price"
+          placeholder="Enter Unit Price"
           value={x.unitPrice}
           onChange={(e) => handleInputChange(e, i)}
         />
@@ -166,7 +163,7 @@ export default function EditQuotation() {
           type="number"
           name="totalPrice"
           readOnly
-          placeholder="Enter total price"
+          placeholder="Enter Total Price"
           value={inputList[i]?.totalPrice}
         />
         <div className={Styles.btnBox}>
@@ -187,39 +184,44 @@ export default function EditQuotation() {
   return (
     <div className={Styles.main}>
       <form onSubmit={editQuotationAsync}>
+        <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
-          placeholder="Enter User id"
+          placeholder="Enter User ID"
           name="user_id"
           onChange={handleChange}
           value={data?.user_id}
           readOnly
         />
         <br />
-        <label>Client info</label>
+        <label>Client Information</label>
+        <label className={Styles.inputLabel}>Client</label>
         <input
           type="text"
-          placeholder="Enter client id"
+          placeholder="Enter Client"
           name="client_id"
           onChange={handleChange}
           value={data?.client_id}
         />
+        <label className={Styles.inputLabel}>Client's Name</label>
         <input
           type="text"
-          placeholder="Enter Client's name"
+          placeholder="Enter Client's Name"
           name="client_name"
           onChange={handleChange}
           value={data?.client_name}
         />
+        <label className={Styles.inputLabel}>Client's Address</label>
         <input
           type="text"
-          placeholder="Enter Client's address"
+          placeholder="Enter Client's Address"
           name="client_address"
           onChange={handleChange}
           value={data?.client_address}
         />
         <br />
-        <label>Add quotation info</label>
+        <label>Add Quotation Information</label>
+        <label className={Styles.inputLabel}>Title</label>
         <input
           type="text"
           placeholder="Enter Title"
@@ -227,27 +229,31 @@ export default function EditQuotation() {
           onChange={handleChange}
           value={data?.title}
         />
+        <label className={Styles.inputLabel}>Job No</label>
         <input
           type="number"
-          placeholder="Enter Job no"
+          placeholder="Enter Job No"
           name="job_no"
           onChange={handleChange}
           value={data?.job_no}
         />
+        <label className={Styles.inputLabel}>Brand Name</label>
         <input
           type="text"
-          placeholder="Enter Brand name"
+          placeholder="Enter Brand Name"
           name="brand"
           onChange={handleChange}
           value={data?.brand}
         />
+        <label className={Styles.inputLabel}>Job Type</label>
         <input
           type="text"
-          placeholder="Enter Job type"
+          placeholder="Enter Job Type"
           name="job_type"
           onChange={handleChange}
           value={data?.job_type}
         />
+        <label className={Styles.inputLabel}>Date</label>
         <input
           type="date"
           name="date"
@@ -258,51 +264,57 @@ export default function EditQuotation() {
         <label>Add items</label>
         {itemsAddInObject}
         <br />
-        <label>Payment info</label>
+        <label>Payment Information</label>
+        <label className={Styles.inputLabel}>Bank Account</label>
         <input
           type="text"
-          placeholder="Enter bank account no"
+          placeholder="Enter Bank Account No"
           name="bank_account"
           onChange={handleChange}
           value={data?.bank_account}
         />
+        <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input
           type="text"
-          placeholder="Enter bank name address"
+          placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
           value={data?.bank_name_address}
         />
+        <label className={Styles.inputLabel}>Swift No</label>
         <input
           type="text"
-          placeholder="Enter swift no"
+          placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
           value={data?.swift}
         />
+        <label className={Styles.inputLabel}>Routing No</label>
         <input
           type="text"
-          placeholder="Enter routing no"
+          placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
           value={data?.routing_no}
         />
+        <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"
-          placeholder="Enter ASF percentage"
+          placeholder="Enter ASF Percentage"
           name="asf"
           value={data?.asf}
           onChange={handleChange}
         />
+        <label className={Styles.inputLabel}>VAT Percentage</label>
         <input
           type="number"
-          placeholder="Enter vat percentage"
+          placeholder="Enter VAT Percentage"
           name="vat"
           onChange={handleChange}
           value={data?.vat}
         />
         <br />
-        <label>Terms and condition</label>
+        <label>Terms & Conditions</label>
         <textarea
           name="t_and_c"
           cols="30"

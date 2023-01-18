@@ -105,26 +105,38 @@ export default function AddChalanForm() {
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="text"
+          name="details"
+          placeholder="Enter Details"
+          value={x.details}
+          onChange={(e) => handleInputChange(e, i)}
+        />
+        <input
+          type="number"
           name="quantity"
-          placeholder="Enter Last Quantity"
+          placeholder="Enter Quantity"
           value={x.quantity}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="number"
           name="day"
           placeholder="Enter Day"
           value={x.day}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="number"
           name="unitPrice"
           placeholder="Enter Unit Price"
           value={x.unitPrice}
           onChange={(e) => handleInputChange(e, i)}
         />
         <input
+          type="number"
           name="totalPrice"
-          placeholder="Enter Total Price"
+          readOnly
+          placeholder="Total Price"
           value={x.totalPrice}
           onChange={(e) => handleInputChange(e, i)}
         />
@@ -146,6 +158,7 @@ export default function AddChalanForm() {
   return (
     <div className={Styles.main}>
       <form onSubmit={addClientsAsync} id="addChalanForm">
+        <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
           placeholder="Enter User ID"
@@ -156,6 +169,7 @@ export default function AddChalanForm() {
         />
         <br />
         <label>Client Information</label>
+        <label className={Styles.inputLabel}>Client</label>
         <select
           name="client_id"
           // onChange={(e) => {
@@ -174,7 +188,7 @@ export default function AddChalanForm() {
           required
         >
           <option value="" disabled>
-            Select client
+            Select Client
           </option>
           {/* {responseClientData?.data?.map((user, i) => (
             <option key={i} value={i}>
@@ -183,7 +197,7 @@ export default function AddChalanForm() {
           ))} */}
         </select>
 
-        {/* <label className={Styles.chalanFormLabel}>Client's Name</label> */}
+        <label className={Styles.inputLabel}>Client's Name</label>
         <input
           type="text"
           placeholder="Enter Client's Name"
@@ -196,6 +210,7 @@ export default function AddChalanForm() {
           //     : ""
           // }
         />
+        <label className={Styles.inputLabel}>Client's Address</label>
         <input
           type="text"
           placeholder="Enter Client's Address"
@@ -212,6 +227,7 @@ export default function AddChalanForm() {
         <br />
         <label>Invoice Information</label>
 
+        <label className={Styles.inputLabel}>Title</label>
         <input
           type="text"
           placeholder="Enter Title"
@@ -219,24 +235,31 @@ export default function AddChalanForm() {
           onChange={handleChange}
         />
 
+        <label className={Styles.inputLabel}>Job No</label>
         <input
           type="number"
           placeholder="Enter Job No"
           name="job_no"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Brand Name</label>
         <input
           type="text"
           placeholder="Enter Brand Name"
           name="brand"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Job Type</label>
         <input
           type="text"
           placeholder="Enter Job Type"
           name="job_type"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Date</label>
         <input
           type="date"
           placeholder="Enter Date"
@@ -266,24 +289,28 @@ export default function AddChalanForm() {
 
         <br />
         <label>Bank Account Information</label>
+        <label className={Styles.inputLabel}>Bank Account</label>
         <input
           type="text"
           placeholder="Enter Bank Account"
           name="bank_account"
           onChange={handleChange}
         />
+        <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input
           type="text"
-          placeholder="Enter Branch Name & Address"
+          placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
         />
+        <label className={Styles.inputLabel}>Swift No</label>
         <input
           type="text"
           placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
         />
+        <label className={Styles.inputLabel}>Routing No</label>
         <input
           type="text"
           placeholder="Enter Routing No"

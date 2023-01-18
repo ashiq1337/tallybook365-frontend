@@ -15,7 +15,7 @@ export default function AddClientsForm() {
 
   const addClientsAsync = (e) => {
     e.preventDefault();
-    console.log(data)
+    console.log(data);
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
@@ -28,82 +28,108 @@ export default function AddClientsForm() {
     <div className={Styles.main}>
       <form onSubmit={addClientsAsync}>
         <br />
-        <label>Client info</label>
+        <label>Client Information</label>
+
+        <label className={Styles.inputLabel}>Client's ID</label>
         <input
           type="text"
-          placeholder="Enter Client id"
+          placeholder="Enter Client's ID"
           name="client_id"
           onChange={handleChange}
         />
 
+        <label className={Styles.inputLabel}>Client's Name</label>
         <input
           type="text"
-          placeholder="Enter client name"
+          placeholder="Enter Client's Name"
           name="client_name"
           onChange={handleChange}
         />
 
+        <label className={Styles.inputLabel}>Client's Address</label>
         <input
           type="text"
-          placeholder="Enter Client's address"
+          placeholder="Enter Client's Address"
           name="client_address"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Client's Contact Number</label>
         <input
           type="text"
-          placeholder="Enter client contact number"
+          placeholder="Enter Client's Contact Number"
           name="client_contact_no"
           onChange={handleChange}
         />
         <br />
-        <label>Client representative</label>
+        <label>Client Representative</label>
+
+        <label className={Styles.inputLabel}>Client Representative 1</label>
         <input
           type="text"
-          placeholder="Enter client representative 1"
+          placeholder="Enter Client Representative 1"
           name="client_representitive1"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>
+          Client Representative 1 Number
+        </label>
         <input
           type="text"
-          placeholder="Enter client representative 1 number"
+          placeholder="Enter Client Representative 1 Number"
           name="client_representitive1_no"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Client Representative 2</label>
         <input
           type="text"
-          placeholder="Enter client representative 1"
+          placeholder="Enter Client Representative 2"
           name="client_representitive2"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>
+          Client Representative 2 Number
+        </label>
         <input
           type="text"
-          placeholder="Enter client representative 1 number"
+          placeholder="Enter client representative 2 Number"
           name="client_representitive2_no"
           onChange={handleChange}
         />
         <br />
-        <label>Bank Account info</label>
+        <label>Bank Account Information</label>
+
+        <label className={Styles.inputLabel}>Bank Account</label>
         <input
           type="text"
-          placeholder="Enter bank account"
+          placeholder="Enter Bank Account"
           name="bank_account"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input
           type="text"
-          placeholder="Enter bank name address"
+          placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Swift No</label>
         <input
           type="text"
-          placeholder="Enter swift no"
+          placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
         />
+
+        <label className={Styles.inputLabel}>Routing No</label>
         <input
           type="text"
-          placeholder="Enter routing no"
+          placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
         />
