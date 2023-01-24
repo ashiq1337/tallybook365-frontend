@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Styles from "./EditChalan.module.scss";
+import Styles from "./EditWorkorder.module.scss";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 
-export default function EditChalan() {
-  const { chalanId } = useParams();
+export default function EditWorkorder() {
+  const { workorderId } = useParams();
   const [response, error, loading, axiosFetch, message] = useAxios();
   const [
     responseUpdate,
@@ -35,29 +35,29 @@ export default function EditChalan() {
     setData({ ...data, [name]: value });
   }
 
-  const editChalanAsync = (e) => {
+  const editWorkorderAsync = (e) => {
     e.preventDefault();
 
     console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",
-      url: `${configuration.chalans}/${chalanId}`,
+      url: `${configuration.workorders}/${workorderId}`,
       requestConfig: data,
     });
     setGetData();
   };
 
-  const getChalanDetails = () => {
+  const getWorkorderDetails = () => {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: `${configuration.chalans}/${chalanId}`,
+      url: `${configuration.workorders}/${workorderId}`,
     });
   };
 
   useEffect(() => {
-    getChalanDetails();
+    getWorkorderDetails();
   }, [getData]);
 
   useEffect(() => {
@@ -228,7 +228,7 @@ export default function EditChalan() {
           />
 
           <br />
-          <label>Chalan Information</label>
+          <label>Workorder Information</label>
 
           <label className={Styles.inputLabel}>Title</label>
           <input
@@ -358,7 +358,7 @@ export default function EditChalan() {
 
           <br />
 
-          <label>Terms & Conditions</label>
+          <label>TTerms & Conditions</label>
           <textarea
             name="t_and_c"
             cols="30"

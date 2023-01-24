@@ -162,7 +162,7 @@ export default function AddQuotationForm() {
           type="number"
           name="totalPrice"
           readOnly
-          placeholder="Enter Total Price"
+          placeholder="Total Price"
           value={inputList[i]?.totalPrice}
         />
         <div className={Styles.btnBox}>
@@ -266,7 +266,7 @@ export default function AddQuotationForm() {
         <label className={Styles.inputLabel}>Job No</label>
         <input
           type="number"
-          placeholder="Enter Job no"
+          placeholder="Enter Job No"
           name="job_no"
           onChange={handleChange}
         />
@@ -361,6 +361,7 @@ export default function AddQuotationForm() {
         <p>{message}</p>
         <button type="submit">Save</button>
 
+        <br />
         <br />
         <br />
         <br />

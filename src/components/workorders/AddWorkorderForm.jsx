@@ -1,11 +1,11 @@
-import Styles from "./AddChalanForm.module.scss";
+import Styles from "./AddWorkorderForm.module.scss";
 import React, { useEffect, useState } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 
-export default function AddChalanForm() {
+export default function AddWorkorderForm() {
   const [data, setData] = useState({});
   const [response, error, loading, axiosFetch, message] = useAxios();
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
@@ -35,14 +35,14 @@ export default function AddChalanForm() {
     setData({ ...data, [name]: value });
   }
 
-  const createChalanAsync = (e) => {
+  const createWorkorderAsync = (e) => {
     e.preventDefault();
 
     console.log(data);
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
-      url: configuration.chalans,
+      url: configuration.workorders,
       requestConfig: data,
     });
   };
@@ -181,11 +181,11 @@ export default function AddChalanForm() {
 
   return (
     <div className={Styles.main}>
-      <form onSubmit={createChalanAsync} id="addChalanForm">
+      <form onSubmit={createWorkorderAsync} id="addWorkorderForm">
         <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
-          placeholder="Enter User ID"
+          placeholder="User ID"
           name="user_id"
           onChange={handleChange}
           value={responseSelf ? responseSelf?.data?.user_id : ""}
@@ -249,7 +249,7 @@ export default function AddChalanForm() {
         />
 
         <br />
-        <label>Add Chalan Information</label>
+        <label>Add Workorder Information</label>
 
         <label className={Styles.inputLabel}>Title</label>
         <input

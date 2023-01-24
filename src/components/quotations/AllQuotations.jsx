@@ -8,7 +8,6 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import Preview from "../previewAndDownload/Preview";
 
-
 export default function AllQuotations() {
   const navigate = useNavigate();
   const [response, error, loading, axiosFetch, message] = useAxios();
@@ -44,11 +43,14 @@ export default function AllQuotations() {
     getQuotations();
   }, [getData]);
 
-  useEffect(()=>{console.log(response?.data)},[response?.data])
+  useEffect(() => {
+    console.log(response?.data);
+  }, [response?.data]);
 
   function viewDetailsClickHandler(quotationId) {
     navigate(`/quotation/${quotationId}`);
   }
+
   const tableRow = response?.data?.map((quote, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
@@ -56,7 +58,7 @@ export default function AllQuotations() {
       <td>{quote.date?.slice(0, 10)}</td>
       <td>{quote.client_name}</td>
       <td>
-        <Preview data={quote} title="Estimate"/>
+        <Preview data={quote} title="Estimate" />
       </td>
       <td>
         <MdEdit

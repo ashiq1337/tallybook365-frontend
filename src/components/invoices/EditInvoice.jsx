@@ -37,6 +37,7 @@ export default function EditInvoice() {
 
   const editInvoiceAsync = (e) => {
     e.preventDefault();
+
     console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
@@ -163,7 +164,7 @@ export default function EditInvoice() {
           type="number"
           name="totalPrice"
           readOnly
-          placeholder="Enter total price"
+          placeholder="Total price"
           value={inputList[i]?.totalPrice}
         />
         <div className={Styles.btnBox}>
@@ -357,7 +358,7 @@ export default function EditInvoice() {
 
           <br />
 
-          <label>TTerms & Conditions</label>
+          <label>Terms & Conditions</label>
           <textarea
             name="t_and_c"
             cols="30"

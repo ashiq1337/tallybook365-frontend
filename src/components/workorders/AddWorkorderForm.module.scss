@@ -6,11 +6,13 @@
 
   form {
     @include m.globalFormContainer();
+
     button {
       @include m.globalButton(c.$Color-primary-green);
       margin-top: 50px;
     }
   }
+
   .itemsContainer {
     //border: solid;
     display: flex;

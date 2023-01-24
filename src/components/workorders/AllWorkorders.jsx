@@ -1,4 +1,4 @@
-import Styles from "./AllInvoices.module.scss";
+import Styles from "./AllWorkorders.module.scss";
 import React, { useEffect } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
@@ -8,7 +8,7 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import Preview from "../previewAndDownload/Preview";
 
-export default function AllInvoices() {
+export default function AllWorkorders() {
   const navigate = useNavigate();
   const [response, error, loading, axiosFetch, message] = useAxios();
   const [
@@ -20,47 +20,51 @@ export default function AllInvoices() {
   ] = useAxios();
   const [getData, setGetData] = useToggler();
 
-  const getInvoices = () => {
+  const getWorkorders = () => {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.invoices,
+      url: configuration.workorders,
     });
   };
 
-  const deleteInvoice = (invoiceId) => {
-    if (confirm("Do you want to delete the invoice?")) {
+  const deleteWorkorder = (workorderId) => {
+    if (confirm("Do you want to delete the chalan?")) {
       axiosFetchDelete({
         axiosInstance: instance,
         method: "delete",
-        url: `${configuration.invoices}/${invoiceId}`,
+        url: `${configuration.workorders}/${workorderId}`,
       });
       setGetData();
     }
   };
 
   useEffect(() => {
-    getInvoices();
+    getWorkorders();
   }, [getData]);
 
-  function viewDetailsClickHandler(invoiceId) {
-    navigate(`/invoice/${invoiceId}`);
+  useEffect(() => {
+    console.log(response?.data);
+  }, [response?.data]);
+
+  function viewDetailsClickHandler(workorderId) {
+    navigate(`/workorder/${workorderId}`);
   }
 
-  const tableRow = response?.data?.map((invoice, i) => (
+  const tableRow = response?.data?.map((workorder, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{invoice.title}</td>
-      <td>{invoice.client_address}</td>
-      <td>{invoice.job_no}</td>
+      <td>{workorder.title}</td>
+      <td>{workorder.client_address}</td>
+      <td>{workorder.job_no}</td>
       <td>
-        <Preview data={invoice} title="Invoice" />
+        <Preview data={workorder} title="Workorder" />
       </td>
       <td>
         <MdEdit
           className={Styles.editIcon}
           onClick={() => {
-            viewDetailsClickHandler(invoice?._id);
+            viewDetailsClickHandler(workorder?._id);
           }}
         />
       </td>
@@ -68,7 +72,7 @@ export default function AllInvoices() {
         <MdDelete
           className={Styles.deleteIcon}
           onClick={() => {
-            deleteInvoice(invoice?._id);
+            deleteWorkorder(workorder?._id);
           }}
         />
       </td>
