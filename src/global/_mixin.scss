@@ -149,7 +149,7 @@ $Breakpoint-mobile: 480px;
 
 @mixin globalFormContainer {
   //@include m.globalForm();
-  gap: 10px;
+  gap: 15px;
   display: flex;
   flex-direction: column;
 

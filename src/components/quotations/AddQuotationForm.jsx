@@ -295,7 +295,6 @@ export default function AddQuotationForm() {
         {itemsAddInObject}
 
         <br />
-
         <label>Payment Information</label>
 
         <label className={Styles.inputLabel}>Bank Account</label>
