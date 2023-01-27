@@ -18,6 +18,8 @@ import {
   BiFolderPlus,
   BiListUl,
   BiListPlus,
+  BiFileBlank,
+  BiFile,
 } from "react-icons/bi";
 
 export default function Navigation({ closeBtn }) {
@@ -86,11 +88,11 @@ export default function Navigation({ closeBtn }) {
       </NavLink>
 
       <NavLink to="workorder/workorders" className={Styles.link}>
-        <BiDockLeft /> Workorders
+        <BiFile /> Workorders
       </NavLink>
 
       <NavLink to="workorder/addWorkorder" className={Styles.link}>
-        <BiDockLeft />
+        <BiFileBlank />
         Create Workorder
       </NavLink>
 

@@ -9,6 +9,6 @@ export const configuration = {
   clients: "api/v1/clients",
   invoices: "api/v1/invoices",
   chalans: "api/v1/challans",
-  workorders: "api/v1/workworders",
+  workorders: "api/v1/workorders",
   self: "showme",
 };

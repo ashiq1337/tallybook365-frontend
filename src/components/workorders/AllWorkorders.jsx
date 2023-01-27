@@ -29,7 +29,7 @@ export default function AllWorkorders() {
   };
 
   const deleteWorkorder = (workorderId) => {
-    if (confirm("Do you want to delete the chalan?")) {
+    if (confirm("Do you want to delete the workorder?")) {
       axiosFetchDelete({
         axiosInstance: instance,
         method: "delete",

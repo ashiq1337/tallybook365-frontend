@@ -186,7 +186,7 @@ export default function EditWorkorder() {
     <div className={Styles.main}>
       {loading && <p>Loading</p>}
       {response && !loading && !error && (
-        <form onSubmit={editChalanAsync}>
+        <form onSubmit={editWorkorderAsync}>
           <label className={Styles.inputLabel}>User ID</label>
           <input
             type="text"

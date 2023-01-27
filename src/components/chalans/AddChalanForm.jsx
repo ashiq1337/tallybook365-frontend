@@ -294,17 +294,17 @@ export default function AddChalanForm() {
         <label>Add items</label>
         {itemsAddInObject}
 
-        {/* <br /> */}
-        {/* <label>Advance</label> */}
+        {/* <br /> 
+        <label>Advance</label> 
 
-        {/* <input
+        <input
           type="text"
           placeholder="Enter due amount"
           name="due"
           onChange={handleChange}
-        /> */}
+        /> 
 
-        {/* <input
+        <input
           type="number"
           placeholder="Enter advance amount"
           name="advance"
