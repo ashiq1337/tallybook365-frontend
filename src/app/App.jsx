@@ -1,5 +1,8 @@
 import Routers from "../routes/routers";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Styles from "./App.module.scss";
+
 export default function App() {
   //clears the local storage if the tab closes
   function clearStorage() {
@@ -12,9 +15,9 @@ export default function App() {
   window.addEventListener("load", clearStorage);
   
   return (
-    <>
+    <div className={Styles.main}>
       <Routers />
-      <ToastContainer />
-    </>
+      <ToastContainer/>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 @use "./colors" as c;
-$Breakpoint-maxScreen: 2400px;
+//$Breakpoint-maxScreen: 2400px;
+$Breakpoint-maxScreen: 1500px;
 $Breakpoint-desktop: 1024px;
 $Breakpoint-tablet: 768px;
 $Breakpoint-mobile: 480px;
@@ -21,13 +22,12 @@ $Breakpoint-mobile: 480px;
   }
 }
 
-@mixin maxScreenBreakPoint($color) {
-  background: $color;
+@mixin maxScreenBreakPoint() {
 
   @media screen and (min-width: $Breakpoint-maxScreen) {
-    background: $color;
-    display: flex;
-    justify-content: center;
+    max-width: $Breakpoint-maxScreen;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -132,14 +132,17 @@ $Breakpoint-mobile: 480px;
       white-space: nowrap;
       border: none;
     }
+
     tr:nth-child(odd) {
       background-color: #ffffff;
     }
+
     .deleteIcon {
       color: red;
       font-size: 1.1rem;
       cursor: pointer;
     }
+
     .editIcon {
       font-size: 1.1rem;
       cursor: pointer;
@@ -154,7 +157,8 @@ $Breakpoint-mobile: 480px;
   flex-direction: column;
 
   input,
-  textarea,select {
+  textarea,
+  select {
     // @include m.globalInput();
     border: solid 1px rgba(128, 128, 128, 0.505);
     border: none;
@@ -165,7 +169,7 @@ $Breakpoint-mobile: 480px;
     padding: 15px 10px;
     background-color: white;
   }
- 
+
   .msg {
     color: red;
     margin-top: 10px;

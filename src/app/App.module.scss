@@ -1,0 +1,6 @@
+@use "../global/mixin" as m;
+
+.main {
+  @include m.maxScreenBreakPoint();
+  
+}

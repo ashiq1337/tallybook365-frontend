@@ -15,7 +15,7 @@ export default function Header({ title, link, btnName }) {
         <small className={Styles.date}>{new Date().toLocaleString()}</small>
       </div>
 
-      <button onClick={buttonClickHandler}>{btnName}</button>
+      {/* <button onClick={buttonClickHandler}>{btnName}</button> */}
     </div>
   );
 }

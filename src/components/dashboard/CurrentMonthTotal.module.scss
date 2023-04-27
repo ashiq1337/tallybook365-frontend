@@ -1,0 +1,30 @@
+@use "../../global/colors" as c;
+@use "../../global/mixin" as m;
+
+.main {
+  margin-block: 20px;
+  .topSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .left,
+    .right {
+      //max-width: 400px;
+      padding: 20px;
+      background-color: #c9eead; 
+      flex: 1 300px;
+      //color: white;
+      font-size: 1.1rem;
+      font-weight: 400;
+      //border: solid;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .tableContainer {
+    @include m.globalTableContainer();
+  }
+
+}

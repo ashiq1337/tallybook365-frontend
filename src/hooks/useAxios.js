@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from 'react-toastify';
 
 const useAxios = () => {
   const [response, setResponse] = useState({});
@@ -6,6 +7,8 @@ const useAxios = () => {
   const [loading, setLoading] = useState(false); //different!
   const [controller, setController] = useState();
   const [message, setMessage] = useState("");
+
+  const customId = "custom-id-yes"; //random id for not showing toast multiple rerenders
 
   const axiosFetch = async (configObj) => {
     const { axiosInstance, method, url, requestConfig = {} } = configObj;
@@ -21,10 +24,14 @@ const useAxios = () => {
       setResponse(res); //storing response in state
       setMessage(res?.data?.msg); //storing message in state
 
+      toast.success("Success", { autoClose: 2000, toastId: customId }) //toasting success message
+
     } catch (err) {
       //console.log(err.response);
       setMessage(err?.response?.data?.msg);
       setError(err.message);
+
+      toast.error("Error", { autoClose: 2000, toastId: customId }) //toasting error message
     } finally {
       setLoading(false);
     }

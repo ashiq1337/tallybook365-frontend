@@ -1,0 +1,21 @@
+@use "../../global/colors" as c;
+@use "../../global/mixin" as m;
+.main{
+  background-color: #c9eead; 
+  padding: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  .left, .right{
+    flex: 1 300px;
+    //border: solid;
+  }
+  .amount{
+    color: red;
+  }
+  p{
+    //color: c.$Color-primary-accent-gray;
+    font-size: 0.9rem;
+  }
+}

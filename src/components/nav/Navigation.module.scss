@@ -1,60 +1,74 @@
 @use "../../global/colors" as c;
 @use "../../global/mixin" as m;
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 .main {
-  background-color: white;
+  height: 100vh;
   width: 300px !important;
-  //height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  //border: solid;
-  .head {
-    width: 300px;
-    //border: solid;
-    padding: 20px 0px 20px 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  background-color: white;
+ 
+  .linkContainer {
     background-color: white;
+    height: fit-content;
 
-    .logo {
-      margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    //border: solid;
+    .head {
+      width: 300px;
       //border: solid;
-      width: 150px;
-    }
+      padding: 20px 0px 20px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: white;
 
-    .icon {
-      cursor: pointer;
-      transition: 0.6s all ease-in-out;
-
-      &:hover {
-        color: c.$Color-primary-green;
+      // .logo {
+      //   margin-top: 7px;
+      //   //border: solid;
+      //   width: 150px;
+      // }
+      .logoText {
+        text-decoration: none;
+        font-family: 'Righteous', cursive;
+        font-size: 1.5rem;
+        color: c.$Color-primary-green-logo;
       }
 
+      .icon {
+        cursor: pointer;
+        transition: 0.6s all ease-in-out;
+
+        &:hover {
+          color: c.$Color-primary-green;
+        }
+
+      }
+    }
+
+    .link {
+      text-decoration: none;
+      color: c.$Color-primary-accent;
+      padding: 10px 10px 10px 20px;
+      margin-right: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      //border: solid 1px transparent;
+      transition: background-color 0.0s ease-in-out;
+      transition: padding 0.6s ease-in-out;
+
+      &:hover {
+        background-color: c.$Color-primary-green;
+        //border: solid 1px c.$Color-primary-green;
+        //color: c.$Color-primary-green;
+        color: white;
+        //padding: 10px 10px 10px 40px;
+      }
     }
   }
 
-  .link {
-    text-decoration: none;
-    color: c.$Color-primary-accent;
-    padding: 10px 10px 10px 20px;
-    margin-right: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    //border: solid 1px transparent;
-    transition: background-color 0.0s ease-in-out;
-    transition: padding 0.6s ease-in-out;
-
-    &:hover {
-      background-color: c.$Color-primary-green;
-      //border: solid 1px c.$Color-primary-green;
-      //color: c.$Color-primary-green;
-      color: white;
-      //padding: 10px 10px 10px 40px;
-    }
-  }
 }

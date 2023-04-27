@@ -1,3 +1,4 @@
+@use "../global/colors" as c;
 .main {
   display: flex;
 
@@ -10,5 +11,6 @@
   .right {
     flex: 1;
     overflow-x: auto;
+    background-color: c.$Color-background;
   }
 }

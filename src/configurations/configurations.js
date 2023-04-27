@@ -1,5 +1,5 @@
 export const configuration = {
-  baseUrl: "https://tallybook365-3flxzvkbra-el.a.run.app/",
+  baseUrl: "http://localhost:8080/",
 
   registerUser: "api/v1/auth/register",
   loginUser: "api/v1/auth/login",
@@ -8,7 +8,8 @@ export const configuration = {
   quotations: "api/v1/quotes",
   clients: "api/v1/clients",
   invoices: "api/v1/invoices",
-  chalans: "api/v1/challans",
+  chalans: "api/v1/chalans",
   workorders: "api/v1/workorders",
   self: "showme",
+  currentMonthTotal: "api/v1/companies/sixmonthtotal",
 };
