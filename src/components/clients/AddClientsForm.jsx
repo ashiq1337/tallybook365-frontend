@@ -5,7 +5,9 @@ import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 
 export default function AddClientsForm() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
+  });
   const [response, error, loading, axiosFetch, message] = useAxios();
 
   function handleChange(event) {
@@ -30,13 +32,13 @@ export default function AddClientsForm() {
         <br />
         <label>Client Information</label>
 
-        <label className={Styles.inputLabel}>Client's ID</label>
+        {/* <label className={Styles.inputLabel}>Client's ID</label>
         <input
           type="text"
           placeholder="Enter Client's ID"
           name="client_id"
           onChange={handleChange}
-        />
+        /> */}
 
         <label className={Styles.inputLabel}>Client's Name</label>
         <input
@@ -68,7 +70,7 @@ export default function AddClientsForm() {
         <input
           type="text"
           placeholder="Enter Client Representative 1"
-          name="client_representitive1"
+          name="client_representative1"
           onChange={handleChange}
         />
 
@@ -78,7 +80,7 @@ export default function AddClientsForm() {
         <input
           type="text"
           placeholder="Enter Client Representative 1 Number"
-          name="client_representitive1_no"
+          name="client_representative1_no"
           onChange={handleChange}
         />
 
@@ -86,7 +88,7 @@ export default function AddClientsForm() {
         <input
           type="text"
           placeholder="Enter Client Representative 2"
-          name="client_representitive2"
+          name="client_representative2"
           onChange={handleChange}
         />
 
@@ -96,7 +98,7 @@ export default function AddClientsForm() {
         <input
           type="text"
           placeholder="Enter client representative 2 Number"
-          name="client_representitive2_no"
+          name="client_representative2_no"
           onChange={handleChange}
         />
         <br />

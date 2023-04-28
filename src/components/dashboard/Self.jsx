@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
@@ -17,6 +17,13 @@ export default function Self() {
   useEffect(() => {
     getSelfInfo();
   }, []);
+
+  useEffect(() => {
+    if (response?.data?.mother_company && !error) {
+      //storing the mother company of the user 
+      localStorage.setItem("motherCompany", response?.data?.mother_company);
+    }
+  }, [loading]);
 
   return (
     <div className={Styles.main}>

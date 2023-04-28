@@ -29,14 +29,21 @@ export default function CurrentMonthTotal() {
     <div className={Styles.main}>
       <div className={Styles.topSection}>
         <div className={Styles.left}>
-          {!response?.data?.length && (
-            <p>{response?.data?.runningMonthQuoteTotal}</p>
-          )}
+          
+          <p>Month: April 2023</p>
+          <small>Total quoted amount</small>
+          <h2>23000.00</h2>
+         {/* {!response?.data?.length && (
+            <small>{response?.data?.runningMonthQuoteTotal}</small>
+          )} */}
         </div>
         <div className={Styles.right}>
-          {!response?.data?.length && (
+        <p>Month: April 2023</p>
+          <small>Total invoiced amount</small>
+          <h2>23000.00</h2>
+          {/* {!response?.data?.length && (
             <p>{response?.data?.runningMonthInvoiceTotal}</p>
-          )}
+          )} */}
         </div>
         
       </div>

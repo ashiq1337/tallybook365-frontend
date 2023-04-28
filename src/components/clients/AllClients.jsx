@@ -61,7 +61,7 @@ export default function AllClients() {
         <MdEdit
           className={Styles.editIcon}
           onClick={() => {
-            viewDetailsClickHandler(client?.client_id);
+            viewDetailsClickHandler(client?._id);
           }}
         />
       </td>
@@ -69,7 +69,7 @@ export default function AllClients() {
         <MdDelete
           className={Styles.deleteIcon}
           onClick={() => {
-            deleteClient(client?.client_id);
+            deleteClient(client?._id);
           }}
         />
       </td>

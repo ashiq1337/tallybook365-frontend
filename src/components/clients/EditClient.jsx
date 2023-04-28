@@ -57,14 +57,14 @@ export default function EditClient() {
       <form onSubmit={editClientsAsync}>
         <br />
         <label>Client Information</label>
-        <label className={Styles.inputLabel}>Client's ID</label>
+        {/* <label className={Styles.inputLabel}>Client's ID</label>
         <input
           type="text"
           placeholder="Enter Client's ID"
           name="client_id"
           onChange={handleChange}
           value={data?.client_id}
-        />
+        /> */}
 
         <label className={Styles.inputLabel}>Client's Name</label>
         <input
@@ -100,9 +100,9 @@ export default function EditClient() {
         <input
           type="text"
           placeholder="Enter Client Representative 1"
-          name="client_representitive1"
+          name="client_representative1"
           onChange={handleChange}
-          value={data?.client_representitive1}
+          value={data?.client_representative1}
         />
 
         <label className={Styles.inputLabel}>
@@ -111,18 +111,18 @@ export default function EditClient() {
         <input
           type="text"
           placeholder="Enter Client Representative 1 Number"
-          name="client_representitive1_no"
+          name="client_representative1_no"
           onChange={handleChange}
-          value={data?.client_representitive1_no}
+          value={data?.client_representative1_no}
         />
 
         <label className={Styles.inputLabel}>Client Representative 2</label>
         <input
           type="text"
           placeholder="Enter Client Representative 2"
-          name="client_representitive2"
+          name="client_representative2"
           onChange={handleChange}
-          value={data?.client_representitive2}
+          value={data?.client_representative2}
         />
 
         <label className={Styles.inputLabel}>
@@ -131,9 +131,9 @@ export default function EditClient() {
         <input
           type="text"
           placeholder="Enter Client Representative 2 Number"
-          name="client_representitive2_no"
+          name="client_representative2_no"
           onChange={handleChange}
-          value={data?.client_representitive2_no}
+          value={data?.client_representative2_no}
         />
 
         <br />

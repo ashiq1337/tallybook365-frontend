@@ -32,6 +32,7 @@ export default function Login() {
     //console.log(response?.data?.token);
     if (response?.data?.token && !error) {
       localStorage.setItem("token", response?.data?.token);
+      localStorage.setItem("motherCompany", response?.data?.user?.mother_company)
       navigate("/");
     }
   }, [loading]);

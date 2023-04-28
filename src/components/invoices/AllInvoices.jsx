@@ -6,7 +6,7 @@ import { instance } from "../../utilities/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
-import Preview from "../previewAndDownload/Preview";
+import { VscPreview } from "react-icons/vsc";
 
 export default function AllInvoices() {
   const navigate = useNavigate();
@@ -47,6 +47,12 @@ export default function AllInvoices() {
     navigate(`/invoice/${invoiceId}`);
   }
 
+  function preview(Id) {
+    {
+      navigate(`/preview/Invoice/invoices/${Id}`);
+    }
+  }
+
   const tableRow = response?.data?.map((invoice, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
@@ -54,7 +60,11 @@ export default function AllInvoices() {
       <td>{invoice.client_address}</td>
       <td>{invoice.job_no}</td>
       <td>
-        <Preview data={invoice} title="Invoice" />
+        
+        <VscPreview
+          className={Styles.editIcon}
+          onClick={() => preview(invoice?._id)}
+        />
       </td>
       <td>
         <MdEdit

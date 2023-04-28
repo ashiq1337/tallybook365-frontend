@@ -27,6 +27,7 @@ import Workorders from "../pages/workorders/Workorders";
 import AddWorkorder from "../pages/workorders/AddWorkorder";
 import WorkorderDetails from "../pages/workorders/WorkorderDetails";
 import Preview from "../components/previewAndDownload/Preview";
+import PreviewPage from "../pages/preview/PreviewPage";
 
 export default function Routers() {
   const router = createBrowserRouter(
@@ -34,6 +35,7 @@ export default function Routers() {
       <Route path="/" errorElement={<ErrorPage />}>
         <Route errorElement={<ErrorPage />} element={<RootLayout />}>
           <Route index element={<Landing />} />
+          <Route path="preview/:title/:previewName/:previewId" element={<PreviewPage/>}/>
 
           <Route errorElement={<ErrorPage />}>
             <Route path="quotation/quotations" element={<Quotations />} />

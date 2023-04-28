@@ -6,7 +6,7 @@ import Styles from "./AllQuotations.module.scss";
 import { useNavigate } from "react-router-dom";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
-import Preview from "../previewAndDownload/Preview";
+import { VscPreview } from "react-icons/vsc";
 
 export default function AllQuotations() {
   const navigate = useNavigate();
@@ -50,6 +50,11 @@ export default function AllQuotations() {
   function viewDetailsClickHandler(quotationId) {
     navigate(`/quotation/${quotationId}`);
   }
+  function preview(Id) {
+    {
+      navigate(`/preview/Estimate/quotes/${Id}`);
+    }
+  }
 
   const tableRow = response?.data?.map((quote, i) => (
     <tr key={i}>
@@ -58,7 +63,10 @@ export default function AllQuotations() {
       <td>{quote.date?.slice(0, 10)}</td>
       <td>{quote.client_name}</td>
       <td>
-        <Preview data={quote} title="Estimate" />
+        <VscPreview
+          className={Styles.editIcon}
+          onClick={() => preview(quote?._id)}
+        />
       </td>
       <td>
         <MdEdit

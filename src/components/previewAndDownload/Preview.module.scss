@@ -1,17 +1,34 @@
+@use "../../global/colors" as c;
+
 .main {
 
- // height: 100vh;
-
+  height: 100vh;
+  padding: 20px;
   //overflow: scroll;
+
   .container {
+    height: fit-content;
+    //overflow: scroll;
+
+    .printBtn {
+      cursor: pointer;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 10px 20px;
+      background-color:  c.$Color-primary-green;
+      color: white;
+      margin-block: 20px;
+      width: fit-content;
+    }
+
     .icon {
       cursor: pointer;
     }
 
     .box {
-      //border: solid;
       background-color: white;
-      display: none;
+      //display: none;
     }
   }
 }

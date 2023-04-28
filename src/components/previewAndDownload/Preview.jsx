@@ -61,15 +61,8 @@ export default function Preview({
 
   return (
     <div className={Styles.main}>
-      {/* Invoice Preview */}
       <div className={Styles.container}>
-        <ReactToPrint
-          trigger={() => <VscPreview className={Styles.icon} />}
-          content={() => componentRef.current}
-          documentTitle="new document"
-          pageStyle={pageStyle}
-        />
-
+        {/* Invoice Preview */}
         <div className={Styles.box}>
           <div ref={componentRef}>
             <Header />
@@ -101,7 +94,20 @@ export default function Preview({
             <Footer />
           </div>
         </div>
+
+        {/* print button */}
+        <ReactToPrint
+          trigger={() => (
+            <div className={Styles.printBtn}>
+              <VscPreview className={Styles.icon} /> Print the document
+            </div>
+          )}
+          content={() => componentRef.current}
+          documentTitle="new document"
+          pageStyle={pageStyle}
+        />
       </div>
+      <br /><br /><br /><br />
     </div>
   );
 }
