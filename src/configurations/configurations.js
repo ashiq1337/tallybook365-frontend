@@ -14,4 +14,7 @@ export const configuration = {
   self: "/api/v1/showme",
   currentMonthTotal: "/api/v1/companies/sixmonthtotal",
   preview: "/api/v1",
+
+  quotationJobNo: "/api/v1/quotes/getquoteserialnumber",
+  
 };
