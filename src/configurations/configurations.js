@@ -16,5 +16,6 @@ export const configuration = {
   preview: "/api/v1",
 
   quotationJobNo: "/api/v1/quotes/getquoteserialnumber",
+  invoiceJobNo: "/api/v1/invoices/getinvoiceserialnumber",
   
 };

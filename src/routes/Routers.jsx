@@ -55,13 +55,13 @@ export default function Routers() {
 
           <Route errorElement={<ErrorPage />}>
             <Route path="invoice/invoices" element={<Invoices />} />
-            <Route path="invoice/addInvoice" element={<AddInvoice />} />
+            <Route path="invoice/addInvoice/:quotationId" element={<AddInvoice />} />
             <Route path="invoice/:invoiceId" element={<InvoiceDetails />} />
           </Route>
 
           <Route errorElement={<ErrorPage />}>
             <Route path="chalan/chalans" element={<Chalans />} />
-            <Route path="chalan/addChalan" element={<AddChalan />} />
+            <Route path="chalan/addChalan/:quotationId" element={<AddChalan />} />
             <Route path="chalan/:chalanId" element={<ChalanDetails />} />
           </Route>
 

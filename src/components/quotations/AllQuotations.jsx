@@ -53,9 +53,10 @@ export default function AllQuotations() {
     navigate(`/quotation/${quotationId}`);
   }
   function preview(Id) {
-    {
-      navigate(`/preview/Estimate/quotes/${Id}`);
-    }
+    navigate(`/preview/Estimate/quotes/${Id}`);
+  }
+  function navigateToPage(Id, url) {
+    navigate(`/${url}/${Id}`);
   }
 
   const tableRow = response?.data?.map((quote, i) => (
@@ -76,14 +77,20 @@ export default function AllQuotations() {
         {quote?.chalan_id ? (
           <GrDocument className={Styles.icon} />
         ) : (
-          <AiOutlinePlus className={Styles.icon} />
+          <AiOutlinePlus
+            className={Styles.icon}
+            onClick={() => navigateToPage(quote?._id, "chalan/addChalan")}
+          />
         )}
       </td>
       <td>
         {quote?.invoice_id ? (
           <GrDocument className={Styles.icon} />
         ) : (
-          <AiOutlinePlus className={Styles.icon} />
+          <AiOutlinePlus
+            className={Styles.icon}
+            onClick={() => navigateToPage(quote?._id, "invoice/addInvoice")}
+          />
         )}
       </td>
       <td>
@@ -134,7 +141,9 @@ export default function AllQuotations() {
             </tbody>
           </table>
         </div>
-      ): <p>loading...</p>}
+      ) : (
+        <p>loading...</p>
+      )}
     </div>
   );
 }
