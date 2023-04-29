@@ -42,7 +42,7 @@ export default function AddInvoiceForm() {
     setData({ ...data, [name]: value });
   }
 
-  const addClientsAsync = (e) => {
+  const createInvoiceAsync = (e) => {
     e.preventDefault();
 
     console.log(data);
@@ -195,7 +195,7 @@ export default function AddInvoiceForm() {
 
   return (
     <div className={Styles.main}>
-      <form onSubmit={addClientsAsync} id="addInvoiceForm">
+      <form onSubmit={createInvoiceAsync} id="addInvoiceForm">
         <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
