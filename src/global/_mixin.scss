@@ -127,14 +127,27 @@ $Breakpoint-mobile: 480px;
     td,
     th {
       border: 1px solid #dddddd;
-      text-align: left;
       padding: 8px;
       white-space: nowrap;
       border: none;
+      text-align: center;
+    }
+
+    th {
+      background-color: c.$Color-primary-green;
+      color: white;
+    }
+
+    td {
+      border: solid rgb(240, 240, 240) 1px;
     }
 
     tr:nth-child(odd) {
       background-color: #ffffff;
+    }
+
+    .leftAlign {
+      text-align: left;
     }
 
     .deleteIcon {
@@ -143,7 +156,7 @@ $Breakpoint-mobile: 480px;
       cursor: pointer;
     }
 
-    .editIcon {
+    .icon {
       font-size: 1.1rem;
       cursor: pointer;
     }

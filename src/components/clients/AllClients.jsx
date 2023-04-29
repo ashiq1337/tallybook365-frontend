@@ -46,7 +46,6 @@ export default function AllClients() {
     getClients();
   }, [getData]);
 
-
   function viewDetailsClickHandler(clientId) {
     navigate(`/clients/${clientId}`);
   }
@@ -59,7 +58,7 @@ export default function AllClients() {
       <td>{client.client_contact_no}</td>
       <td>
         <MdEdit
-          className={Styles.editIcon}
+          className={Styles.icon}
           onClick={() => {
             viewDetailsClickHandler(client?._id);
           }}
@@ -77,24 +76,28 @@ export default function AllClients() {
   ));
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>no data found</p>}
-      <div className={Styles.tableContainer}>
-        <table>
-          <tbody>
-            <tr>
-              <th>Ser</th>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Contact</th>
-              <th></th>
-              <th></th>
-            </tr>
-            {tableRow}
-            {/* {console.log(response)}
-             */}
-          </tbody>
-        </table>
-      </div>
+      {/* {!response?.data?.length && <p>no data found</p>} */}
+      {!loading ? (
+        <div className={Styles.tableContainer}>
+          <table>
+            <tbody>
+              <tr>
+                <th>Ser</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th></th>
+                <th></th>
+              </tr>
+              {tableRow}
+              {/* {console.log(response)}
+               */}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p>loading...</p>
+      )}
     </div>
   );
 }

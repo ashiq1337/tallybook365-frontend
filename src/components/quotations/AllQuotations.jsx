@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import { VscPreview } from "react-icons/vsc";
+import { GrDocument } from "react-icons/gr";
+import { AiOutlinePlus } from "react-icons/ai";
 
 export default function AllQuotations() {
   const navigate = useNavigate();
@@ -59,18 +61,40 @@ export default function AllQuotations() {
   const tableRow = response?.data?.map((quote, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{quote.title}</td>
-      <td>{quote.date?.slice(0, 10)}</td>
-      <td>{quote.client_name}</td>
+      <td className={Styles.leftAlign}>{quote?.title}</td>
+      <td>{quote?.date?.slice(0, 10)}</td>
+      <td>{quote?.client_name}</td>
+      <td>{quote?.grand_total}</td>
+      <td>
+        {quote?.purchaseOrder_id.length != 0 ? (
+          <GrDocument className={Styles.icon} />
+        ) : (
+          <AiOutlinePlus className={Styles.icon} />
+        )}
+      </td>
+      <td>
+        {quote?.chalan_id ? (
+          <GrDocument className={Styles.icon} />
+        ) : (
+          <AiOutlinePlus className={Styles.icon} />
+        )}
+      </td>
+      <td>
+        {quote?.invoice_id ? (
+          <GrDocument className={Styles.icon} />
+        ) : (
+          <AiOutlinePlus className={Styles.icon} />
+        )}
+      </td>
       <td>
         <VscPreview
-          className={Styles.editIcon}
+          className={Styles.icon}
           onClick={() => preview(quote?._id)}
         />
       </td>
       <td>
         <MdEdit
-          className={Styles.editIcon}
+          className={Styles.icon}
           onClick={() => {
             viewDetailsClickHandler(quote?._id);
           }}
@@ -88,25 +112,29 @@ export default function AllQuotations() {
   ));
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>no data found</p>}
-      <div className={Styles.tableContainer}>
-        <table>
-          <tbody>
-            <tr>
-              <th>Ser</th>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Client</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-            {tableRow}
-            {/* {console.log(response)}
-             */}
-          </tbody>
-        </table>
-      </div>
+      {/* {!response?.data?.length && <p>no data found</p>} */}
+      {!loading ? (
+        <div className={Styles.tableContainer}>
+          <table>
+            <tbody>
+              <tr>
+                <th>Ser</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Client</th>
+                <th>Amount</th>
+                <th>Purchase</th>
+                <th>Chalan</th>
+                <th>Invoice</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+              {tableRow}
+            </tbody>
+          </table>
+        </div>
+      ): <p>loading...</p>}
     </div>
   );
 }

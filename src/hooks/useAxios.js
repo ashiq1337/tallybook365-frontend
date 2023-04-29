@@ -14,6 +14,7 @@ const useAxios = () => {
     const { axiosInstance, method, url, requestConfig = {} } = configObj;
     try {
       setLoading(true);
+      toast.loading("Please wait...", { toastId: customId})
       const ctrl = new AbortController();
       setController(ctrl);
       const res = await axiosInstance[method.toLowerCase()](url, {
@@ -24,8 +25,8 @@ const useAxios = () => {
       setResponse(res); //storing response in state
       setMessage(res?.data?.msg); //storing message in state
 
-      toast.success("Success", { autoClose: 2000, toastId: customId }) //toasting success message
-
+      //toast.update("Success", { autoClose: 2000, toastId: customId, type: "success", isLoading: false }) //toasting success message
+      toast.update(customId, { render: "Success", type: "success", isLoading: false, autoClose: 2000, });
     } catch (err) {
       //console.log(err.response);
       setMessage(err?.response?.data?.msg);
