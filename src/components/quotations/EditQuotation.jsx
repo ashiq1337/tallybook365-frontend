@@ -31,6 +31,7 @@ export default function EditQuotation() {
   const [getData, setGetData] = useToggler();
 
   function handleChange(event) {
+    console.log(data)
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   }
@@ -231,7 +232,7 @@ export default function EditQuotation() {
         />
         <label className={Styles.inputLabel}>Job No</label>
         <input
-          type="number"
+          type="string"
           placeholder="Enter Job No"
           name="job_no"
           onChange={handleChange}

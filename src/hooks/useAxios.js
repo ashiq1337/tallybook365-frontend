@@ -25,14 +25,14 @@ const useAxios = () => {
       setResponse(res); //storing response in state
       setMessage(res?.data?.msg); //storing message in state
 
-      //toast.update("Success", { autoClose: 2000, toastId: customId, type: "success", isLoading: false }) //toasting success message
-      toast.update(customId, { render: "Success", type: "success", isLoading: false, autoClose: 2000, });
+      toast.update(customId, { render: "Success", type: "success", isLoading: false, autoClose: 2000, }); //toasting success message
+
     } catch (err) {
       //console.log(err.response);
       setMessage(err?.response?.data?.msg);
       setError(err.message);
+      toast.update(customId, { render: "Error", type: "error", isLoading: false, autoClose: 2000, });  //toasting error message
 
-      toast.error("Error", { autoClose: 2000, toastId: customId }) //toasting error message
     } finally {
       setLoading(false);
     }
