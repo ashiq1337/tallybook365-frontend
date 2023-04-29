@@ -18,6 +18,7 @@ export default function EditQuotation() {
     messageUpdate,
   ] = useAxios();
   const [data, setData] = useState({});
+
   const [
     responseClientData,
     errorClientData,
@@ -74,8 +75,8 @@ export default function EditQuotation() {
   
   useEffect(() => {
     getQuotationDetails();
-    getClientsData()
-  }, []);
+    getClientsData();
+  }, [getData]);
 
   useEffect(() => {
     //checking if response has its values

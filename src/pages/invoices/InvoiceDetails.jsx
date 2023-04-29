@@ -7,7 +7,7 @@ export default function InvoiceDetails() {
   return (
     <div className={Styles.main}>
       <Header
-        title={"Edit Invoices"}
+        title={"Edit Invoice"}
         link="/invoice/invoices"
         btnName={"All invoices"}
       />

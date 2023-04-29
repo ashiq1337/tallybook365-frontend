@@ -62,13 +62,13 @@ export default function AllInvoices() {
       <td>
         
         <VscPreview
-          className={Styles.editIcon}
+          className={Styles.icon}
           onClick={() => preview(invoice?._id)}
         />
       </td>
       <td>
         <MdEdit
-          className={Styles.editIcon}
+          className={Styles.icon}
           onClick={() => {
             viewDetailsClickHandler(invoice?._id);
           }}

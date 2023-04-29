@@ -75,7 +75,9 @@ export default function AllQuotations() {
       </td>
       <td>
         {quote?.chalan_id ? (
-          <GrDocument className={Styles.icon} />
+          <GrDocument className={Styles.icon} 
+          onClick={() => navigateToPage(quote?.chalan_id, "chalan")}
+          />
         ) : (
           <AiOutlinePlus
             className={Styles.icon}
@@ -85,7 +87,9 @@ export default function AllQuotations() {
       </td>
       <td>
         {quote?.invoice_id ? (
-          <GrDocument className={Styles.icon} />
+          <GrDocument className={Styles.icon} 
+          onClick={() => navigateToPage(quote?.invoice_id, "invoice")}
+          />
         ) : (
           <AiOutlinePlus
             className={Styles.icon}

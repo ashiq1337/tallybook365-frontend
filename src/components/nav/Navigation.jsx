@@ -72,22 +72,22 @@ export default function Navigation({ closeBtn }) {
         </NavLink>
 
         <NavLink to="invoice/invoices" className={Styles.link}>
-          <BiTask /> Invoices
+          <BiTask />All Invoices
         </NavLink>
 
-        <NavLink to="invoice/addInvoice" className={Styles.link}>
+        {/* <NavLink to="invoice/addInvoice" className={Styles.link}>
           <BiTask />
           Create Invoice
-        </NavLink>
+        </NavLink> */}
 
         <NavLink to="chalan/chalans" className={Styles.link}>
-          <BiDockLeft /> Chalans
+          <BiDockLeft />All Chalans
         </NavLink>
 
-        <NavLink to="chalan/addChalan" className={Styles.link}>
+        {/* <NavLink to="chalan/addChalan" className={Styles.link}>
           <BiDockLeft />
           Create Chalan
-        </NavLink>
+        </NavLink> */}
 
         <NavLink to="workorder/workorders" className={Styles.link}>
           <BiFile /> Workorders

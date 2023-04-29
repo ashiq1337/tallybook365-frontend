@@ -7,6 +7,7 @@ import { instance } from "../../utilities/axiosInstance";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import Preview from "../previewAndDownload/Preview";
+import { VscPreview } from "react-icons/vsc";
 
 export default function AllChalans() {
   const navigate = useNavigate();
@@ -51,6 +52,12 @@ export default function AllChalans() {
     navigate(`/chalan/${chalanId}`);
   }
 
+  function preview(Id) {
+    {
+      navigate(`/preview/Chalan/chalans/${Id}`);
+    }
+  }
+
   const tableRow = response?.data?.map((chalan, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
@@ -58,11 +65,14 @@ export default function AllChalans() {
       <td>{chalan.client_address}</td>
       <td>{chalan.job_no}</td>
       <td>
-        <Preview data={chalan} title="Chalan" />
+        <VscPreview
+          className={Styles.icon}
+          onClick={() => preview(chalan?._id)}
+        />
       </td>
       <td>
         <MdEdit
-          className={Styles.editIcon}
+          className={Styles.icon}
           onClick={() => {
             viewDetailsClickHandler(chalan?._id);
           }}

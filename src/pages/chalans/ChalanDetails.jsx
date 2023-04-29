@@ -7,7 +7,7 @@ export default function ChalanDetails() {
   return (
     <div className={Styles.main}>
       <Header
-        title={"Edit Chalans"}
+        title={"Edit Chalan"}
         link="/chalan/chalans"
         btnName={"All chalans"}
       />
