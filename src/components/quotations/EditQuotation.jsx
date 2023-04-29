@@ -18,6 +18,15 @@ export default function EditQuotation() {
     messageUpdate,
   ] = useAxios();
   const [data, setData] = useState({});
+  const [
+    responseClientData,
+    errorClientData,
+    loadingClientData,
+    axiosFetchClientData,
+    messageClientData,
+  ] = useAxios(); //for getting client info
+  const [selectedClientIndex, setSelectedClientIndex] = useState(); //for storing selected client index from the select menu
+
   const [inputList, setInputList] = useState([
     {
       particulars: "",
@@ -48,17 +57,25 @@ export default function EditQuotation() {
     setGetData();
   };
 
-  const getClientDetails = () => {
+  const getQuotationDetails = () => {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
       url: `${configuration.quotations}/${quotationId}`,
     });
   };
-
+  const getClientsData = () => {
+    axiosFetchClientData({
+      axiosInstance: instance,
+      method: "Get",
+      url: configuration.clients,
+    });
+  };
+  
   useEffect(() => {
-    getClientDetails();
-  }, [getData]);
+    getQuotationDetails();
+    getClientsData()
+  }, []);
 
   useEffect(() => {
     //checking if response has its values
@@ -196,7 +213,8 @@ export default function EditQuotation() {
         />
         <br />
         <label>Client Information</label>
-        <label className={Styles.inputLabel}>Client</label>
+
+        {/* <label className={Styles.inputLabel}>Client</label>
         <input
           type="text"
           placeholder="Enter Client"
@@ -219,7 +237,64 @@ export default function EditQuotation() {
           name="client_address"
           onChange={handleChange}
           value={data?.client_address}
+        /> */}
+
+        <label className={Styles.inputLabel}>Client's Name</label>
+        <select
+          name="client_name"
+          onChange={(e) => {
+            setSelectedClientIndex(e.target.value);
+            setData({
+              ...data,
+              client_id: responseClientData?.data[e.target.value]?._id,
+              client_name:
+                responseClientData?.data[e.target.value]?.client_name,
+              client_address:
+                responseClientData?.data[e.target.value]?.client_address,
+            });
+          }}
+          defaultValue={data?.client_name}
+          required
+        >
+          <option value="" disabled>
+            Select Client
+          </option>
+          {responseClientData?.data?.map((user, i) => (
+            <option key={i} value={i}>
+              {user.client_name}
+            </option>
+          ))}
+        </select>
+
+        <label className={Styles.inputLabel}>Client's Id</label>
+        <input
+          type="text"
+          placeholder="Enter Client's ID"
+          name="client_id"
+          readOnly
+          onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?._id
+              : data?.client_id
+          }
         />
+
+        <label className={Styles.inputLabel}>Client's Address</label>
+        <input
+          type="text"
+          placeholder="Enter Client's Address"
+          name="client_address"
+          readOnly
+          onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.client_address
+              : data?.client_address
+          }
+        />
+
+
         <br />
         <label>Add Quotation Information</label>
         <label className={Styles.inputLabel}>Title</label>
@@ -237,6 +312,7 @@ export default function EditQuotation() {
           name="job_no"
           onChange={handleChange}
           value={data?.job_no}
+          readOnly
         />
         <label className={Styles.inputLabel}>Brand Name</label>
         <input

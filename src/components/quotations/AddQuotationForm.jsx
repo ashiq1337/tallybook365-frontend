@@ -19,8 +19,8 @@ export default function AddQuotationForm() {
     loadingClientData,
     axiosFetchClientData,
     messageClientData,
-  ] = useAxios();
-  const [selectedClientIndex, setSelectedClientIndex] = useState();
+  ] = useAxios(); //for getting client info
+  const [selectedClientIndex, setSelectedClientIndex] = useState(); //for storing selected client index from the select menu
 
   const [inputList, setInputList] = useState([
     {
