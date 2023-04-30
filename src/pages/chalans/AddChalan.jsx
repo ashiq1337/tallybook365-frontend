@@ -7,7 +7,7 @@ export default function AddChalan() {
   return (
     <div className={Styles.main}>
       <Header
-        title={"Add Chalans"}
+        title={"Create Chalan"}
         link="/chalan/chalans"
         btnName={"All chalans"}
       />

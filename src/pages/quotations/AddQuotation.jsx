@@ -6,7 +6,7 @@ export default function AddQuotations() {
   return (
     <div className={Styles.main}>
       <Header
-        title={"Add Quotation"}
+        title={"Create Quotation"}
         link="/quotation/quotations"
         btnName={"All quotations"}
       />

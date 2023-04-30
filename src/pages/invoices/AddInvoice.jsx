@@ -7,7 +7,7 @@ export default function AddInvoice() {
   return (
     <div className={Styles.main}>
       <Header
-        title={"Add Invoices"}
+        title={"Create Invoice"}
         link="/invoice/invoices"
         btnName={"All invoices"}
       />

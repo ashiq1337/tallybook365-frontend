@@ -7,7 +7,7 @@ export default function AddClients() {
   return (
     <div className={Styles.main}>
     <Header
-      title={"Add Client"}
+      title={"Create Client"}
       link="/clients/clients"
       btnName={"All clients"}
     />
