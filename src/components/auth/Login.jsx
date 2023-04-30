@@ -32,7 +32,12 @@ export default function Login() {
     //console.log(response?.data?.token);
     if (response?.data?.token && !error) {
       localStorage.setItem("token", response?.data?.token);
-      localStorage.setItem("motherCompany", response?.data?.user?.mother_company)
+      localStorage.setItem(
+        "motherCompany",
+        response?.data?.user?.mother_company
+      );
+    }
+    if (localStorage.getItem("token")) { //checking the token in local storage
       navigate("/");
     }
   }, [loading]);
@@ -44,13 +49,11 @@ export default function Login() {
     }
   }, []);
 
-
-
-
   return (
     <div className={Styles.main}>
       {/* <img className={Styles.img} src={Logo} alt="logo" /> */}
-      <p className={Styles.logoText}>TallyBook365</p><br /> 
+      <p className={Styles.logoText}>TallyBook365</p>
+      <br />
       <div className={Styles.container}>
         <p className={Styles.title}>LOGIN</p>
         <br />
