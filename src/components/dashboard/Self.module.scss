@@ -1,20 +1,61 @@
 @use "../../global/colors" as c;
 @use "../../global/mixin" as m;
-.main{
-  background-color: #c9eead; 
-  padding: 20px;
+
+.main {
+
 
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  .left, .right{
+
+  .box {
+    border-radius: c.$Border-radius;
+    box-shadow: c.$Color-box-shadow;
+    background-color: #ffffff;
+    padding: 20px;
     flex: 1 300px;
+
     //border: solid;
+
+    .userInfoContainer {
+      margin: -10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      //gap: 10px;
+      .userInfo {
+        padding: 20px;
+      }
+
+      .dp {
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: c.$Border-radius  ;
+      }
+
+    }
+
+    .companyInfoContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      .companyLogo {
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+
+
   }
-  .amount{
+
+  .amount {
     color: red;
   }
-  p{
+
+  p {
     //color: c.$Color-primary-accent-gray;
     font-size: 0.9rem;
   }

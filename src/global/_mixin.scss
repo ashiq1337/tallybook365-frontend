@@ -119,11 +119,14 @@ $Breakpoint-mobile: 480px;
 
 @mixin globalTableContainer {
   overflow-x: auto;
+  box-shadow: c.$Color-box-shadow;
+  border-radius: c.$Border-radius;
 
   table {
     border-collapse: collapse;
     width: 100%;
-
+    //border: solid;
+    
     td,
     th {
       border: 1px solid #dddddd;
@@ -143,7 +146,7 @@ $Breakpoint-mobile: 480px;
     }
 
     tr:nth-child(odd) {
-      background-color: #ffffff;
+      background-color: c.$Color-background-table;
     }
 
     .leftAlign {
@@ -168,12 +171,13 @@ $Breakpoint-mobile: 480px;
   gap: 15px;
   display: flex;
   flex-direction: column;
-
+  background-color: c.$Color-background-table;
+  padding: 20px;
   input,
   textarea,
   select {
     // @include m.globalInput();
-    border: solid 1px rgba(128, 128, 128, 0.505);
+    //border: solid 1px rgba(128, 128, 128, 0.505);
     border: none;
     outline: none;
     padding-left: 2px;
@@ -181,6 +185,7 @@ $Breakpoint-mobile: 480px;
     max-width: none;
     padding: 15px 10px;
     background-color: white;
+    border-radius: 5px;
   }
 
   .msg {

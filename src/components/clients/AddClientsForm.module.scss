@@ -3,34 +3,13 @@
 
 .main {
   padding: 20px;
-
+  
   form {
-    //@include m.globalForm();
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-
-    input,
-    textarea {
-      // @include m.globalInput();
-      border: solid 1px rgba(128, 128, 128, 0.505);
-      border: none;
-      outline: none;
-      padding-left: 2px;
-      width: 100%;
-      max-width: none;
-      padding: 15px 10px;
-    }
+    @include m.globalFormContainer();
 
     button {
       @include m.globalButton(c.$Color-primary-green);
       margin-top: 50px;
-    }
-
-    .msg {
-      color: red;
-      margin-top: 10px;
-      height: 10px;
     }
   }
 

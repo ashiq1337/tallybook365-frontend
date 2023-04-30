@@ -24,7 +24,7 @@ export default function AllWorkorders() {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.workorders,
+      url: configuration.purchaseOrders,
     });
   };
 

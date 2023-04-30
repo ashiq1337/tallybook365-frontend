@@ -82,7 +82,7 @@ export default function AddChalanForm() {
   const getJobNo=()=>{
     axiosFetchJobNo({
       axiosInstance: instance,
-      method: "Post",
+      method: "Get",
       url: configuration.chalanJobNo,
     })
   }

@@ -10,7 +10,8 @@ export const configuration = {
   clients: "/api/v1/clients",
   invoices: "/api/v1/invoices",
   chalans: "/api/v1/chalans",
-  workorders: "/api/v1/workorders",
+  purchaseOrders: "/api/v1/purchaseorders",
+
   self: "/api/v1/showme",
   currentMonthTotal: "/api/v1/companies/sixmonthtotal",
   preview: "/api/v1",
@@ -18,6 +19,7 @@ export const configuration = {
   quotationJobNo: "/api/v1/quotes/getquoteserialnumber",
   invoiceJobNo: "/api/v1/invoices/getinvoiceserialnumber",
   chalanJobNo:"/api/v1/chalans/getchalanserialnumber",
+  purchaseOrderJobNo:"/api/v1/purchaseorders/getpurchaseorderserialnumber",
 
   
 };
