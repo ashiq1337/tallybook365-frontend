@@ -9,7 +9,13 @@
   justify-content: center;
   flex-direction: column;
   padding: 10px;
-  background-color: c.$Color-background;
+  background-color: c.$Color-primary-green;
+
+  .logoText {
+    font-family: 'Righteous', cursive;
+    font-size: 1.8rem;
+    color: c.$Color-background;
+  }
 
   .container {
     border-radius: 10px;
@@ -27,6 +33,7 @@
     .img {
       width: 140px;
     }
+
 
     small {
       color: c.$Color-primary-accent-gray;
@@ -52,7 +59,8 @@
       @include m.globalButton(c.$Color-primary-green);
       margin-top: 50px;
     }
-    .msg{
+
+    .msg {
       color: red;
       margin-top: 10px;
       height: 10px;

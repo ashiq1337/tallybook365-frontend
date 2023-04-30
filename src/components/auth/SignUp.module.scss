@@ -9,7 +9,13 @@
   justify-content: center;
   flex-direction: column;
   padding: 10px;
-  background-color: c.$Color-background;
+  background-color: c.$Color-primary-green;
+
+  .logoText {
+    font-family: 'Righteous', cursive;
+    font-size: 1.8rem;
+    color: c.$Color-background;
+  }
 
   .container {
     border-radius: 10px;

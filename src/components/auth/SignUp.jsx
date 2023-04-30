@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 export default function SignUp() {
   return (
     <div className={Styles.main}>
-      <img className={Styles.img} src={Logo} alt="logo" /> <br />
+      {/* <img className={Styles.img} src={Logo} alt="logo" /> */}
+      <p className={Styles.logoText}>TallyBook365</p>
+      <br />
       <div className={Styles.container}>
         <p className={Styles.title}>SIGNUP</p>
         <br />
