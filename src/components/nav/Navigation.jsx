@@ -90,7 +90,7 @@ export default function Navigation({ closeBtn }) {
         </NavLink> */}
 
         <NavLink to="workorder/workorders" className={Styles.link}>
-          <BiFile /> Workorders
+          <BiFile /> All Purchase orders
         </NavLink>
 
         <NavLink to="workorder/addWorkorder" className={Styles.link}>

@@ -67,7 +67,7 @@ export default function Routers() {
 
           <Route errorElement={<ErrorPage />}>
             <Route path="workorder/workorders" element={<Workorders />} />
-            <Route path="workorder/addWorkorder" element={<AddWorkorder />} />
+            <Route path="workorder/addWorkorder/:quotationId" element={<AddWorkorder />} />
             <Route
               path="workorder/:workorderId"
               element={<WorkorderDetails />}

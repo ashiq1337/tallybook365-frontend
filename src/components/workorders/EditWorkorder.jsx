@@ -18,6 +18,16 @@ export default function EditWorkorder() {
     messageUpdate,
   ] = useAxios();
   const [data, setData] = useState({});
+
+  const [
+    responseClientData,
+    errorClientData,
+    loadingClientData,
+    axiosFetchClientData,
+    messageClientData,
+  ] = useAxios(); //for getting client info
+  const [selectedClientIndex, setSelectedClientIndex] = useState(); //for storing selected client index from the select menu
+
   const [inputList, setInputList] = useState([
     {
       particulars: "",
@@ -42,7 +52,7 @@ export default function EditWorkorder() {
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",
-      url: `${configuration.workorders}/${workorderId}`,
+      url: `${configuration.purchaseOrders}/${workorderId}`,
       requestConfig: data,
     });
     setGetData();
@@ -52,12 +62,20 @@ export default function EditWorkorder() {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: `${configuration.workorders}/${workorderId}`,
+      url: `${configuration.purchaseOrders}/${workorderId}`,
     });
   };
 
+  const getClientsData = () => {
+    axiosFetchClientData({
+      axiosInstance: instance,
+      method: "Get",
+      url: configuration.clients,
+    });
+  };
   useEffect(() => {
     getWorkorderDetails();
+    getClientsData();
   }, [getData]);
 
   useEffect(() => {
@@ -200,22 +218,45 @@ export default function EditWorkorder() {
           <br />
           <label>Client Information</label>
 
-          <label className={Styles.inputLabel}>Client</label>
-          <input
-            type="text"
-            placeholder="Enter Client"
-            name="client_id"
-            onChange={handleChange}
-            value={data?.client_id}
-          />
-
           <label className={Styles.inputLabel}>Client's Name</label>
+          <select
+            name="client_name"
+            onChange={(e) => {
+              setSelectedClientIndex(e.target.value);
+              setData({
+                ...data,
+                client_id: responseClientData?.data[e.target.value]?._id,
+                client_name:
+                  responseClientData?.data[e.target.value]?.client_name,
+                client_address:
+                  responseClientData?.data[e.target.value]?.client_address,
+              });
+            }}
+            defaultValue={data?.client_name}
+            required
+          >
+            <option value="" disabled>
+              Select Client
+            </option>
+            {responseClientData?.data?.map((user, i) => (
+              <option key={i} value={i}>
+                {user.client_name}
+              </option>
+            ))}
+          </select>
+
+          <label className={Styles.inputLabel}>Client's Id</label>
           <input
             type="text"
-            placeholder="Enter Client's Name"
-            name="client_name"
+            placeholder="Enter Client's ID"
+            name="client_id"
+            readOnly
             onChange={handleChange}
-            value={data?.client_name}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?._id
+                : data?.client_id
+            }
           />
 
           <label className={Styles.inputLabel}>Client's Address</label>
@@ -223,8 +264,13 @@ export default function EditWorkorder() {
             type="text"
             placeholder="Enter Client's Address"
             name="client_address"
+            readOnly
             onChange={handleChange}
-            value={data?.client_address}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?.client_address
+                : data?.client_address
+            }
           />
 
           <br />
@@ -241,11 +287,12 @@ export default function EditWorkorder() {
 
           <label className={Styles.inputLabel}>Job No</label>
           <input
-            type="number"
+            type="string"
             placeholder="Enter Job No"
             name="job_no"
             onChange={handleChange}
             value={data?.job_no}
+            readOnly
           />
 
           <label className={Styles.inputLabel}>Brand Name</label>

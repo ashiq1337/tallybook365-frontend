@@ -70,7 +70,9 @@ export default function AllQuotations() {
         {quote?.purchaseOrder_id.length != 0 ? (
           <GrDocument className={Styles.icon} />
         ) : (
-          <AiOutlinePlus className={Styles.icon} />
+          <AiOutlinePlus className={Styles.icon} 
+          onClick={() => navigateToPage(quote?._id, "workorder/addWorkorder")}
+          />
         )}
       </td>
       <td>

@@ -6,7 +6,8 @@ import { instance } from "../../utilities/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
-import Preview from "../previewAndDownload/Preview";
+import { AiOutlinePlus } from "react-icons/ai";
+import { VscPreview } from "react-icons/vsc";
 
 export default function AllWorkorders() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ export default function AllWorkorders() {
       axiosFetchDelete({
         axiosInstance: instance,
         method: "delete",
-        url: `${configuration.workorders}/${workorderId}`,
+        url: `${configuration.purchaseOrders}/${workorderId}`,
       });
       setGetData();
     }
@@ -51,18 +52,29 @@ export default function AllWorkorders() {
     navigate(`/workorder/${workorderId}`);
   }
 
+  function preview(Id) {
+    {
+      navigate(`/preview/Workorder/purchaseorders/${Id}`);
+    }
+  }
+
   const tableRow = response?.data?.map((workorder, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
       <td>{workorder.title}</td>
       <td>{workorder.client_address}</td>
       <td>{workorder.job_no}</td>
+      <td>{workorder?.date?.slice(0, 10)}</td>
       <td>
-        <Preview data={workorder} title="Workorder" />
+        
+        <VscPreview
+          className={Styles.icon}
+          onClick={() => preview(workorder?._id)}
+        />
       </td>
       <td>
         <MdEdit
-          className={Styles.editIcon}
+          className={Styles.icon}
           onClick={() => {
             viewDetailsClickHandler(workorder?._id);
           }}
@@ -91,6 +103,7 @@ export default function AllWorkorders() {
                 <th>Name</th>
                 <th>Address</th>
                 <th>Job no</th>
+                <th>Date</th>
                 <th></th>
                 <th></th>
                 <th></th>

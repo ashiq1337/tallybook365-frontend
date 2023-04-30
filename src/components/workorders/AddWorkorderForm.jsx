@@ -4,10 +4,16 @@ import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { MdAddCircle, MdDelete } from "react-icons/md";
+import { useParams } from "react-router-dom"; 
 
 export default function AddWorkorderForm() {
-  const [data, setData] = useState({});
+  const { quotationId} = useParams();
+  const [data, setData] = useState({
+    mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
+    quote_id: quotationId, //storing the quotation id from param
+  });
   const [response, error, loading, axiosFetch, message] = useAxios();
+  const [responseJobNo, errorJobNo, loadingJobNo, axiosFetchJobNo, messageJobNo] = useAxios(); //for getting recent job no
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
     useAxios();
   const [
@@ -42,7 +48,7 @@ export default function AddWorkorderForm() {
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
-      url: configuration.workorders,
+      url: configuration.purchaseOrders,
       requestConfig: data,
     });
   };
@@ -73,9 +79,18 @@ export default function AddWorkorderForm() {
     });
   };
 
+  const getJobNo=()=>{
+    axiosFetchJobNo({
+      axiosInstance: instance,
+      method: "Get",
+      url: configuration.purchaseOrderJobNo,
+    })
+  }
+
   useEffect(() => {
     getClientsData();
     getSelf();
+    getJobNo();
   }, []);
 
   // handle input change
@@ -193,15 +208,17 @@ export default function AddWorkorderForm() {
         />
         <br />
         <label>Client Information</label>
-        <label className={Styles.inputLabel}>Client</label>
+
+        <label className={Styles.inputLabel}>Client's Name</label>
         <select
-          name="client_id"
+          name="client_name"
           onChange={(e) => {
             setSelectedClientIndex(e.target.value);
             setData({
               ...data,
-              user_id: responseSelf?.data?.user_id,
-              client_id: responseClientData?.data[e.target.value]?.client_id,
+              user_id: responseSelf?.data?.user_id, //storing the user id from self/showMe api
+              job_no: responseJobNo?.data, //storing job number
+              client_id: responseClientData?.data[e.target.value]?._id,
               client_name:
                 responseClientData?.data[e.target.value]?.client_name,
               client_address:
@@ -216,24 +233,25 @@ export default function AddWorkorderForm() {
           </option>
           {responseClientData?.data?.map((user, i) => (
             <option key={i} value={i}>
-              {user.client_id}
+              {user.client_name}
             </option>
           ))}
         </select>
 
-        <label className={Styles.inputLabel}>Client's Name</label>
+        <label className={Styles.inputLabel}>Client's Id</label>
         <input
           type="text"
-          placeholder="Enter Client's Name"
-          name="client_name"
+          placeholder="Enter Client's ID"
+          name="client_id"
           readOnly
           onChange={handleChange}
           value={
             selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?.client_name
+              ? responseClientData?.data[selectedClientIndex]?._id
               : ""
           }
         />
+
         <label className={Styles.inputLabel}>Client's Address</label>
         <input
           type="text"
@@ -261,10 +279,12 @@ export default function AddWorkorderForm() {
 
         <label className={Styles.inputLabel}>Job No</label>
         <input
-          type="number"
+          type="string"
           placeholder="Enter Job No"
           name="job_no"
           onChange={handleChange}
+          value={responseJobNo?.data}
+          readOnly
         />
 
         <label className={Styles.inputLabel}>Brand Name</label>

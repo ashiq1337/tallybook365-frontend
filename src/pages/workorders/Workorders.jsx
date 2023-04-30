@@ -7,7 +7,7 @@ export default function Workorders() {
   return (
     <div className={Styles.main}>
       <Header
-        title={"All Workorders"}
+        title={"All Purchase Orders"}
         link="/workorder/addWorkorder"
         btnName={"Add workorder"}
       />
