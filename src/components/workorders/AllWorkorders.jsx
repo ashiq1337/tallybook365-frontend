@@ -24,8 +24,7 @@ export default function AllWorkorders() {
   const [getData, setGetData] = useToggler();
 
   const getWorkorders = () => {
-    
-    //if quote id send with the req then we will get only the po's associated with that specific quote, 
+    //if quote id send with the req then we will get only the po's associated with that specific quote,
     //otherwise will return all purchase orders.
 
     let urlForSpecificTask = "";
@@ -41,7 +40,6 @@ export default function AllWorkorders() {
       method: "Get",
       url: urlForSpecificTask,
     });
-
   };
 
   const deleteWorkorder = (workorderId) => {
@@ -71,6 +69,10 @@ export default function AllWorkorders() {
     {
       navigate(`/preview/Workorder/purchaseorders/${Id}`);
     }
+  }
+
+  function navigateToPage(Id, url) {
+    navigate(`/${url}/${Id}`);
   }
 
   const tableRow = response?.data?.map((workorder, i) => (
@@ -108,6 +110,22 @@ export default function AllWorkorders() {
   return (
     <div className={Styles.main}>
       {!response?.data?.length && <p>no data found</p>}
+      {quotationId && (
+        <div className={Styles.createNewBtnContainer}>
+          <button
+            className={Styles.createNewBtn}
+            onClick={() =>
+              navigateToPage(quotationId, "workorder/addWorkorder")
+            }
+          >
+            Create Purchase order{" "}
+          </button>
+          <small className={Styles.createNewBtnTxt}>
+            Create another purchase order for this quotation
+          </small>
+        </div>
+      )}
+      <br />
       {response && !loading && !error && (
         <div className={Styles.tableContainer}>
           <table>
