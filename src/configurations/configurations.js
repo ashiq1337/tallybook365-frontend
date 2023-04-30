@@ -18,8 +18,7 @@ export const configuration = {
 
   quotationJobNo: "/api/v1/quotes/getquoteserialnumber",
   invoiceJobNo: "/api/v1/invoices/getinvoiceserialnumber",
-  chalanJobNo:"/api/v1/chalans/getchalanserialnumber",
-  purchaseOrderJobNo:"/api/v1/purchaseorders/getpurchaseorderserialnumber",
-
-  
+  chalanJobNo: "/api/v1/chalans/getchalanserialnumber",
+  purchaseOrderJobNo: "/api/v1/purchaseorders/getpurchaseorderserialnumber",
+  purchaseOrdersByQuote: "/api/v1/purchaseorders/getpurchaseordersbyquote",
 };

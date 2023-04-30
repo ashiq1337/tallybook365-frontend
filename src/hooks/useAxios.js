@@ -31,7 +31,7 @@ const useAxios = () => {
       //console.log(err.response);
       setMessage(err?.response?.data?.msg);
       setError(err.message);
-      toast.update(customId, { render: "Error", type: "error", isLoading: false, autoClose: 2000, });  //toasting error message
+      toast.update(customId, { render: err?.response?.data?.msg, type: "error", isLoading: false, autoClose: 2000, });  //toasting error message
 
     } finally {
       setLoading(false);

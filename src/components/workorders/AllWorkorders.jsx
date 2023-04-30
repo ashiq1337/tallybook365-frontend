@@ -8,8 +8,10 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import { AiOutlinePlus } from "react-icons/ai";
 import { VscPreview } from "react-icons/vsc";
+import { useParams } from "react-router-dom";
 
 export default function AllWorkorders() {
+  const { quotationId } = useParams(); //using this param to get quote id
   const navigate = useNavigate();
   const [response, error, loading, axiosFetch, message] = useAxios();
   const [
@@ -22,11 +24,24 @@ export default function AllWorkorders() {
   const [getData, setGetData] = useToggler();
 
   const getWorkorders = () => {
+    
+    //if quote id send with the req then we will get only the po's associated with that specific quote, 
+    //otherwise will return all purchase orders.
+
+    let urlForSpecificTask = "";
+
+    if (quotationId) {
+      urlForSpecificTask = `${configuration.purchaseOrdersByQuote}/${quotationId}`;
+    } else {
+      urlForSpecificTask = configuration.purchaseOrders;
+    }
+
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.purchaseOrders,
+      url: urlForSpecificTask,
     });
+
   };
 
   const deleteWorkorder = (workorderId) => {
@@ -66,7 +81,6 @@ export default function AllWorkorders() {
       <td>{workorder.job_no}</td>
       <td>{workorder?.date?.slice(0, 10)}</td>
       <td>
-        
         <VscPreview
           className={Styles.icon}
           onClick={() => preview(workorder?._id)}

@@ -93,10 +93,10 @@ export default function Navigation({ closeBtn }) {
           <BiFile /> All Purchase orders
         </NavLink>
 
-        <NavLink to="workorder/addWorkorder" className={Styles.link}>
+        {/* <NavLink to="workorder/addWorkorder" className={Styles.link}>
           <BiFileBlank />
           Create Workorder
-        </NavLink>
+        </NavLink> */}
 
         <div className={Styles.link} onClick={onLogOutClick}>
           <BiLogOut /> Logout

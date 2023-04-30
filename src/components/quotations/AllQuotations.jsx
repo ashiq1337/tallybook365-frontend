@@ -68,7 +68,9 @@ export default function AllQuotations() {
       <td>{quote?.grand_total}</td>
       <td>
         {quote?.purchaseOrder_id.length != 0 ? (
-          <GrDocument className={Styles.icon} />
+          <GrDocument className={Styles.icon} 
+          onClick={() => navigateToPage(quote?._id, "workorder/workorders")}
+          />
         ) : (
           <AiOutlinePlus className={Styles.icon} 
           onClick={() => navigateToPage(quote?._id, "workorder/addWorkorder")}
