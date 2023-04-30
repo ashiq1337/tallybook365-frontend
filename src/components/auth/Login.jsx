@@ -36,8 +36,6 @@ export default function Login() {
         "motherCompany",
         response?.data?.user?.mother_company
       );
-    }
-    if (localStorage.getItem("token")) { //checking the token in local storage
       navigate("/");
     }
   }, [loading]);
