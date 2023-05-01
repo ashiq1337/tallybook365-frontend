@@ -18,34 +18,76 @@ export default function CurrentMonthTotal() {
     getSelfInfo();
   }, []);
 
-  const tableRow = response?.data?.lastSixMonthsDues?.map((singleMonthsData, i) => (
-    <tr key={i}>
-      <td>{i + 1}</td>
-      <td>{singleMonthsData}</td>
-    </tr>
-  ));
+  const tableRow = response?.data?.lastSixMonthsDues?.map(
+    (singleMonthsData, i) => (
+      <tr key={i}>
+        <td>{i + 1}</td>
+        <td>{singleMonthsData?.month}</td>
+        <td
+          style={
+            singleMonthsData?.totalInvoicedAmount >=
+            singleMonthsData?.totalQuotedAmount
+              ? { color: "black" }
+              : { color: "red" }
+          }
+        >
+          {singleMonthsData?.totalQuotedAmount}
+        </td>
+        <td
+          style={
+            singleMonthsData?.totalInvoicedAmount >=
+            singleMonthsData?.totalQuotedAmount
+              ? { color: "black" }
+              : { color: "red" }
+          }
+        >
+          {singleMonthsData?.totalInvoicedAmount}
+        </td>
+      </tr>
+    )
+  );
 
   return (
     <div className={Styles.main}>
       <div className={Styles.topSection}>
         <div className={Styles.left}>
-          
-          <p>Month: April 2023</p>
-          <small>Total quoted amount</small>
-          <h2>23000.00</h2>
-         {/* {!response?.data?.length && (
-            <small>{response?.data?.runningMonthQuoteTotal}</small>
-          )} */}
+          {response?.data && (
+            <>
+              <p>{response?.data?.runningMonthQuoteTotal?.currentMonth}</p>
+              <small>Total quoted amount</small>
+              <h2
+                style={
+                  response?.data?.runningMonthInvoiceTotal
+                    ?.totalInvoicedAmount >=
+                  response?.data?.runningMonthQuoteTotal?.totalQuotedAmount
+                    ? { color: "black" }
+                    : { color: "red" }
+                }
+              >
+                {response?.data?.runningMonthQuoteTotal?.totalQuotedAmount}
+              </h2>
+            </>
+          )}
         </div>
         <div className={Styles.right}>
-        <p>Month: April 2023</p>
-          <small>Total invoiced amount</small>
-          <h2>23000.00</h2>
-          {/* {!response?.data?.length && (
-            <p>{response?.data?.runningMonthInvoiceTotal}</p>
-          )} */}
+          {response?.data && (
+            <>
+              <p>{response?.data?.runningMonthInvoiceTotal?.currentMonth}</p>
+              <small>Total invoiced amount</small>
+              <h2
+                style={
+                  response?.data?.runningMonthInvoiceTotal
+                    ?.totalInvoicedAmount >=
+                  response?.data?.runningMonthQuoteTotal?.totalQuotedAmount
+                    ? { color: "black" }
+                    : { color: "red" }
+                }
+              >
+                {response?.data?.runningMonthInvoiceTotal?.totalInvoicedAmount}
+              </h2>
+            </>
+          )}
         </div>
-        
       </div>
       <br />
       <h3>Last Six Months Dues:</h3>
@@ -56,7 +98,9 @@ export default function CurrentMonthTotal() {
             <tbody>
               <tr>
                 <th>Ser</th>
-                <th>Details</th>
+                <th>Month</th>
+                <th>Total Quoted Amount</th>
+                <th>Total Invoiced Amount</th>
               </tr>
               {tableRow}
             </tbody>

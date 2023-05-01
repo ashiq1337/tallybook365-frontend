@@ -8,7 +8,7 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import { VscPreview } from "react-icons/vsc";
 import { GrDocument } from "react-icons/gr";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineDatabase } from "react-icons/ai";
 
 export default function AllQuotations() {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ export default function AllQuotations() {
       <td>{quote?.grand_total}</td>
       <td>
         {quote?.purchaseOrder_id.length != 0 ? (
-          <GrDocument className={Styles.icon} 
+          <AiOutlineDatabase className={Styles.icon} 
           onClick={() => navigateToPage(quote?._id, "workorder/workorders")}
           />
         ) : (

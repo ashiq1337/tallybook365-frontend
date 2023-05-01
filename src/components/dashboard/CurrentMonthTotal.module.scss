@@ -3,6 +3,7 @@
 
 .main {
   margin-block: 20px;
+
   .topSection {
     display: flex;
     flex-wrap: wrap;
@@ -14,7 +15,7 @@
       box-shadow: c.$Color-box-shadow;
       //max-width: 400px;
       padding: 20px;
-      background-color: #ffffff; 
+      background-color: #ffffff;
       flex: 1 300px;
       font-size: 1.1rem;
       font-weight: 400;
@@ -24,8 +25,13 @@
       justify-content: center;
       flex-direction: column;
       text-align: center;
+      small{
+        color: gray
+      }
     }
+   
   }
+
   .tableContainer {
     @include m.globalTableContainer();
   }
