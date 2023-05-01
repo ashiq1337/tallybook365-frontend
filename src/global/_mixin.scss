@@ -1,6 +1,6 @@
 @use "./colors" as c;
-//$Breakpoint-maxScreen: 2400px;
-$Breakpoint-maxScreen: 1500px;
+$Breakpoint-maxScreen: 2400px;
+//$Breakpoint-maxScreen: 1500px;
 $Breakpoint-desktop: 1024px;
 $Breakpoint-tablet: 768px;
 $Breakpoint-mobile: 480px;
@@ -177,8 +177,8 @@ $Breakpoint-mobile: 480px;
   textarea,
   select {
     // @include m.globalInput();
-    //border: solid 1px rgba(128, 128, 128, 0.505);
-    border: none;
+    border: solid 1px rgba(128, 128, 128, 0.277);
+    //border: none;
     outline: none;
     padding-left: 2px;
     width: 100%;
