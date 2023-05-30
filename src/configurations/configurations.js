@@ -8,6 +8,7 @@ export const configuration = {
 
   quotations: "/api/v1/quotes",
   clients: "/api/v1/clients",
+  vendors:"/api/v1/vendors",
   invoices: "/api/v1/invoices",
   chalans: "/api/v1/chalans",
   purchaseOrders: "/api/v1/purchaseorders",

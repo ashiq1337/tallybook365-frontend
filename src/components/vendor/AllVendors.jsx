@@ -23,7 +23,7 @@ export default function AllVendors() {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.clients,
+      url: configuration.vendors,
     });
   };
 
@@ -31,12 +31,12 @@ export default function AllVendors() {
     getClients();
   }, []);
 
-  const deleteClient = (clientId) => {
+  const deleteClient = (vendorId) => {
     if (confirm("Do you want to delete the invoice?")) {
       axiosFetchDelete({
         axiosInstance: instance,
         method: "delete",
-        url: `${configuration.clients}/${clientId}`,
+        url: `${configuration.vendors}/${vendorId}`,
       });
       setGetData();
     }
@@ -46,21 +46,21 @@ export default function AllVendors() {
     getClients();
   }, [getData]);
 
-  function viewDetailsClickHandler(clientId) {
-    navigate(`/clients/${clientId}`);
+  function viewDetailsClickHandler(vendorId) {
+    navigate(`/clients/${vendorId}`);
   }
 
-  const tableRow = response?.data?.map((client, i) => (
+  const tableRow = response?.data?.map((vendor, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{client.client_name}</td>
-      <td>{client.client_address}</td>
-      <td>{client.client_contact_no}</td>
+      <td>{vendor?.vendor_name}</td>
+      <td>{vendor?.vendor_address}</td>
+      <td>{vendor?.vendor_contact_no}</td>
       <td>
         <MdEdit
           className={Styles.icon}
           onClick={() => {
-            viewDetailsClickHandler(client?._id);
+            viewDetailsClickHandler(vendor?._id);
           }}
         />
       </td>
@@ -68,7 +68,7 @@ export default function AllVendors() {
         <MdDelete
           className={Styles.deleteIcon}
           onClick={() => {
-            deleteClient(client?._id);
+            deleteClient(vendor?._id);
           }}
         />
       </td>
