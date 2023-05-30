@@ -55,7 +55,7 @@ export default function EditClient() {
   return (
     <div className={Styles.main}>
       <form onSubmit={editClientsAsync}>
-        <br />
+        {/* <br /> */}
         <label>Client Information</label>
         {/* <label className={Styles.inputLabel}>Client's ID</label>
         <input

@@ -28,6 +28,9 @@ import AddWorkorder from "../pages/workorders/AddWorkorder";
 import WorkorderDetails from "../pages/workorders/WorkorderDetails";
 import Preview from "../components/previewAndDownload/Preview";
 import PreviewPage from "../pages/preview/PreviewPage";
+import Vendors from "../pages/vendors/Vendors";
+import AddVendors from "../pages/vendors/AddVendors";
+import VendorDetails from "../pages/vendors/VendorDetails";
 
 export default function Routers() {
   const router = createBrowserRouter(
@@ -51,6 +54,12 @@ export default function Routers() {
             <Route path="clients/clients" element={<Clients />} />
             <Route path="clients/addClient" element={<AddClients />} />
             <Route path="clients/:clientId" element={<ClientDetails />} />
+          </Route>
+
+          <Route errorElement={<ErrorPage />}>
+            <Route path="vendors/vendors" element={<Vendors />} />
+            <Route path="vendors/addVendor" element={<AddVendors />} />
+            <Route path="vendors/:vendorId" element={<VendorDetails />} />
           </Route>
 
           <Route errorElement={<ErrorPage />}>

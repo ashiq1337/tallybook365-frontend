@@ -21,6 +21,7 @@ import {
   BiFileBlank,
   BiFile,
 } from "react-icons/bi";
+import { IoPeopleOutline, IoPeopleSharp } from "react-icons/io5";
 
 export default function Navigation({ closeBtn }) {
   const navigate = useNavigate();
@@ -60,6 +61,14 @@ export default function Navigation({ closeBtn }) {
 
         <NavLink to="clients/addClient" className={Styles.link}>
           <BiUserPlus /> Create Client
+        </NavLink>
+
+        <NavLink to="vendors/vendors" className={Styles.link}>
+          <IoPeopleOutline /> Vendors
+        </NavLink>
+
+        <NavLink to="vendors/addVendor" className={Styles.link}>
+          <IoPeopleSharp /> Create Vendor
         </NavLink>
 
         <NavLink to="quotation/quotations" className={Styles.link}>

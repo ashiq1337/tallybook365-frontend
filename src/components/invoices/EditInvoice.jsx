@@ -206,7 +206,7 @@ export default function EditInvoice() {
       {loading && <p>Loading</p>}
       {response && !loading && !error && (
         <form onSubmit={editInvoiceAsync}>
-          <label className={Styles.inputLabel}>User ID</label>
+          {/* <label className={Styles.inputLabel}>User ID</label>
           <input
             type="text"
             placeholder="Enter User ID"
@@ -216,7 +216,7 @@ export default function EditInvoice() {
             readOnly
           />
 
-          <br />
+          <br /> */}
           <label>Client Information</label>
 
           <label className={Styles.inputLabel}>Client's Name</label>

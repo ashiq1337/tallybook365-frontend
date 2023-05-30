@@ -1,43 +1,69 @@
-import Styles from "./AddClientsForm.module.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Styles from "./EditVendor.module.scss";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
+import useToggler from "../../hooks/useToggler";
 
-export default function AddClientsForm() {
-  const [data, setData] = useState({
-    mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
-  });
+export default function EditVendor() {
+  const { clientId } = useParams();
   const [response, error, loading, axiosFetch, message] = useAxios();
+  const [
+    responseUpdate,
+    errorUpdate,
+    loadingUpdate,
+    axiosFetchUpdate,
+    messageUpdate,
+  ] = useAxios();
+  const [data, setData] = useState({});
+  const [getData, setGetData] = useToggler();
 
   function handleChange(event) {
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   }
 
-  const addClientsAsync = (e) => {
+  const editClientsAsync = (e) => {
     e.preventDefault();
     console.log(data);
+    axiosFetchUpdate({
+      axiosInstance: instance,
+      method: "Patch",
+      url: `${configuration.clients}/${clientId}`,
+      requestConfig: data,
+    });
+    setGetData();
+  };
+
+  const getClientDetails = () => {
     axiosFetch({
       axiosInstance: instance,
-      method: "Post",
-      url: configuration.clients,
-      requestConfig: data,
+      method: "Get",
+      url: `${configuration.clients}/${clientId}`,
     });
   };
 
+  useEffect(() => {
+    getClientDetails();
+  }, [getData]);
+
+  useEffect(() => {
+    setData(response.data);
+  }, [response]);
+
   return (
     <div className={Styles.main}>
-      <form onSubmit={addClientsAsync}>
+      <form onSubmit={editClientsAsync}>
         {/* <br /> */}
         <label>Client Information</label>
-
         {/* <label className={Styles.inputLabel}>Client's ID</label>
         <input
           type="text"
           placeholder="Enter Client's ID"
           name="client_id"
           onChange={handleChange}
+          value={data?.client_id}
         /> */}
 
         <label className={Styles.inputLabel}>Client's Name</label>
@@ -46,6 +72,7 @@ export default function AddClientsForm() {
           placeholder="Enter Client's Name"
           name="client_name"
           onChange={handleChange}
+          value={data?.client_name}
         />
 
         <label className={Styles.inputLabel}>Client's Address</label>
@@ -54,6 +81,7 @@ export default function AddClientsForm() {
           placeholder="Enter Client's Address"
           name="client_address"
           onChange={handleChange}
+          value={data?.client_address}
         />
 
         <label className={Styles.inputLabel}>Client's Contact Number</label>
@@ -62,7 +90,9 @@ export default function AddClientsForm() {
           placeholder="Enter Client's Contact Number"
           name="client_contact_no"
           onChange={handleChange}
+          value={data?.client_contact_no}
         />
+
         <br />
         <label>Client Representative</label>
 
@@ -72,6 +102,7 @@ export default function AddClientsForm() {
           placeholder="Enter Client Representative 1"
           name="client_representative1"
           onChange={handleChange}
+          value={data?.client_representative1}
         />
 
         <label className={Styles.inputLabel}>
@@ -82,6 +113,7 @@ export default function AddClientsForm() {
           placeholder="Enter Client Representative 1 Number"
           name="client_representative1_no"
           onChange={handleChange}
+          value={data?.client_representative1_no}
         />
 
         <label className={Styles.inputLabel}>Client Representative 2</label>
@@ -90,6 +122,7 @@ export default function AddClientsForm() {
           placeholder="Enter Client Representative 2"
           name="client_representative2"
           onChange={handleChange}
+          value={data?.client_representative2}
         />
 
         <label className={Styles.inputLabel}>
@@ -97,10 +130,12 @@ export default function AddClientsForm() {
         </label>
         <input
           type="text"
-          placeholder="Enter client representative 2 Number"
+          placeholder="Enter Client Representative 2 Number"
           name="client_representative2_no"
           onChange={handleChange}
+          value={data?.client_representative2_no}
         />
+
         <br />
         <label>Bank Account Information</label>
 
@@ -110,6 +145,7 @@ export default function AddClientsForm() {
           placeholder="Enter Bank Account"
           name="bank_account"
           onChange={handleChange}
+          value={data?.bank_account}
         />
 
         <label className={Styles.inputLabel}>Bank Name & Address</label>
@@ -118,6 +154,7 @@ export default function AddClientsForm() {
           placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
+          value={data?.bank_name_address}
         />
 
         <label className={Styles.inputLabel}>Swift No</label>
@@ -126,6 +163,7 @@ export default function AddClientsForm() {
           placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
+          value={data?.swift}
         />
 
         <label className={Styles.inputLabel}>Routing No</label>
@@ -134,8 +172,10 @@ export default function AddClientsForm() {
           placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
+          value={data?.routing_no}
         />
         <p>{message}</p>
+        <p>{messageUpdate}</p>
         <button type="submit">Save</button>
         <br />
         <br />

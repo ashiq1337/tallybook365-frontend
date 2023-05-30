@@ -1,10 +1,10 @@
-import Styles from "./AddClientsForm.module.scss";
+import Styles from "./AddVendorsForm.module.scss";
 import React, { useState } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 
-export default function AddClientsForm() {
+export default function AddVendorsForm() {
   const [data, setData] = useState({
     mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
   });

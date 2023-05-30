@@ -205,7 +205,7 @@ export default function EditWorkorder() {
       {loading && <p>Loading</p>}
       {response && !loading && !error && (
         <form onSubmit={editWorkorderAsync}>
-          <label className={Styles.inputLabel}>User ID</label>
+          {/* <label className={Styles.inputLabel}>User ID</label>
           <input
             type="text"
             placeholder="Enter User ID"
@@ -213,9 +213,9 @@ export default function EditWorkorder() {
             onChange={handleChange}
             value={data?.user_id}
             readOnly
-          />
+          /> 
 
-          <br />
+          <br />*/}
           <label>Client Information</label>
 
           <label className={Styles.inputLabel}>Client's Name</label>
@@ -405,7 +405,7 @@ export default function EditWorkorder() {
 
           <br />
 
-          <label>TTerms & Conditions</label>
+          <label>Terms & Conditions</label>
           <textarea
             name="t_and_c"
             cols="30"

@@ -203,7 +203,7 @@ export default function EditQuotation() {
   return (
     <div className={Styles.main}>
       <form onSubmit={editQuotationAsync}>
-        <label className={Styles.inputLabel}>User ID</label>
+        {/* <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
           placeholder="Enter User ID"
@@ -212,7 +212,7 @@ export default function EditQuotation() {
           value={data?.user_id}
           readOnly
         />
-        <br />
+        <br /> */}
         <label>Client Information</label>
 
         {/* <label className={Styles.inputLabel}>Client</label>

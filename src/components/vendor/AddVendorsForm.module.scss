@@ -1,0 +1,21 @@
+@use "../../global/colors" as c;
+@use "../../global/mixin" as m;
+
+.main {
+  padding: 20px;
+  
+  form {
+    @include m.globalFormContainer();
+
+    button {
+      @include m.globalButton(c.$Color-primary-green);
+      margin-top: 50px;
+    }
+  }
+
+  .inputLabel {
+    font-size: .8rem;
+    color: gray;
+    transform: translate(0px,5px);
+  }
+}
