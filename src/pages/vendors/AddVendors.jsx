@@ -11,7 +11,7 @@ export default function AddVendors() {
       link="/clients/clients"
       btnName={"All vendors"}
     />
-    {/* <AddVendorsForm/> */}
+    <AddVendorsForm/>
   </div>
   )
 }

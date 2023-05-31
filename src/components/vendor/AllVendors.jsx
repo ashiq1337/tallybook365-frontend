@@ -47,7 +47,7 @@ export default function AllVendors() {
   }, [getData]);
 
   function viewDetailsClickHandler(vendorId) {
-    navigate(`/clients/${vendorId}`);
+    navigate(`/vendors/${vendorId}`);
   }
 
   const tableRow = response?.data?.map((vendor, i) => (

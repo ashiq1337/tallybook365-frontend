@@ -11,7 +11,7 @@ export default function VendorDetails() {
         link="/invoice/invoices"
         btnName={"All clients"}
       />
-      {/* <EditVendor /> */}
+      <EditVendor />
     </div>
   );
 }
