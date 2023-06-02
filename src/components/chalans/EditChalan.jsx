@@ -28,7 +28,6 @@ export default function EditChalan() {
   ] = useAxios(); //for getting client info
   const [selectedClientIndex, setSelectedClientIndex] = useState(); //for storing selected client index from the select menu
 
-
   const [inputList, setInputList] = useState([
     {
       particulars: "",
@@ -207,7 +206,7 @@ export default function EditChalan() {
       {loading && <p>Loading</p>}
       {response && !loading && !error && (
         <form onSubmit={editChalanAsync}>
-          <label className={Styles.inputLabel}>User ID</label>
+          {/* <label className={Styles.inputLabel}>User ID</label>
           <input
             type="text"
             placeholder="Enter User ID"
@@ -217,7 +216,7 @@ export default function EditChalan() {
             readOnly
           />
 
-          <br />
+          <br /> */}
           <label>Client Information</label>
 
           <label className={Styles.inputLabel}>Client's Name</label>
@@ -357,7 +356,12 @@ export default function EditChalan() {
             placeholder="Enter Bank Accoun"
             name="bank_account"
             onChange={handleChange}
-            value={data?.bank_account}
+            //value={data?.bank_account}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?.bank_account
+                : data?.bank_account
+            }
           />
 
           <label className={Styles.inputLabel}>Bank Name & Address</label>
@@ -366,7 +370,12 @@ export default function EditChalan() {
             placeholder="Enter Bank Name & Address"
             name="bank_name_address"
             onChange={handleChange}
-            value={data?.bank_name_address}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]
+                    ?.bank_name_address
+                : data?.bank_name_address
+            }
           />
 
           <label className={Styles.inputLabel}>Swift No</label>
@@ -375,7 +384,11 @@ export default function EditChalan() {
             placeholder="Enter Swift No"
             name="swift"
             onChange={handleChange}
-            value={data?.swift}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?.swift
+                : data?.swift
+            }
           />
 
           <label className={Styles.inputLabel}>Routing No</label>
@@ -384,8 +397,15 @@ export default function EditChalan() {
             placeholder="Enter Routing No"
             name="routing_no"
             onChange={handleChange}
-            value={data?.routing_no}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?.routing_no
+                : data?.routing_no
+            }
           />
+
+          <br />
+          <label>Percentage</label>
 
           <label className={Styles.inputLabel}>ASF Percentage</label>
           <input

@@ -356,7 +356,11 @@ export default function EditInvoice() {
             placeholder="Enter Bank Accoun"
             name="bank_account"
             onChange={handleChange}
-            value={data?.bank_account}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?.bank_account
+                : data?.bank_account
+            }
           />
 
           <label className={Styles.inputLabel}>Bank Name & Address</label>
@@ -365,7 +369,12 @@ export default function EditInvoice() {
             placeholder="Enter Bank Name & Address"
             name="bank_name_address"
             onChange={handleChange}
-            value={data?.bank_name_address}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]
+                    ?.bank_name_address
+                : data?.bank_name_address
+            }
           />
 
           <label className={Styles.inputLabel}>Swift No</label>
@@ -374,7 +383,11 @@ export default function EditInvoice() {
             placeholder="Enter Swift No"
             name="swift"
             onChange={handleChange}
-            value={data?.swift}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?.swift
+                : data?.swift
+            }
           />
 
           <label className={Styles.inputLabel}>Routing No</label>
@@ -383,8 +396,15 @@ export default function EditInvoice() {
             placeholder="Enter Routing No"
             name="routing_no"
             onChange={handleChange}
-            value={data?.routing_no}
+            value={
+              selectedClientIndex
+                ? responseClientData?.data[selectedClientIndex]?.routing_no
+                : data?.routing_no
+            }
           />
+
+          <br />
+          <label>Percentage</label>
 
           <label className={Styles.inputLabel}>ASF Percentage</label>
           <input
@@ -405,8 +425,8 @@ export default function EditInvoice() {
           />
 
           <br />
-
           <label>Terms & Conditions</label>
+
           <textarea
             name="t_and_c"
             cols="30"

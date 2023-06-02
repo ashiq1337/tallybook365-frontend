@@ -197,7 +197,7 @@ export default function AddChalanForm() {
   return (
     <div className={Styles.main}>
       <form onSubmit={createChalanAsync} id="addChalanForm">
-        <label className={Styles.inputLabel}>User ID</label>
+        {/* <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
           placeholder="Enter User ID"
@@ -206,7 +206,7 @@ export default function AddChalanForm() {
           value={responseSelf ? responseSelf?.data?.user_id : ""}
           readOnly
         />
-        <br />
+        <br /> */}
         <label>Client Information</label>
 
         <label className={Styles.inputLabel}>Client's Name</label>
@@ -339,6 +339,11 @@ export default function AddChalanForm() {
           placeholder="Enter Bank Account No"
           name="bank_account"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_account
+              : ""
+          }
         />
         <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input
@@ -346,6 +351,11 @@ export default function AddChalanForm() {
           placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_name_address
+              : ""
+          }
         />
         <label className={Styles.inputLabel}>Swift No</label>
         <input
@@ -353,6 +363,11 @@ export default function AddChalanForm() {
           placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.swift
+              : ""
+          }
         />
         <label className={Styles.inputLabel}>Routing No</label>
         <input
@@ -360,7 +375,15 @@ export default function AddChalanForm() {
           placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.routing_no
+              : ""
+          }
         />
+        <br />
+        <br />
+        <label>Percentage</label>
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"

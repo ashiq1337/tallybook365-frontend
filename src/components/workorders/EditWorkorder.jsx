@@ -355,7 +355,11 @@ export default function EditWorkorder() {
             placeholder="Enter Bank Accoun"
             name="bank_account"
             onChange={handleChange}
-            value={data?.bank_account}
+            value={
+              selectedVendorIndex
+                ? responseVendorData?.data[selectedVendorIndex]?.bank_account
+                : data?.bank_account
+            }
           />
 
           <label className={Styles.inputLabel}>Bank Name & Address</label>
@@ -364,7 +368,12 @@ export default function EditWorkorder() {
             placeholder="Enter Bank Name & Address"
             name="bank_name_address"
             onChange={handleChange}
-            value={data?.bank_name_address}
+            value={
+              selectedVendorIndex
+                ? responseVendorData?.data[selectedVendorIndex]
+                    ?.bank_name_address
+                : data?.bank_name_address
+            }
           />
 
           <label className={Styles.inputLabel}>Swift No</label>
@@ -373,7 +382,11 @@ export default function EditWorkorder() {
             placeholder="Enter Swift No"
             name="swift"
             onChange={handleChange}
-            value={data?.swift}
+            value={
+              selectedVendorIndex
+                ? responseVendorData?.data[selectedVendorIndex]?.swift
+                : data?.swift
+            }
           />
 
           <label className={Styles.inputLabel}>Routing No</label>
@@ -382,8 +395,14 @@ export default function EditWorkorder() {
             placeholder="Enter Routing No"
             name="routing_no"
             onChange={handleChange}
-            value={data?.routing_no}
+            value={
+              selectedVendorIndex
+                ? responseVendorData?.data[selectedVendorIndex]?.routing_no
+                : data?.routing_no
+            }
           />
+          <br />
+          <label>Percentage</label>
 
           <label className={Styles.inputLabel}>ASF Percentage</label>
           <input

@@ -349,7 +349,11 @@ export default function EditQuotation() {
           placeholder="Enter Bank Account No"
           name="bank_account"
           onChange={handleChange}
-          value={data?.bank_account}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_account
+              : data?.bank_account
+          }
         />
         <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input
@@ -357,7 +361,11 @@ export default function EditQuotation() {
           placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
-          value={data?.bank_name_address}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_name_address
+              : data?.bank_name_address
+          }
         />
         <label className={Styles.inputLabel}>Swift No</label>
         <input
@@ -365,7 +373,11 @@ export default function EditQuotation() {
           placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
-          value={data?.swift}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.swift
+              : data?.swift
+          }
         />
         <label className={Styles.inputLabel}>Routing No</label>
         <input
@@ -373,8 +385,14 @@ export default function EditQuotation() {
           placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
-          value={data?.routing_no}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.routing_no
+              : data?.routing_no
+          }
         />
+        <br />
+        <label>Percentage</label>
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"
