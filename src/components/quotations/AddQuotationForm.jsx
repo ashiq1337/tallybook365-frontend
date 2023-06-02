@@ -10,7 +10,13 @@ export default function AddQuotationForm() {
     mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
   });
   const [response, error, loading, axiosFetch, message] = useAxios();
-  const [responseJobNo, errorJobNo, loadingJobNo, axiosFetchJobNo, messageJobNo] = useAxios(); //for getting recent job no
+  const [
+    responseJobNo,
+    errorJobNo,
+    loadingJobNo,
+    axiosFetchJobNo,
+    messageJobNo,
+  ] = useAxios(); //for getting recent job no
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
     useAxios();
   const [
@@ -77,13 +83,13 @@ export default function AddQuotationForm() {
     });
   };
 
-  const getJobNo=()=>{
+  const getJobNo = () => {
     axiosFetchJobNo({
       axiosInstance: instance,
       method: "Get",
       url: configuration.quotationJobNo,
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     getClientsData();
@@ -319,6 +325,11 @@ export default function AddQuotationForm() {
           placeholder="Enter Bank Account No"
           name="bank_account"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_account
+              : ""
+          }
         />
 
         <label className={Styles.inputLabel}>Bank Name & Address</label>
@@ -327,6 +338,11 @@ export default function AddQuotationForm() {
           placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_name_address
+              : ""
+          }
         />
 
         <label className={Styles.inputLabel}>Swift No</label>
@@ -335,6 +351,11 @@ export default function AddQuotationForm() {
           placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.swift
+              : ""
+          }
         />
 
         <label className={Styles.inputLabel}>Routing No</label>
@@ -343,7 +364,14 @@ export default function AddQuotationForm() {
           placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.routing_no
+              : ""
+          }
         />
+        <br />
+        <label>Percentage</label>
 
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input

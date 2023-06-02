@@ -12,6 +12,7 @@ const useAxios = () => {
 
   const axiosFetch = async (configObj) => {
     const { axiosInstance, method, url, requestConfig = {} } = configObj;
+    var customMessage="Success";
     try {
       setLoading(true);
       toast.loading("Please wait...", { toastId: customId})
@@ -24,8 +25,8 @@ const useAxios = () => {
 
       setResponse(res); //storing response in state
       setMessage(res?.data?.msg); //storing message in state
-
-      toast.update(customId, { render: "Success", type: "success", isLoading: false, autoClose: 2000, }); //toasting success message
+      customMessage= (res?.data?.msg) ? res?.data?.msg : "Success"; //if there is msg it will be toasted
+      toast.update(customId, { render: customMessage, type: "success", isLoading: false, autoClose: 2000, }); //toasting success message
 
     } catch (err) {
       //console.log(err.response);

@@ -79,7 +79,7 @@ export default function AllWorkorders() {
     <tr key={i}>
       <td>{i + 1}</td>
       <td>{workorder.title}</td>
-      <td>{workorder.client_address}</td>
+      <td>{workorder.vendor_address}</td>
       <td>{workorder.job_no}</td>
       <td>{workorder?.date?.slice(0, 10)}</td>
       <td>

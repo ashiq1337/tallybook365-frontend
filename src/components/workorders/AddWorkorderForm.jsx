@@ -17,13 +17,13 @@ export default function AddWorkorderForm() {
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
     useAxios();
   const [
-    responseClientData,
-    errorClientData,
-    loadingClientData,
-    axiosFetchClientData,
-    messageClientData,
+    responseVendorData,
+    errorVendorData,
+    loadingVendorData,
+    axiosFetchVendorData,
+    messageVendorData,
   ] = useAxios();
-  const [selectedClientIndex, setSelectedClientIndex] = useState();
+  const [selectedVendorIndex, setSelectedVendorIndex] = useState();
 
   const [inputList, setInputList] = useState([
     {
@@ -63,11 +63,11 @@ export default function AddWorkorderForm() {
     setData({ ...data, grand_total: sum, items: inputList });
   }, [inputList]);
 
-  const getClientsData = () => {
-    axiosFetchClientData({
+  const getVendorsData = () => {
+    axiosFetchVendorData({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.clients,
+      url: configuration.vendors,
     });
   };
 
@@ -88,7 +88,7 @@ export default function AddWorkorderForm() {
   }
 
   useEffect(() => {
-    getClientsData();
+    getVendorsData();
     getSelf();
     getJobNo();
   }, []);
@@ -197,7 +197,7 @@ export default function AddWorkorderForm() {
   return (
     <div className={Styles.main}>
       <form onSubmit={createWorkorderAsync} id="addWorkorderForm">
-        <label className={Styles.inputLabel}>User ID</label>
+        {/* <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
           placeholder="User ID"
@@ -206,62 +206,62 @@ export default function AddWorkorderForm() {
           value={responseSelf ? responseSelf?.data?.user_id : ""}
           readOnly
         />
-        <br />
-        <label>Client Information</label>
+        <br /> */}
+        <label>Vendor Information</label>
 
-        <label className={Styles.inputLabel}>Client's Name</label>
+        <label className={Styles.inputLabel}>Vendor's Name</label>
         <select
-          name="client_name"
+          name="vendor_name"
           onChange={(e) => {
-            setSelectedClientIndex(e.target.value);
+            setSelectedVendorIndex(e.target.value);
             setData({
               ...data,
               user_id: responseSelf?.data?.user_id, //storing the user id from self/showMe api
               job_no: responseJobNo?.data, //storing job number
-              client_id: responseClientData?.data[e.target.value]?._id,
-              client_name:
-                responseClientData?.data[e.target.value]?.client_name,
-              client_address:
-                responseClientData?.data[e.target.value]?.client_address,
+              vendor_id: responseVendorData?.data[e.target.value]?._id,
+              vendor_name:
+                responseVendorData?.data[e.target.value]?.vendor_name,
+              vendor_address:
+                responseVendorData?.data[e.target.value]?.vendor_address,
             });
           }}
           defaultValue=""
           required
         >
           <option value="" disabled>
-            Select Client
+            Select Vendor
           </option>
-          {responseClientData?.data?.map((user, i) => (
+          {responseVendorData?.data?.map((user, i) => (
             <option key={i} value={i}>
-              {user.client_name}
+              {user.vendor_name}
             </option>
           ))}
         </select>
 
-        <label className={Styles.inputLabel}>Client's Id</label>
+        <label className={Styles.inputLabel}>Vendor's Id</label>
         <input
           type="text"
-          placeholder="Enter Client's ID"
-          name="client_id"
+          placeholder="Enter Vendor's ID"
+          name="vendor_id"
           readOnly
           onChange={handleChange}
           value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?._id
+            selectedVendorIndex
+              ? responseVendorData?.data[selectedVendorIndex]?._id
               : ""
           }
         />
 
-        <label className={Styles.inputLabel}>Client's Address</label>
+        <label className={Styles.inputLabel}>Vendor's Address</label>
         <input
           type="text"
-          placeholder="Enter Client's Address"
-          name="client_address"
+          placeholder="Enter Vendor's Address"
+          name="vendor_address"
           readOnly
           onChange={handleChange}
           value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?.client_address
+            selectedVendorIndex
+              ? responseVendorData?.data[selectedVendorIndex]?.vendor_address
               : ""
           }
         />
@@ -339,6 +339,11 @@ export default function AddWorkorderForm() {
           placeholder="Enter Bank Account No"
           name="bank_account"
           onChange={handleChange}
+          value={
+            selectedVendorIndex
+              ? responseVendorData?.data[selectedVendorIndex]?.bank_account
+              : ""
+          }
         />
         <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input
@@ -346,6 +351,11 @@ export default function AddWorkorderForm() {
           placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
+          value={
+            selectedVendorIndex
+              ? responseVendorData?.data[selectedVendorIndex]?.bank_name_address
+              : ""
+          }
         />
         <label className={Styles.inputLabel}>Swift No</label>
         <input
@@ -353,6 +363,11 @@ export default function AddWorkorderForm() {
           placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
+          value={
+            selectedVendorIndex
+              ? responseVendorData?.data[selectedVendorIndex]?.swift
+              : ""
+          }
         />
         <label className={Styles.inputLabel}>Routing No</label>
         <input
@@ -360,7 +375,16 @@ export default function AddWorkorderForm() {
           placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
+          value={
+            selectedVendorIndex
+              ? responseVendorData?.data[selectedVendorIndex]?.routing_no
+              : ""
+          }
         />
+        <br />
+        <br />
+        <label>Percentage</label>
+        
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"

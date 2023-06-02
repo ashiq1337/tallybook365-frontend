@@ -20,13 +20,13 @@ export default function EditWorkorder() {
   const [data, setData] = useState({});
 
   const [
-    responseClientData,
-    errorClientData,
-    loadingClientData,
-    axiosFetchClientData,
-    messageClientData,
-  ] = useAxios(); //for getting client info
-  const [selectedClientIndex, setSelectedClientIndex] = useState(); //for storing selected client index from the select menu
+    responseVendorData,
+    errorVendorData,
+    loadingVendorData,
+    axiosFetchVendorData,
+    messageVendorData,
+  ] = useAxios(); //for getting vendor info
+  const [selectedVendorIndex, setSelectedVendorIndex] = useState(); //for storing selected vendor index from the select menu
 
   const [inputList, setInputList] = useState([
     {
@@ -66,16 +66,16 @@ export default function EditWorkorder() {
     });
   };
 
-  const getClientsData = () => {
-    axiosFetchClientData({
+  const getVendorsData = () => {
+    axiosFetchVendorData({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.clients,
+      url: configuration.vendors,
     });
   };
   useEffect(() => {
     getWorkorderDetails();
-    getClientsData();
+    getVendorsData();
   }, [getData]);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function EditWorkorder() {
     if (response.data) {
       //setting data to data
       setData(response?.data);
-      //setting items values to inputlist to view on client site
+      //setting items values to inputlist to view on vendor site
       setInputList(response?.data?.items);
     }
   }, [response]);
@@ -216,60 +216,60 @@ export default function EditWorkorder() {
           /> 
 
           <br />*/}
-          <label>Client Information</label>
+          <label>Vendor Information</label>
 
-          <label className={Styles.inputLabel}>Client's Name</label>
+          <label className={Styles.inputLabel}>Vendor's Name</label>
           <select
-            name="client_name"
+            name="vendor_name"
             onChange={(e) => {
-              setSelectedClientIndex(e.target.value);
+              setSelectedVendorIndex(e.target.value);
               setData({
                 ...data,
-                client_id: responseClientData?.data[e.target.value]?._id,
-                client_name:
-                  responseClientData?.data[e.target.value]?.client_name,
-                client_address:
-                  responseClientData?.data[e.target.value]?.client_address,
+                vendor_id: responseVendorData?.data[e.target.value]?._id,
+                vendor_name:
+                  responseVendorData?.data[e.target.value]?.vendor_name,
+                vendor_address:
+                  responseVendorData?.data[e.target.value]?.vendor_address,
               });
             }}
-            defaultValue={data?.client_name}
+            defaultValue={data?.vendor_name}
             required
           >
             <option value="" disabled>
-              Select Client
+              Select Vendor
             </option>
-            {responseClientData?.data?.map((user, i) => (
+            {responseVendorData?.data?.map((user, i) => (
               <option key={i} value={i}>
-                {user.client_name}
+                {user.vendor_name}
               </option>
             ))}
           </select>
 
-          <label className={Styles.inputLabel}>Client's Id</label>
+          <label className={Styles.inputLabel}>Vendor's Id</label>
           <input
             type="text"
-            placeholder="Enter Client's ID"
-            name="client_id"
+            placeholder="Enter Vendor's ID"
+            name="vendor_id"
             readOnly
             onChange={handleChange}
             value={
-              selectedClientIndex
-                ? responseClientData?.data[selectedClientIndex]?._id
-                : data?.client_id
+              selectedVendorIndex
+                ? responseVendorData?.data[selectedVendorIndex]?._id
+                : data?.vendor_id
             }
           />
 
-          <label className={Styles.inputLabel}>Client's Address</label>
+          <label className={Styles.inputLabel}>Vendor's Address</label>
           <input
             type="text"
-            placeholder="Enter Client's Address"
-            name="client_address"
+            placeholder="Enter Vendor's Address"
+            name="vendor_address"
             readOnly
             onChange={handleChange}
             value={
-              selectedClientIndex
-                ? responseClientData?.data[selectedClientIndex]?.client_address
-                : data?.client_address
+              selectedVendorIndex
+                ? responseVendorData?.data[selectedVendorIndex]?.vendor_address
+                : data?.vendor_address
             }
           />
 
