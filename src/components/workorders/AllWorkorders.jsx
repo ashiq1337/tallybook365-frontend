@@ -1,5 +1,5 @@
 import Styles from "./AllWorkorders.module.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
@@ -22,17 +22,19 @@ export default function AllWorkorders() {
     messageDelete,
   ] = useAxios();
   const [getData, setGetData] = useToggler();
+  const [pageNumber, setPageNumber] = useState(1); //pagination page number.
+  const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
 
   const getWorkorders = () => {
     //if quote id send with the req then we will get only the po's associated with that specific quote,
     //otherwise will return all purchase orders.
 
-    let urlForSpecificTask = "";
+    let urlForSpecificTask = ""; //specific task means when if we need for one specific quotation or all work orders
 
     if (quotationId) {
       urlForSpecificTask = `${configuration.purchaseOrdersByQuote}/${quotationId}`;
     } else {
-      urlForSpecificTask = configuration.purchaseOrders;
+      urlForSpecificTask = `${configuration.purchaseOrders}?page=${pageNumber}&limit=${pageLimit}`;
     }
 
     axiosFetch({
@@ -55,7 +57,7 @@ export default function AllWorkorders() {
 
   useEffect(() => {
     getWorkorders();
-  }, [getData]);
+  }, [getData, pageNumber, pageLimit]);
 
   useEffect(() => {
     console.log(response?.data);
@@ -109,7 +111,7 @@ export default function AllWorkorders() {
 
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>no data found</p>}
+      {!response?.data?.length && <p>No data found</p>}
       {quotationId && (
         <div className={Styles.createNewBtnContainer}>
           <button
@@ -126,7 +128,8 @@ export default function AllWorkorders() {
         </div>
       )}
       <br />
-      {response && !loading && !error && (
+      {(response && !loading && !error) ? (
+        <div className={Styles.container}>
         <div className={Styles.tableContainer}>
           <table>
             <tbody>
@@ -144,7 +147,29 @@ export default function AllWorkorders() {
             </tbody>
           </table>
         </div>
-      )}
+        <div className={Styles.btnContainer}>
+            <button
+              disabled={pageNumber <= 1}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber - 1);
+              }}
+            >
+              Previous
+            </button>
+            <p className={Styles.currentPg}>Page: {pageNumber}</p>
+            <button
+              disabled={!response?.data?.length}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber + 1);
+              }}
+            >
+              Next
+            </button>
+          </div>
+          </div>
+      ):  (<p>loading...</p>)}
     </div>
   );
 }

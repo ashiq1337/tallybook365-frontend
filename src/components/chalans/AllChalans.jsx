@@ -1,5 +1,5 @@
 import Styles from "./AllChalans.module.scss";
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { useNavigate } from "react-router-dom";
@@ -20,12 +20,14 @@ export default function AllChalans() {
     messageDelete,
   ] = useAxios();
   const [getData, setGetData] = useToggler();
+    const [pageNumber, setPageNumber] = useState(1); //pagination page number.
+  const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
 
   const getChalans = () => {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.chalans,
+      url: `${configuration.chalans}?page=${pageNumber}&limit=${pageLimit}`,
     });
   };
 
@@ -42,7 +44,7 @@ export default function AllChalans() {
 
   useEffect(() => {
     getChalans();
-  }, [getData]);
+  }, [getData, pageNumber, pageLimit]);
 
   useEffect(() => {
     console.log(response?.data);
@@ -91,8 +93,8 @@ export default function AllChalans() {
 
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>no data found</p>}
-      {response && !loading && !error && (
+      {!response?.data?.length && <p>No data found</p>}
+      {/* {(response && !loading && !error ) ? (
         <div className={Styles.tableContainer}>
           <table>
             <tbody>
@@ -109,6 +111,49 @@ export default function AllChalans() {
             </tbody>
           </table>
         </div>
+      ):()} */}
+      {(response && !loading && !error ) ? (
+        <div className={Styles.container}>
+          <div className={Styles.tableContainer}>
+            <table>
+              <tbody>
+                <tr>
+                <th>Ser</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Job no</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+                {tableRow}
+              </tbody>
+            </table>
+          </div>
+          <div className={Styles.btnContainer}>
+            <button
+              disabled={pageNumber <= 1}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber - 1);
+              }}
+            >
+              Previous
+            </button>
+            <p className={Styles.currentPg}>Page: {pageNumber}</p>
+            <button
+              disabled={!response?.data?.length}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber + 1);
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      ) : (
+        <p>loading...</p>
       )}
     </div>
   );

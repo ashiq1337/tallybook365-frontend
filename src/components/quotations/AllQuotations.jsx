@@ -135,8 +135,8 @@ export default function AllQuotations() {
   ));
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>no data found</p>}
-      {!loading ? (
+      {!response?.data?.length && <p>No data found</p>}
+      {(response && !loading && !error ) ? (
         <div className={Styles.container}>
           <div className={Styles.tableContainer}>
             <table>

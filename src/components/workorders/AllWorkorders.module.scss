@@ -2,12 +2,7 @@
 @use "../../global/mixin" as m;
 
 .main {
-  padding: 20px;
-
-  .tableContainer {
-    @include m.globalTableContainer();
-  }
-
+  @include m.globalAllItemContainer();
   .createNewBtnContainer {
     display: flex;
     flex-direction: column;
