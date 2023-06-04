@@ -194,3 +194,41 @@ $Breakpoint-mobile: 480px;
     height: 10px;
   }
 }
+
+@mixin globalAllItemContainer(){
+  padding: 20px;
+
+  .container {
+    padding-block: 10px;
+
+    .tableContainer {
+      @include globalTableContainer();
+    }
+
+    .btnContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 30px;
+
+      .btn {
+        border-radius: c.$Border-radius;
+        width: 150px;
+        border: none;
+        color: white;
+        padding: 10px;
+        background: c.$Color-primary-green;
+        cursor: pointer;
+      }
+
+      .btn:disabled {
+        background: rgb(194, 194, 194);
+      }
+
+      .currentPg {
+        color: gray;
+        font-size: 0.8rem
+      }
+    }
+  }
+}

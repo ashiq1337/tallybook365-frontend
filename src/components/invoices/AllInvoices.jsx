@@ -1,5 +1,5 @@
 import Styles from "./AllInvoices.module.scss";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
@@ -19,12 +19,14 @@ export default function AllInvoices() {
     messageDelete,
   ] = useAxios();
   const [getData, setGetData] = useToggler();
+  const [pageNumber, setPageNumber] = useState(1); //pagination page number.
+  const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
 
   const getInvoices = () => {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.invoices,
+      url: `${configuration.invoices}?page=${pageNumber}&limit=${pageLimit}`,
     });
   };
 
@@ -41,7 +43,7 @@ export default function AllInvoices() {
 
   useEffect(() => {
     getInvoices();
-  }, [getData]);
+  }, [getData, pageNumber, pageLimit]);
 
   function viewDetailsClickHandler(invoiceId) {
     navigate(`/invoice/${invoiceId}`);
@@ -88,7 +90,8 @@ export default function AllInvoices() {
   return (
     <div className={Styles.main}>
       {!response?.data?.length && <p>no data found</p>}
-      {response && !loading && !error && (
+      {!loading ? (
+        <div className={Styles.container}>
         <div className={Styles.tableContainer}>
           <table>
             <tbody>
@@ -105,6 +108,30 @@ export default function AllInvoices() {
             </tbody>
           </table>
         </div>
+        <div className={Styles.btnContainer}>
+            <button
+              disabled={pageNumber <= 1}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber - 1);
+              }}
+            >
+              Previous
+            </button>
+            <p className={Styles.currentPg}>Page: {pageNumber}</p>
+            <button
+              disabled={!response?.data?.length}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber + 1);
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      ): (
+        <p>loading...</p>
       )}
     </div>
   );

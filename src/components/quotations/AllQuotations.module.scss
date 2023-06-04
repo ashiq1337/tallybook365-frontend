@@ -1,11 +1,6 @@
 @use "../../global/colors" as c;
 @use "../../global/mixin" as m;
 
-.main {
-  padding: 20px;
-
-  .tableContainer {
-    @include m.globalTableContainer();
-  }
-
+.main{
+  @include m.globalAllItemContainer();
 }

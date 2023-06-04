@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
@@ -21,12 +21,16 @@ export default function AllQuotations() {
     messageDelete,
   ] = useAxios();
   const [getData, setGetData] = useToggler();
+  const [pageNumber, setPageNumber] = useState(1); //pagination page number.
+  const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
+  const [pageMonth, setPageMonth] = useState(1); //pagination page number.
+  const [pageYear, setPageYear] = useState(20); //pagination item limit.
 
   const getQuotations = () => {
     axiosFetch({
       axiosInstance: instance,
       method: "Get",
-      url: configuration.quotations,
+      url: `${configuration.quotations}?page=${pageNumber}&limit=${pageLimit}`,
     });
   };
 
@@ -43,7 +47,7 @@ export default function AllQuotations() {
 
   useEffect(() => {
     getQuotations();
-  }, [getData]);
+  }, [getData, pageNumber, pageLimit]);
 
   useEffect(() => {
     console.log(response?.data);
@@ -68,19 +72,22 @@ export default function AllQuotations() {
       <td>{quote?.grand_total}</td>
       <td>
         {quote?.purchaseOrder_id.length != 0 ? (
-          <AiOutlineDatabase className={Styles.icon} 
-          onClick={() => navigateToPage(quote?._id, "workorder/workorders")}
+          <AiOutlineDatabase
+            className={Styles.icon}
+            onClick={() => navigateToPage(quote?._id, "workorder/workorders")}
           />
         ) : (
-          <AiOutlinePlus className={Styles.icon} 
-          onClick={() => navigateToPage(quote?._id, "workorder/addWorkorder")}
+          <AiOutlinePlus
+            className={Styles.icon}
+            onClick={() => navigateToPage(quote?._id, "workorder/addWorkorder")}
           />
         )}
       </td>
       <td>
         {quote?.chalan_id ? (
-          <GrDocument className={Styles.icon} 
-          onClick={() => navigateToPage(quote?.chalan_id, "chalan")}
+          <GrDocument
+            className={Styles.icon}
+            onClick={() => navigateToPage(quote?.chalan_id, "chalan")}
           />
         ) : (
           <AiOutlinePlus
@@ -91,8 +98,9 @@ export default function AllQuotations() {
       </td>
       <td>
         {quote?.invoice_id ? (
-          <GrDocument className={Styles.icon} 
-          onClick={() => navigateToPage(quote?.invoice_id, "invoice")}
+          <GrDocument
+            className={Styles.icon}
+            onClick={() => navigateToPage(quote?.invoice_id, "invoice")}
           />
         ) : (
           <AiOutlinePlus
@@ -127,27 +135,50 @@ export default function AllQuotations() {
   ));
   return (
     <div className={Styles.main}>
-      {/* {!response?.data?.length && <p>no data found</p>} */}
+      {!response?.data?.length && <p>no data found</p>}
       {!loading ? (
-        <div className={Styles.tableContainer}>
-          <table>
-            <tbody>
-              <tr>
-                <th>Ser</th>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Client</th>
-                <th>Amount</th>
-                <th>Purchase</th>
-                <th>Chalan</th>
-                <th>Invoice</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-              {tableRow}
-            </tbody>
-          </table>
+        <div className={Styles.container}>
+          <div className={Styles.tableContainer}>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Ser</th>
+                  <th>Title</th>
+                  <th>Date</th>
+                  <th>Client</th>
+                  <th>Amount</th>
+                  <th>Purchase</th>
+                  <th>Chalan</th>
+                  <th>Invoice</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                {tableRow}
+              </tbody>
+            </table>
+          </div>
+          <div className={Styles.btnContainer}>
+            <button
+              disabled={pageNumber <= 1}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber - 1);
+              }}
+            >
+              Previous
+            </button>
+            <p className={Styles.currentPg}>Page: {pageNumber}</p>
+            <button
+              disabled={!response?.data?.length}
+              className={Styles.btn}
+              onClick={() => {
+                setPageNumber(pageNumber + 1);
+              }}
+            >
+              Next
+            </button>
+          </div>
         </div>
       ) : (
         <p>loading...</p>
