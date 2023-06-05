@@ -230,6 +230,12 @@ export default function EditWorkorder() {
                   responseVendorData?.data[e.target.value]?.vendor_name,
                 vendor_address:
                   responseVendorData?.data[e.target.value]?.vendor_address,
+                  bank_account:
+                  responseVendorData?.data[e.target.value]?.bank_account,
+                bank_name_address:
+                  responseVendorData?.data[e.target.value]?.bank_name_address,
+                swift: responseVendorData?.data[e.target.value]?.swift,
+                routing_no: responseVendorData?.data[e.target.value]?.routing_no,
               });
             }}
             defaultValue={data?.vendor_name}
@@ -245,7 +251,7 @@ export default function EditWorkorder() {
             ))}
           </select>
 
-          <label className={Styles.inputLabel}>Vendor's Id</label>
+          {/* <label className={Styles.inputLabel}>Vendor's Id</label>
           <input
             type="text"
             placeholder="Enter Vendor's ID"
@@ -257,7 +263,7 @@ export default function EditWorkorder() {
                 ? responseVendorData?.data[selectedVendorIndex]?._id
                 : data?.vendor_id
             }
-          />
+          /> */}
 
           <label className={Styles.inputLabel}>Vendor's Address</label>
           <input

@@ -231,6 +231,10 @@ export default function EditInvoice() {
                   responseClientData?.data[e.target.value]?.client_name,
                 client_address:
                   responseClientData?.data[e.target.value]?.client_address,
+                  bank_account: responseClientData?.data[e.target.value]?.bank_account,
+                  bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
+                  swift: responseClientData?.data[e.target.value]?.swift,
+                  routing_no: responseClientData?.data[e.target.value]?.routing_no,
               });
             }}
             defaultValue={data?.client_name}
@@ -246,7 +250,7 @@ export default function EditInvoice() {
             ))}
           </select>
 
-          <label className={Styles.inputLabel}>Client's Id</label>
+          {/* <label className={Styles.inputLabel}>Client's Id</label>
           <input
             type="text"
             placeholder="Enter Client's ID"
@@ -258,7 +262,7 @@ export default function EditInvoice() {
                 ? responseClientData?.data[selectedClientIndex]?._id
                 : data?.client_id
             }
-          />
+          /> */}
 
           <label className={Styles.inputLabel}>Client's Address</label>
           <input
