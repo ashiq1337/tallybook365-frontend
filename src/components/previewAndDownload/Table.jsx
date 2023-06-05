@@ -1,11 +1,20 @@
 import React from "react";
 import classes from "./Table.module.scss";
+import { ToWords } from "to-words";
 
-export default function Table({ lists, productionCost, advance = 0, valueAddedTax = 15, asf = 10}) {
+export default function Table({
+  lists,
+  productionCost,
+  advance = 0,
+  valueAddedTax = 15,
+  asf = 10,
+}) {
+  const toWords = new ToWords();
+
   //Calculate other amounts with grand total
-  let agencyFees = productionCost * (asf/100);
+  let agencyFees = productionCost * (asf / 100);
   let subTotal = productionCost + agencyFees;
-  let vat = subTotal * (valueAddedTax/100) ;
+  let vat = subTotal * (valueAddedTax / 100);
   let gTotal = subTotal + vat;
   let due = 0;
   if (advance) {
@@ -91,6 +100,10 @@ export default function Table({ lists, productionCost, advance = 0, valueAddedTa
           </div>
         ) : null}
       </div>
+      <br />
+      <p>
+        <b>In word:</b> BDT {toWords.convert(Math.round(gTotal).toFixed(2))} only.
+      </p>
     </div>
   );
 }
