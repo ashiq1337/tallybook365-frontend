@@ -1,6 +1,6 @@
 export const configuration = {
-  baseUrl: "http://localhost:8080",
-  //baseUrl: "https://tally.zeeshanrahman.sbs",
+  //baseUrl: "http://localhost:8080",
+  baseUrl: "https://tally365.zeeshanrahman.sbs/",
 
   registerUser: "/api/v1/auth/register",
   loginUser: "/api/v1/auth/login",

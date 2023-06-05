@@ -229,6 +229,10 @@ export default function AddQuotationForm() {
                 responseClientData?.data[e.target.value]?.client_name,
               client_address:
                 responseClientData?.data[e.target.value]?.client_address,
+              bank_account: responseClientData?.data[e.target.value]?.bank_account,
+              bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
+              swift: responseClientData?.data[e.target.value]?.swift,
+              routing_no: responseClientData?.data[e.target.value]?.routing_no,
             });
           }}
           defaultValue=""
@@ -244,7 +248,7 @@ export default function AddQuotationForm() {
           ))}
         </select>
 
-        <label className={Styles.inputLabel}>Client's Id</label>
+        {/* <label className={Styles.inputLabel}>Client's Id</label>
         <input
           type="text"
           placeholder="Enter Client's ID"
@@ -256,7 +260,7 @@ export default function AddQuotationForm() {
               ? responseClientData?.data[selectedClientIndex]?._id
               : ""
           }
-        />
+        /> */}
 
         <label className={Styles.inputLabel}>Client's Address</label>
         <input

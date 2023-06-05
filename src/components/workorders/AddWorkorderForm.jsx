@@ -4,16 +4,22 @@ import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { MdAddCircle, MdDelete } from "react-icons/md";
-import { useParams } from "react-router-dom"; 
+import { useParams } from "react-router-dom";
 
 export default function AddWorkorderForm() {
-  const { quotationId} = useParams();
+  const { quotationId } = useParams();
   const [data, setData] = useState({
     mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
     quote_id: quotationId, //storing the quotation id from param
   });
   const [response, error, loading, axiosFetch, message] = useAxios();
-  const [responseJobNo, errorJobNo, loadingJobNo, axiosFetchJobNo, messageJobNo] = useAxios(); //for getting recent job no
+  const [
+    responseJobNo,
+    errorJobNo,
+    loadingJobNo,
+    axiosFetchJobNo,
+    messageJobNo,
+  ] = useAxios(); //for getting recent job no
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
     useAxios();
   const [
@@ -79,13 +85,13 @@ export default function AddWorkorderForm() {
     });
   };
 
-  const getJobNo=()=>{
+  const getJobNo = () => {
     axiosFetchJobNo({
       axiosInstance: instance,
       method: "Get",
       url: configuration.purchaseOrderJobNo,
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     getVendorsData();
@@ -223,6 +229,12 @@ export default function AddWorkorderForm() {
                 responseVendorData?.data[e.target.value]?.vendor_name,
               vendor_address:
                 responseVendorData?.data[e.target.value]?.vendor_address,
+              bank_account:
+                responseVendorData?.data[e.target.value]?.bank_account,
+              bank_name_address:
+                responseVendorData?.data[e.target.value]?.bank_name_address,
+              swift: responseVendorData?.data[e.target.value]?.swift,
+              routing_no: responseVendorData?.data[e.target.value]?.routing_no,
             });
           }}
           defaultValue=""
@@ -238,7 +250,7 @@ export default function AddWorkorderForm() {
           ))}
         </select>
 
-        <label className={Styles.inputLabel}>Vendor's Id</label>
+        {/* <label className={Styles.inputLabel}>Vendor's Id</label>
         <input
           type="text"
           placeholder="Enter Vendor's ID"
@@ -250,7 +262,7 @@ export default function AddWorkorderForm() {
               ? responseVendorData?.data[selectedVendorIndex]?._id
               : ""
           }
-        />
+        /> */}
 
         <label className={Styles.inputLabel}>Vendor's Address</label>
         <input
@@ -384,7 +396,7 @@ export default function AddWorkorderForm() {
         <br />
         <br />
         <label>Percentage</label>
-        
+
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"

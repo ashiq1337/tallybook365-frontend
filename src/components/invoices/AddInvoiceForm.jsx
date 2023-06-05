@@ -4,16 +4,22 @@ import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { MdAddCircle, MdDelete } from "react-icons/md";
-import { useParams } from "react-router-dom"; 
+import { useParams } from "react-router-dom";
 
 export default function AddInvoiceForm() {
-  const { quotationId} = useParams();
+  const { quotationId } = useParams();
   const [data, setData] = useState({
     mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
     quote_id: quotationId, //storing the quotation id from param
   });
   const [response, error, loading, axiosFetch, message] = useAxios();
-  const [responseJobNo, errorJobNo, loadingJobNo, axiosFetchJobNo, messageJobNo] = useAxios(); //for getting recent job no
+  const [
+    responseJobNo,
+    errorJobNo,
+    loadingJobNo,
+    axiosFetchJobNo,
+    messageJobNo,
+  ] = useAxios(); //for getting recent job no
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
     useAxios();
   const [
@@ -78,13 +84,13 @@ export default function AddInvoiceForm() {
       url: configuration.self,
     });
   };
-  const getJobNo=()=>{
+  const getJobNo = () => {
     axiosFetchJobNo({
       axiosInstance: instance,
       method: "Get",
       url: configuration.invoiceJobNo,
-    })
-  }
+    });
+  };
   useEffect(() => {
     getClientsData();
     getSelf();
@@ -196,7 +202,7 @@ export default function AddInvoiceForm() {
   return (
     <div className={Styles.main}>
       <form onSubmit={createInvoiceAsync} id="addInvoiceForm">
-        <label className={Styles.inputLabel}>User ID</label>
+        {/* <label className={Styles.inputLabel}>User ID</label>
         <input
           type="text"
           placeholder="Enter User id"
@@ -206,7 +212,7 @@ export default function AddInvoiceForm() {
           readOnly
         />
 
-        <br />
+        <br /> */}
         <label>Client Information</label>
 
         <label className={Styles.inputLabel}>Client's Name</label>
@@ -223,6 +229,10 @@ export default function AddInvoiceForm() {
                 responseClientData?.data[e.target.value]?.client_name,
               client_address:
                 responseClientData?.data[e.target.value]?.client_address,
+              bank_account: responseClientData?.data[e.target.value]?.bank_account,
+              bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
+              swift: responseClientData?.data[e.target.value]?.swift,
+              routing_no: responseClientData?.data[e.target.value]?.routing_no,
             });
           }}
           defaultValue=""
@@ -238,7 +248,7 @@ export default function AddInvoiceForm() {
           ))}
         </select>
 
-        <label className={Styles.inputLabel}>Client's Id</label>
+        {/* <label className={Styles.inputLabel}>Client's Id</label>
         <input
           type="text"
           placeholder="Enter Client's ID"
@@ -250,7 +260,7 @@ export default function AddInvoiceForm() {
               ? responseClientData?.data[selectedClientIndex]?._id
               : ""
           }
-        />
+        /> */}
 
         <label className={Styles.inputLabel}>Client's Address</label>
         <input
@@ -338,6 +348,11 @@ export default function AddInvoiceForm() {
           placeholder="Enter Bank Account"
           name="bank_account"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_account
+              : ""
+          }
         />
 
         <label className={Styles.inputLabel}>Bank Name & Address</label>
@@ -346,6 +361,11 @@ export default function AddInvoiceForm() {
           placeholder="Enter Bank Name & Address"
           name="bank_name_address"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.bank_name_address
+              : ""
+          }
         />
 
         <label className={Styles.inputLabel}>Swift No</label>
@@ -354,6 +374,11 @@ export default function AddInvoiceForm() {
           placeholder="Enter Swift No"
           name="swift"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.swift
+              : ""
+          }
         />
 
         <label className={Styles.inputLabel}>Routing No</label>
@@ -362,8 +387,15 @@ export default function AddInvoiceForm() {
           placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
+          value={
+            selectedClientIndex
+              ? responseClientData?.data[selectedClientIndex]?.routing_no
+              : ""
+          }
         />
 
+        <br />
+        <label>Percentage</label>
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"
@@ -381,7 +413,6 @@ export default function AddInvoiceForm() {
         />
 
         <br />
-
         <label>Terms & Conditions</label>
         <textarea
           name="t_and_c"
