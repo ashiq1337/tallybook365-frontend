@@ -101,10 +101,10 @@ export default function AddClientsForm() {
           name="client_representative2_no"
           onChange={handleChange}
         />
-        <br />
+        {/*  <br />
         <label>Bank Account Information</label>
 
-        {/* <label className={Styles.inputLabel}>Bank Account</label>
+        <label className={Styles.inputLabel}>Bank Account</label>
         <input
           type="text"
           placeholder="Enter Bank Account"

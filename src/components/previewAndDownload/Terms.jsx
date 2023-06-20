@@ -2,6 +2,11 @@ import React from "react";
 import classes from "./Terms.module.scss";
 
 export default function Terms({ terms }) {
+  
+  const displayValueWithLineBreaks = () => {
+    return { __html: terms.replace(/\n/g, '<br>') };
+  };
+
   return (
     <>
       {terms ? (
@@ -19,7 +24,7 @@ export default function Terms({ terms }) {
               Limited." or process payment as ber below bank details:{" "}
             </li>
           </ol> */}
-            <p>{terms}</p>
+            <p dangerouslySetInnerHTML={displayValueWithLineBreaks()}></p>
           </div>
         </article>
       ) : (
