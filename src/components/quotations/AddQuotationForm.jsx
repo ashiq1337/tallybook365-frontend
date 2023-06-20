@@ -229,10 +229,10 @@ export default function AddQuotationForm() {
                 responseClientData?.data[e.target.value]?.client_name,
               client_address:
                 responseClientData?.data[e.target.value]?.client_address,
-              bank_account: responseClientData?.data[e.target.value]?.bank_account,
-              bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
-              swift: responseClientData?.data[e.target.value]?.swift,
-              routing_no: responseClientData?.data[e.target.value]?.routing_no,
+              // bank_account: responseClientData?.data[e.target.value]?.bank_account,
+              // bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
+              // swift: responseClientData?.data[e.target.value]?.swift,
+              // routing_no: responseClientData?.data[e.target.value]?.routing_no,
             });
           }}
           defaultValue=""
@@ -321,6 +321,19 @@ export default function AddQuotationForm() {
         {itemsAddInObject}
 
         <br />
+        {/* showing the total value  */}
+        <p>
+          Total amount:{" "}
+          {data?.grand_total ? (
+            data?.grand_total
+          ) : (
+            <small style={{ color: "gray" }}>
+              Please fill the amount section
+            </small>
+          )}
+        </p>
+
+        {/* <br />
         <label>Payment Information</label>
 
         <label className={Styles.inputLabel}>Bank Account</label>
@@ -334,7 +347,7 @@ export default function AddQuotationForm() {
               ? responseClientData?.data[selectedClientIndex]?.bank_account
               : ""
           }
-        />
+        /> 
 
         <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input
@@ -373,7 +386,7 @@ export default function AddQuotationForm() {
               ? responseClientData?.data[selectedClientIndex]?.routing_no
               : ""
           }
-        />
+        /> */}
         <br />
         <label>Percentage</label>
 

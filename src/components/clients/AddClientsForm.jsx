@@ -104,7 +104,7 @@ export default function AddClientsForm() {
         <br />
         <label>Bank Account Information</label>
 
-        <label className={Styles.inputLabel}>Bank Account</label>
+        {/* <label className={Styles.inputLabel}>Bank Account</label>
         <input
           type="text"
           placeholder="Enter Bank Account"
@@ -134,7 +134,7 @@ export default function AddClientsForm() {
           placeholder="Enter Routing No"
           name="routing_no"
           onChange={handleChange}
-        />
+        /> */}
         <p>{message}</p>
         <button type="submit">Save</button>
         <br />

@@ -321,6 +321,19 @@ export default function AddInvoiceForm() {
         {itemsAddInObject}
 
         <br />
+        {/* showing the total value  */}
+        <p>
+          Total amount:{" "}
+          {data?.grand_total ? (
+            data?.grand_total
+          ) : (
+            <small style={{ color: "gray" }}>
+              Please fill the amount section
+            </small>
+          )}
+        </p>
+
+        <br />
         <label>Advance</label>
 
         {/* <input

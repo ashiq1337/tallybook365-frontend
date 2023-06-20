@@ -84,7 +84,7 @@ export default function Preview({
               valueAddedTax={data?.vat}
               asf={data?.asf}
             />
-            <Terms />
+            <Terms terms={data?.t_and_c}/>
             <BankInfo
               accountNo={data?.bank_account}
               nameAndAddress={data?.bank_name_address}
