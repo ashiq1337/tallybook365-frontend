@@ -131,9 +131,11 @@ $Breakpoint-mobile: 480px;
     th {
       border: 1px solid #dddddd;
       padding: 8px;
-      white-space: nowrap;
+      //white-space: nowrap;
       border: none;
       text-align: center;
+      max-width: 250px;
+      
     }
 
     th {
@@ -193,6 +195,7 @@ $Breakpoint-mobile: 480px;
     margin-top: 10px;
     height: 10px;
   }
+
 }
 
 @mixin globalAllItemContainer(){
