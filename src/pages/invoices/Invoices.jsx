@@ -6,11 +6,7 @@ import AllInvoices from "../../components/invoices/AllInvoices";
 export default function Invoices() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"All Invoices"}
-        link="/invoice/addInvoice"
-        btnName={"Add invoice"}
-      />
+      <Header title={"All Invoices"} />
       <AllInvoices />
     </div>
   );

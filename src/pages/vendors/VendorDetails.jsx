@@ -6,11 +6,7 @@ import EditVendor from "../../components/vendor/EditVendor";
 export default function VendorDetails() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Edit Vendor"}
-        link="/invoice/invoices"
-        btnName={"All clients"}
-      />
+      <Header title={"Edit Vendor"} />
       <EditVendor />
     </div>
   );

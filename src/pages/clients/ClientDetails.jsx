@@ -6,11 +6,7 @@ import EditClient from "../../components/clients/EditClient";
 export default function ClientDetails() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Edit Clients"}
-        link="/invoice/invoices"
-        btnName={"All clients"}
-      />
+      <Header title={"Edit Clients"} />
       <EditClient />
     </div>
   );

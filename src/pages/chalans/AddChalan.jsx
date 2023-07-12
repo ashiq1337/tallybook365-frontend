@@ -6,11 +6,7 @@ import AddChalanForm from "../../components/chalans/AddChalanForm";
 export default function AddChalan() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Create Chalan"}
-        link="/chalan/chalans"
-        btnName={"All chalans"}
-      />
+      <Header title={"Create Chalan"} />
       <AddChalanForm />
     </div>
   );

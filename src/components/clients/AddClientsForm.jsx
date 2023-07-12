@@ -17,7 +17,7 @@ export default function AddClientsForm() {
 
   const addClientsAsync = (e) => {
     e.preventDefault();
-    console.log(data);
+    //console.log(data);
     axiosFetch({
       axiosInstance: instance,
       method: "Post",

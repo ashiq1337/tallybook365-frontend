@@ -9,7 +9,7 @@ import Login from "../components/auth/Login";
 import SignUp from "../components/auth/SignUp";
 import ErrorPage from "../components/error/ErrorPage";
 import Spinner from "../components/error/Spinner";
-import RootLayout from "../layouts/rootLayout";
+import RootLayout from "../layouts/RootLayout";
 import Landing from "../pages/Landing";
 import Clients from "../pages/clients/Clients";
 import AddClients from "../pages/clients/AddClients";

@@ -59,10 +59,6 @@ export default function AllWorkorders() {
     getWorkorders();
   }, [getData, pageNumber, pageLimit]);
 
-  useEffect(() => {
-    console.log(response?.data);
-  }, [response?.data]);
-
   function viewDetailsClickHandler(workorderId) {
     navigate(`/workorder/${workorderId}`);
   }

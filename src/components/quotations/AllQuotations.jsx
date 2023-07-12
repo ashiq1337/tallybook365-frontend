@@ -49,10 +49,6 @@ export default function AllQuotations() {
     getQuotations();
   }, [getData, pageNumber, pageLimit]);
 
-  useEffect(() => {
-    console.log(response?.data);
-  }, [response?.data]);
-
   function viewDetailsClickHandler(quotationId) {
     navigate(`/quotation/${quotationId}`);
   }

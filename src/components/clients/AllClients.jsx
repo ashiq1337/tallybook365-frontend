@@ -27,10 +27,6 @@ export default function AllClients() {
     });
   };
 
-  useEffect(() => {
-    getClients();
-  }, []);
-
   const deleteClient = (clientId) => {
     if (confirm("Do you want to delete the invoice?")) {
       axiosFetchDelete({

@@ -26,7 +26,7 @@ export default function EditClient() {
 
   const editClientsAsync = (e) => {
     e.preventDefault();
-    console.log(data);
+    //console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",

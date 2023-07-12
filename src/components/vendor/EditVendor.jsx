@@ -26,7 +26,7 @@ export default function EditVendor() {
 
   const editVendorAsync = (e) => {
     e.preventDefault();
-    console.log(data);
+    //console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",

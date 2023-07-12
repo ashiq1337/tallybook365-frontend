@@ -6,11 +6,7 @@ import AddInvoiceForm from "../../components/invoices/AddInvoiceForm";
 export default function AddInvoice() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Create Invoice"}
-        link="/invoice/invoices"
-        btnName={"All invoices"}
-      />
+      <Header title={"Create Invoice"} />
       <AddInvoiceForm />
     </div>
   );

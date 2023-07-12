@@ -6,11 +6,7 @@ import EditInvoice from "../../components/invoices/EditInvoice";
 export default function InvoiceDetails() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Edit Invoice"}
-        link="/invoice/invoices"
-        btnName={"All invoices"}
-      />
+      <Header title={"Edit Invoice"} />
       <EditInvoice />
     </div>
   );

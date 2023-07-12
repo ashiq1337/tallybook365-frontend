@@ -46,10 +46,6 @@ export default function AllChalans() {
     getChalans();
   }, [getData, pageNumber, pageLimit]);
 
-  useEffect(() => {
-    console.log(response?.data);
-  }, [response?.data]);
-
   function viewDetailsClickHandler(chalanId) {
     navigate(`/chalan/${chalanId}`);
   }

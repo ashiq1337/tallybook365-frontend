@@ -43,7 +43,7 @@ export default function AddInvoiceForm() {
   ]);
 
   function handleChange(event) {
-    console.log(data);
+    //console.log(data);
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   }
@@ -51,7 +51,7 @@ export default function AddInvoiceForm() {
   const createInvoiceAsync = (e) => {
     e.preventDefault();
 
-    console.log(data);
+    //console.log(data);
     axiosFetch({
       axiosInstance: instance,
       method: "Post",

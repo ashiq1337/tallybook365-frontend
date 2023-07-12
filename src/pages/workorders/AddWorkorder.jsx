@@ -6,11 +6,7 @@ import AddWorkorderForm from "../../components/workorders/AddWorkorderForm";
 export default function AddWorkorder() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Create Purchase order"}
-        link="/workorder/workorders"
-        btnName={"All workorders"}
-      />
+      <Header title={"Create Purchase order"} />
       <AddWorkorderForm />
     </div>
   );

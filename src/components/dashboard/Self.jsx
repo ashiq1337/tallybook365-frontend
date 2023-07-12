@@ -3,6 +3,7 @@ import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import Styles from "./Self.module.scss";
+import Avatar from "../../assets/avatar.png";
 
 export default function Self() {
   const [response, error, loading, axiosFetch, message] = useAxios();
@@ -32,7 +33,7 @@ export default function Self() {
           <div className={Styles.userInfoContainer}>
             <img
               className={Styles.dp}
-              src="https://www.contentprobd.com/assets/asif.46c65779.jpg"
+              src={Avatar}
               alt="dp"
             />
             <div className={Styles.userInfo}>

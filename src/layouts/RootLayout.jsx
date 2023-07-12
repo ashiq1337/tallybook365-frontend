@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navigation from "../components/nav/Navigation";
 import Styles from "./RootLayout.module.scss";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useToggler from "../hooks/useToggler";
 
 export default function RootLayout() {

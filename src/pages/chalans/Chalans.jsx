@@ -6,11 +6,7 @@ import AllChalans from "../../components/chalans/AllChalans";
 export default function Chalans() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"All Chalans"}
-        link="/chalan/addChalan"
-        btnName={"Add chalan"}
-      />
+      <Header title={"All Chalans"} />
       <AllChalans />
     </div>
   );

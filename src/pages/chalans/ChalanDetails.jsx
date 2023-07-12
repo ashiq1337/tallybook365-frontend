@@ -6,11 +6,7 @@ import EditChalan from "../../components/chalans/EditChalan";
 export default function ChalanDetails() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Edit Chalan"}
-        link="/chalan/chalans"
-        btnName={"All chalans"}
-      />
+      <Header title={"Edit Chalan"} />
       <EditChalan />
     </div>
   );

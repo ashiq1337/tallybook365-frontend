@@ -48,7 +48,7 @@ export default function EditQuotation() {
 
   const editQuotationAsync = (e) => {
     e.preventDefault();
-    console.log(data);
+    //console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",

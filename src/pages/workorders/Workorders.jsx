@@ -6,11 +6,7 @@ import AllWorkorders from "../../components/workorders/AllWorkorders";
 export default function Workorders() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"All Purchase Orders"}
-        link="/workorder/addWorkorder"
-        btnName={"Add workorder"}
-      />
+      <Header title={"All Purchase Orders"} />
       <AllWorkorders />
     </div>
   );

@@ -6,11 +6,7 @@ import EditQuotation from "../../components/quotations/EditQuotation";
 export default function QuotationDetails() {
   return (
     <div className={Styles.main}>
-      <Header
-        title={"Edit Quotation"}
-        link="/quotation/quotations"
-        btnName={"All quotations"}
-      />
+      <Header title={"Edit Quotation"} />
       <EditQuotation />
     </div>
   );
