@@ -4,6 +4,7 @@ import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import Styles from "./Self.module.scss";
 import Avatar from "../../assets/avatar.png";
+import CompanyLogo from "../../assets/cpro.png";
 
 export default function Self() {
   const [response, error, loading, axiosFetch, message] = useAxios();
@@ -54,7 +55,7 @@ export default function Self() {
           <div className={Styles.companyInfoContainer}>
             <img
               className={Styles.companyLogo}
-              src="https://www.contentprobd.com/assets/logoBlack.9e46d4c9.png"
+              src={CompanyLogo}
               alt="logo"
             />
             <h4>{response?.data?.mother_company}</h4>
