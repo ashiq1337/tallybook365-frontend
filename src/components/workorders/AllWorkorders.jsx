@@ -76,7 +76,8 @@ export default function AllWorkorders() {
   const tableRow = response?.data?.map((workorder, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{workorder.title}</td>
+      <td>{workorder.vendor_name}</td>
+
       <td>{workorder.vendor_address}</td>
       <td>{workorder.job_no}</td>
       <td>{workorder?.date?.slice(0, 10)}</td>
@@ -131,8 +132,8 @@ export default function AllWorkorders() {
             <tbody>
               <tr>
                 <th>Ser</th>
-                <th>Name</th>
-                <th>Address</th>
+                <th>Vendor Name</th>
+                <th>Vendor Address</th>
                 <th>Job no</th>
                 <th>Date</th>
                 <th></th>

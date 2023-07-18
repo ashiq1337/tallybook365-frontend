@@ -6,7 +6,7 @@ import EditWorkorder from "../../components/workorders/EditWorkorder";
 export default function WorkorderDetails() {
   return (
     <div className={Styles.main}>
-      <Header title={"Edit Workorders"} />
+      <Header title={"Edit Purchase Order"} />
       <EditWorkorder />
     </div>
   );

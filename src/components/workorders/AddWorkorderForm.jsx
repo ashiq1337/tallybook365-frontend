@@ -229,12 +229,12 @@ export default function AddWorkorderForm() {
                 responseVendorData?.data[e.target.value]?.vendor_name,
               vendor_address:
                 responseVendorData?.data[e.target.value]?.vendor_address,
-              bank_account:
-                responseVendorData?.data[e.target.value]?.bank_account,
-              bank_name_address:
-                responseVendorData?.data[e.target.value]?.bank_name_address,
-              swift: responseVendorData?.data[e.target.value]?.swift,
-              routing_no: responseVendorData?.data[e.target.value]?.routing_no,
+              // bank_account:
+              //   responseVendorData?.data[e.target.value]?.bank_account,
+              // bank_name_address:
+              //   responseVendorData?.data[e.target.value]?.bank_name_address,
+              // swift: responseVendorData?.data[e.target.value]?.swift,
+              // routing_no: responseVendorData?.data[e.target.value]?.routing_no,
             });
           }}
           defaultValue=""
@@ -356,7 +356,7 @@ export default function AddWorkorderForm() {
           onChange={handleChange}
         /> */}
 
-        <br />
+        {/* <br />
         <label>Bank Account Information</label>
         <label className={Styles.inputLabel}>Bank Account</label>
         <input
@@ -405,18 +405,18 @@ export default function AddWorkorderForm() {
               ? responseVendorData?.data[selectedVendorIndex]?.routing_no
               : ""
           }
-        />
+        /> */}
         <br />
         <br />
         <label>Percentage</label>
-
+{/* 
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"
           placeholder="Enter ASF Percentage"
           name="asf"
           onChange={handleChange}
-        />
+        /> */}
 
         <label className={Styles.inputLabel}>VAT Percentage</label>
         <input

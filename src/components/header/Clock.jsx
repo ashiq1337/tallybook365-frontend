@@ -15,6 +15,6 @@ export default function Clock() {
   }, []);
 
   return (
-    <small style={{color:"gray"}}>{date.toLocaleString("en-IN")}</small>
+    <small style={{color:"white"}}>{date.toLocaleString("en-IN")}</small>
   );
 }

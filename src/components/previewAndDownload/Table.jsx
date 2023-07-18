@@ -6,8 +6,8 @@ export default function Table({
   lists,
   productionCost,
   advance = 0,
-  valueAddedTax = 15,
-  asf = 10,
+  valueAddedTax = 0,
+  asf = 0,
 }) {
   const toWords = new ToWords();
 

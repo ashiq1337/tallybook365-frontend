@@ -230,12 +230,12 @@ export default function EditWorkorder() {
                   responseVendorData?.data[e.target.value]?.vendor_name,
                 vendor_address:
                   responseVendorData?.data[e.target.value]?.vendor_address,
-                  bank_account:
-                  responseVendorData?.data[e.target.value]?.bank_account,
-                bank_name_address:
-                  responseVendorData?.data[e.target.value]?.bank_name_address,
-                swift: responseVendorData?.data[e.target.value]?.swift,
-                routing_no: responseVendorData?.data[e.target.value]?.routing_no,
+                //   bank_account:
+                //   responseVendorData?.data[e.target.value]?.bank_account,
+                // bank_name_address:
+                //   responseVendorData?.data[e.target.value]?.bank_name_address,
+                // swift: responseVendorData?.data[e.target.value]?.swift,
+                // routing_no: responseVendorData?.data[e.target.value]?.routing_no,
               });
             }}
             defaultValue={data?.vendor_name}
@@ -351,7 +351,7 @@ export default function EditWorkorder() {
             value={data?.advance}
           /> */}
 
-          <br />
+          {/* <br />
 
           <label>Bank Account Information</label>
 
@@ -406,18 +406,18 @@ export default function EditWorkorder() {
                 ? responseVendorData?.data[selectedVendorIndex]?.routing_no
                 : data?.routing_no
             }
-          />
+          /> */}
           <br />
           <label>Percentage</label>
 
-          <label className={Styles.inputLabel}>ASF Percentage</label>
+          {/* <label className={Styles.inputLabel}>ASF Percentage</label>
           <input
             type="number"
             placeholder="Enter ASF Percentage"
             name="asf"
             value={data?.asf}
             onChange={handleChange}
-          />
+          /> */}
 
           <label className={Styles.inputLabel}>VAT Percentage</label>
           <input
