@@ -8,7 +8,10 @@
 
   .container {
     height: fit-content;
-    //overflow: scroll;
+
+    .aaa {
+      border: solid;
+    }
 
     .printBtn {
       cursor: pointer;
@@ -16,7 +19,7 @@
       gap: 20px;
       align-items: center;
       padding: 10px 20px;
-      background-color:  c.$Color-primary-green;
+      background-color: c.$Color-primary-green;
       color: white;
       margin-block: 20px;
       width: fit-content;
@@ -29,6 +32,10 @@
     .box {
       background-color: white;
       //display: none;
+
+      table {
+        width: 100%;
+      }
     }
   }
 }
