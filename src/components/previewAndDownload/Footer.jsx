@@ -2,7 +2,7 @@ import React from "react";
 import signature from "../../assets/signature.png";
 import classes from "./Footer.module.scss";
 
-export default function Footer({ company="" }) {
+export default function Footer({ company = "" }) {
   return (
     <div className={classes.footer}>
       <div className={classes.owner}>
@@ -19,6 +19,7 @@ export default function Footer({ company="" }) {
         <h4>Approved By:</h4>
         <p>{company}</p>
       </div> */}
+      <div className={classes.footerColor}>Hello</div>
     </div>
   );
 }

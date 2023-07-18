@@ -12,10 +12,9 @@ export default function Header() {
           <div className={classes.header2}>
             <h3>ContentPro Interactive Limited</h3>
             <div>
-              <p>House-73 , Road-02 , Block-A</p>
-              <p>Niketon, Gulshan, Dhaka - 1212.</p>
-              <p>Phone: +880 1847069232</p>
-              <p>www.contentprobd.com</p>
+              <p>Flat#B5, House#73, Road#2, Block#A</p>
+              <p>Niketon Gulshan, Dhaka 1212</p>
+              <p>Phone: 01847-069232, Website: contentprobd.com</p>
             </div>
           </div>
         </div>

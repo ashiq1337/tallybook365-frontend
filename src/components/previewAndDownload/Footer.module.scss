@@ -1,8 +1,8 @@
 .footer {
+  //display: flex;
+  //justify-content: space-between;
   width: auto;
-  display: flex;
   font-size: 15px;
-  justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
@@ -22,4 +22,8 @@
   width: 100px;
   padding-left: 0;
   padding-bottom: 0;
+}
+
+.footerColor {
+  background-color: black;
 }

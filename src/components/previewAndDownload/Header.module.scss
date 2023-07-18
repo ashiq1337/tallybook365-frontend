@@ -16,15 +16,24 @@ h3 {
 }
 
 .header2 {
-  //border: solid;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  font-size: 17px;
+  font-weight: 600;
 }
+
+// .color {
+//   background-color: black;
+//   position: relative;
+//   top: 0;
+// }
 
 p {
   padding: 0;
   margin: 0;
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .img {
