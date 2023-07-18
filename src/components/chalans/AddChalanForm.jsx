@@ -4,16 +4,22 @@ import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { MdAddCircle, MdDelete } from "react-icons/md";
-import { useParams } from "react-router-dom"; 
+import { useParams } from "react-router-dom";
 
 export default function AddChalanForm() {
-  const { quotationId} = useParams();
+  const { quotationId } = useParams();
   const [data, setData] = useState({
     mother_company: localStorage.getItem("motherCompany"), //storing the mother company from local storage
     quote_id: quotationId, //storing the quotation id from param
   });
   const [response, error, loading, axiosFetch, message] = useAxios();
-  const [responseJobNo, errorJobNo, loadingJobNo, axiosFetchJobNo, messageJobNo] = useAxios(); //for getting recent job no
+  const [
+    responseJobNo,
+    errorJobNo,
+    loadingJobNo,
+    axiosFetchJobNo,
+    messageJobNo,
+  ] = useAxios(); //for getting recent job no
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
     useAxios();
   const [
@@ -23,6 +29,15 @@ export default function AddChalanForm() {
     axiosFetchClientData,
     messageClientData,
   ] = useAxios();
+
+  const [
+    responseQuotationInfo,
+    errorQuotationInfo,
+    loadingQuotationInfo,
+    axiosFetchQuotationInfo,
+    messageQuotationInfo,
+  ] = useAxios(); //for getting quotation info
+  
   const [selectedClientIndex, setSelectedClientIndex] = useState();
 
   const [inputList, setInputList] = useState([
@@ -79,19 +94,38 @@ export default function AddChalanForm() {
     });
   };
 
-  const getJobNo=()=>{
+  const getJobNo = () => {
     axiosFetchJobNo({
       axiosInstance: instance,
       method: "Get",
       url: configuration.chalanJobNo,
-    })
-  }
+    });
+  };
+
+  const getQuotationInfo = () => {
+    axiosFetchQuotationInfo({
+      axiosInstance: instance,
+      method: "Get",
+      url: `${configuration.quotations}/${quotationId}`,
+    });
+  };
 
   useEffect(() => {
     getClientsData();
     getSelf();
     getJobNo();
+    getQuotationInfo();
   }, []);
+
+  useEffect(() => {
+    setData({
+      ...data,
+      title: responseQuotationInfo?.data?.title,
+      brand: responseQuotationInfo?.data?.brand,
+      job_type: responseQuotationInfo?.data?.job_type,
+    });
+    
+  }, [responseQuotationInfo]);
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -223,8 +257,10 @@ export default function AddChalanForm() {
                 responseClientData?.data[e.target.value]?.client_name,
               client_address:
                 responseClientData?.data[e.target.value]?.client_address,
-              bank_account: responseClientData?.data[e.target.value]?.bank_account,
-              bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
+              bank_account:
+                responseClientData?.data[e.target.value]?.bank_account,
+              bank_name_address:
+                responseClientData?.data[e.target.value]?.bank_name_address,
               swift: responseClientData?.data[e.target.value]?.swift,
               routing_no: responseClientData?.data[e.target.value]?.routing_no,
             });
@@ -279,6 +315,7 @@ export default function AddChalanForm() {
           placeholder="Enter Title"
           name="title"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.title}
         />
 
         <label className={Styles.inputLabel}>Job No</label>
@@ -297,6 +334,7 @@ export default function AddChalanForm() {
           placeholder="Enter Brand Name"
           name="brand"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.brand}
         />
 
         <label className={Styles.inputLabel}>Job Type</label>
@@ -305,6 +343,7 @@ export default function AddChalanForm() {
           placeholder="Enter Job Type"
           name="job_type"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.job_type}
         />
 
         <label className={Styles.inputLabel}>Date</label>
@@ -419,7 +458,7 @@ export default function AddChalanForm() {
         <br />
         <br />
         <label>Terms & Conditions</label>
-        
+
         <textarea
           name="t_and_c"
           cols="30"

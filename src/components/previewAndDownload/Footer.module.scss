@@ -1,29 +1,16 @@
 .footer {
-  //display: flex;
-  //justify-content: space-between;
-  width: auto;
-  font-size: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 10px;
-}
-
-.owner {
-  padding: 20px 20px;
-}
-
-.client {
-  padding-top: 120px;
-}
-
-.footer img {
-  height: 40px;
-  width: 100px;
-  padding-left: 0;
-  padding-bottom: 0;
-}
-
-.footerColor {
-  background-color: black;
+  .owner {
+    padding: 20px 20px;
+    .img {
+      height: auto;
+      width: 150px;
+    }
+  }
+  .bottom{
+    margin-top: 100px;
+    .image {
+      width: 100%;
+      height: auto;
+    }
+  }
 }

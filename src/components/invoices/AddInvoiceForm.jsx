@@ -29,6 +29,15 @@ export default function AddInvoiceForm() {
     axiosFetchClientData,
     messageClientData,
   ] = useAxios();
+
+  const [
+    responseQuotationInfo,
+    errorQuotationInfo,
+    loadingQuotationInfo,
+    axiosFetchQuotationInfo,
+    messageQuotationInfo,
+  ] = useAxios(); //for getting quotation info
+
   const [selectedClientIndex, setSelectedClientIndex] = useState();
 
   const [inputList, setInputList] = useState([
@@ -91,11 +100,31 @@ export default function AddInvoiceForm() {
       url: configuration.invoiceJobNo,
     });
   };
+
+  const getQuotationInfo = () => {
+    axiosFetchQuotationInfo({
+      axiosInstance: instance,
+      method: "Get",
+      url: `${configuration.quotations}/${quotationId}`,
+    });
+  };
+
   useEffect(() => {
     getClientsData();
     getSelf();
     getJobNo();
+    getQuotationInfo();
   }, []);
+
+  useEffect(() => {
+    setData({
+      ...data,
+      title: responseQuotationInfo?.data?.title,
+      brand: responseQuotationInfo?.data?.brand,
+      job_type: responseQuotationInfo?.data?.job_type,
+    });
+    
+  }, [responseQuotationInfo]);
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -285,6 +314,7 @@ export default function AddInvoiceForm() {
           placeholder="Enter Title"
           name="title"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.title}
         />
 
         <label className={Styles.inputLabel}>Job No</label>
@@ -303,6 +333,7 @@ export default function AddInvoiceForm() {
           placeholder="Enter Brand Name"
           name="brand"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.brand}
         />
 
         <label className={Styles.inputLabel}>Job Type</label>
@@ -311,6 +342,7 @@ export default function AddInvoiceForm() {
           placeholder="Enter Job Type"
           name="job_type"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.job_type}
         />
 
         <label className={Styles.inputLabel}>Date</label>

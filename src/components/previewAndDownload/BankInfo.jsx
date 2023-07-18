@@ -11,6 +11,7 @@ export default function BankInfo({
     <>
       {accountNo ? (
         <div className={classes.bankInfo}>
+          <h4>Bank Account Information:</h4>
           <table className={classes.bankInfoTable}>
             <tr className={classes.bankInfoTable}>
               <th className={classes.bankInfoTable1}>Bank Account No</th>
@@ -36,11 +37,6 @@ export default function BankInfo({
               <th className={classes.bankInfoTable}>{routing}</th>
             </tr>
           </table>
-          {/* <p>Bank Account No : 3102923941001</p>
-        <p>Bank Name and Address : The city Bank Limited</p>
-        <p>Banani Branch, Dhaka 1212, Bangladesh</p>
-        <p>Swift Code : CIBLBDDH</p>
-        <p>Routing Number : 225260438 </p> */}
         </div>
       ) : (
         ""

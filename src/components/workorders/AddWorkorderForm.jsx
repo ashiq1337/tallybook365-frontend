@@ -29,6 +29,15 @@ export default function AddWorkorderForm() {
     axiosFetchVendorData,
     messageVendorData,
   ] = useAxios();
+
+  const [
+    responseQuotationInfo,
+    errorQuotationInfo,
+    loadingQuotationInfo,
+    axiosFetchQuotationInfo,
+    messageQuotationInfo,
+  ] = useAxios(); //for getting quotation info
+
   const [selectedVendorIndex, setSelectedVendorIndex] = useState();
 
   const [inputList, setInputList] = useState([
@@ -93,11 +102,30 @@ export default function AddWorkorderForm() {
     });
   };
 
+  const getQuotationInfo = () => {
+    axiosFetchQuotationInfo({
+      axiosInstance: instance,
+      method: "Get",
+      url: `${configuration.quotations}/${quotationId}`,
+    });
+  };
+
   useEffect(() => {
     getVendorsData();
     getSelf();
     getJobNo();
+    getQuotationInfo();
   }, []);
+
+  useEffect(() => {
+    setData({
+      ...data,
+      title: responseQuotationInfo?.data?.title,
+      brand: responseQuotationInfo?.data?.brand,
+      job_type: responseQuotationInfo?.data?.job_type,
+    });
+    
+  }, [responseQuotationInfo]);
 
   // handle input change
   const handleInputChange = (e, index) => {
@@ -287,6 +315,7 @@ export default function AddWorkorderForm() {
           placeholder="Enter Title"
           name="title"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.title}
         />
 
         <label className={Styles.inputLabel}>Job No</label>
@@ -305,6 +334,7 @@ export default function AddWorkorderForm() {
           placeholder="Enter Brand Name"
           name="brand"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.brand}
         />
 
         <label className={Styles.inputLabel}>Job Type</label>
@@ -313,6 +343,7 @@ export default function AddWorkorderForm() {
           placeholder="Enter Job Type"
           name="job_type"
           onChange={handleChange}
+          value={responseQuotationInfo?.data?.job_type}
         />
 
         <label className={Styles.inputLabel}>Date</label>
