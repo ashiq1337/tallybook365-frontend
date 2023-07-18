@@ -50,39 +50,55 @@ export default function Table({
               <td className={classes.itemRight}>{list?.totalPrice}</td>
             </tr>
           ))}
-        
-        <tr className={classes.itemRight}>
-          <td colSpan={6}><b>Total Production Cost</b> </td>
-          <td><b>{(Math.round(productionCost * 100) / 100).toFixed(2)}</b></td>
-        </tr>
-        <tr className={classes.itemRight}>
-          <td colSpan={6}>Agency Management Fees {asf}%</td>
-          <td>{(Math.round(agencyFees * 100) / 100).toFixed(2)}</td>
-        </tr>
-        <tr className={classes.itemRight}>
-          <td colSpan={6}><b>Sub Total</b></td>
-          <td><b>{(Math.round(subTotal * 100) / 100).toFixed(2)}</b></td>
-        </tr>
-        <tr className={classes.itemRight}>
-          <td colSpan={6}>VAT {valueAddedTax} %</td>
-          <td>{(Math.round(vat * 100) / 100).toFixed(2)}</td>
-        </tr>
-        <tr className={classes.itemRight}>
-          <td colSpan={6}><b>Grand Total Amount</b></td>
-          <td><b>{Math.round(gTotal).toFixed(2)}</b></td>
-        </tr>
-        {advance ? (
+
           <tr className={classes.itemRight}>
-            <td colSpan={6}><b>Advance Payment</b></td>
-            <td><b>{(Math.round(advance * 100) / 100).toFixed(2)}</b></td>
+            <td colSpan={6}>
+              <b>Total Production Cost</b>{" "}
+            </td>
+            <td>
+              <b>{(Math.round(productionCost * 100) / 100).toFixed(2)}</b>
+            </td>
           </tr>
-        ) : null}
-        {due ? (
           <tr className={classes.itemRight}>
-            <td colSpan={6}>Due / Total Payable Amount</td>
-            <td>{Math.round(due).toFixed(2)}</td>
+            <td colSpan={6}>Agency Management Fees {asf}%</td>
+            <td>{(Math.round(agencyFees * 100) / 100).toFixed(2)}</td>
           </tr>
-        ) : null}
+          <tr className={classes.itemRight}>
+            <td colSpan={6}>
+              <b>Sub Total</b>
+            </td>
+            <td>
+              <b>{(Math.round(subTotal * 100) / 100).toFixed(2)}</b>
+            </td>
+          </tr>
+          <tr className={classes.itemRight}>
+            <td colSpan={6}>VAT {valueAddedTax} %</td>
+            <td>{(Math.round(vat * 100) / 100).toFixed(2)}</td>
+          </tr>
+          <tr className={classes.itemRight}>
+            <td colSpan={6}>
+              <b>Grand Total Amount</b>
+            </td>
+            <td>
+              <b>{Math.round(gTotal).toFixed(2)}</b>
+            </td>
+          </tr>
+          {advance ? (
+            <tr className={classes.itemRight}>
+              <td colSpan={6}>
+                <b>Advance Payment</b>
+              </td>
+              <td>
+                <b>{(Math.round(advance * 100) / 100).toFixed(2)}</b>
+              </td>
+            </tr>
+          ) : null}
+          {due ? (
+            <tr className={classes.itemRight}>
+              <td colSpan={6}>Due / Total Payable Amount</td>
+              <td>{Math.round(due).toFixed(2)}</td>
+            </tr>
+          ) : null}
         </tbody>
       </table>
       <div>
