@@ -31,7 +31,6 @@ export default function ClientDetails({
             <p className={classes.cell}>
               Job Type: {jobType} 
             </p>
-            <p className={classes.cell}>Job No: {jobNumber}</p>
           </div>
         </div>
       </section>

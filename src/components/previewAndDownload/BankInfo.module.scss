@@ -2,30 +2,31 @@
   width: auto;
   padding-top: 2px;
   padding-bottom: 10px;
-  padding-left: 20px;
+  padding-left: 10px;
   padding-right: 10px;
-}
 
-.bankInfoTable {
-  width: 55%;
-  border: none;
-  text-align: left;
-  font-weight: normal;
-  vertical-align: top;
-}
+  .bankInfoTable {
+    //width: 55%;
+    border: none;
+    text-align: left;
+    font-weight: normal;
+    vertical-align: top;
+  }
 
-.bankInfoTable1 {
-  width: 40%;
-  border: none;
-  text-align: left;
-  font-weight: normal;
-  vertical-align: top;
-}
+  .bankInfoTable1 {
+    width: 180px;
+    border: none;
+    text-align: left;
+    font-weight: normal;
+    vertical-align: top;
+  }
 
-.bankInfoTable2 {
-  width: 5%;
-  border: none;
-  text-align: center;
-  font-weight: normal;
-  vertical-align: top;
+  .bankInfoTable2 {
+    //width: 5%;
+    border: none;
+    text-align: center;
+    font-weight: normal;
+    vertical-align: top;
+  }
+
 }

@@ -75,12 +75,12 @@ export default function Preview({
 
   .printPageFooter{
     position: fixed;
+    height: 22px;
     bottom: 0;
   }
 
   .printPageMain{
    margin: 0 1cm 0 1cm;
-   //border: solid;
    font-size: 12px;
   }
 
@@ -93,7 +93,7 @@ export default function Preview({
     bottom: 0;
   }
 
-  table{
+  .printTable{
     width: 100%;
   }
 `;
@@ -107,7 +107,7 @@ export default function Preview({
             <div className="printPageHeader">
               <Header />
             </div>
-            <table>
+            <table className="printTable">
               <thead>
                 <tr>
                   <td>
