@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import ReactToPrint from "react-to-print";
 import ClientDetails from "./ClientDetails";
 import Footer from "./Footer";
@@ -47,8 +47,6 @@ export default function Preview({
     size: 210mm 297mm;
     //size: A4;
     margin: 0;
-    
-    
   }
 
   @media all {
@@ -63,6 +61,7 @@ export default function Preview({
       margin-top: 1rem;
       display: block;
     }
+
     body {
       -webkit-print-color-adjust: exact; 
       background-color: white !important;
@@ -71,29 +70,32 @@ export default function Preview({
 
   .printPageHeader{
     position: fixed;
-    top:0;
+    top: 0;
   }
 
   .printPageFooter{
     position: fixed;
-    bottom:0;
+    bottom: 0;
   }
 
   .printPageMain{
    margin: 0 1cm 0 1cm;
    //border: solid;
-   
+   font-size: 12px;
   }
+
   .header-space{
     height: 200px;
   }
+
   .footer-space{
     height: 40px;
+    bottom: 0;
   }
+
   table{
     width: 100%;
   }
-  
 `;
 
   return (
@@ -101,7 +103,7 @@ export default function Preview({
       <div className={Styles.container}>
         {/* Invoice Preview */}
         <div className={Styles.box}>
-          <div ref={componentRef} >
+          <div ref={componentRef}>
             <div className="printPageHeader">
               <Header />
             </div>
@@ -118,32 +120,32 @@ export default function Preview({
                   <td>
                     <div className="printPageMain">
                       <div className={Styles.contentMain}>
-                      <ClientDetails
-                        docType={title}
-                        title={data?.title}
-                        company={data?.client_name}
-                        address={data?.client_address}
-                        invoiceDate={data?.date?.slice(0, 10)}
-                        jobNumber={data?.job_no}
-                        brand={data?.brand}
-                        jobType={data?.job_type}
-                      />
+                        <ClientDetails
+                          docType={title}
+                          title={data?.title}
+                          company={data?.client_name}
+                          address={data?.client_address}
+                          invoiceDate={data?.date?.slice(0, 10)}
+                          jobNumber={data?.job_no}
+                          brand={data?.brand}
+                          jobType={data?.job_type}
+                        />
 
-                      <Table
-                        productionCost={data?.grand_total}
-                        lists={data.items}
-                        advance={data?.advance}
-                        valueAddedTax={data?.vat}
-                        asf={data?.asf}
-                      />
-                      <Terms terms={data?.t_and_c} />
-                      <BankInfo
-                        accountNo={data?.bank_account}
-                        nameAndAddress={data?.bank_name_address}
-                        swift={data?.swift}
-                        routing={data?.routing_no}
-                      />
-                      <SignedBy />
+                        <Table
+                          productionCost={data?.grand_total}
+                          lists={data.items}
+                          advance={data?.advance}
+                          valueAddedTax={data?.vat}
+                          asf={data?.asf}
+                        />
+                        <Terms terms={data?.t_and_c} />
+                        <BankInfo
+                          accountNo={data?.bank_account}
+                          nameAndAddress={data?.bank_name_address}
+                          swift={data?.swift}
+                          routing={data?.routing_no}
+                        />
+                        <SignedBy />
                       </div>
                     </div>
                   </td>

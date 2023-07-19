@@ -1,5 +1,5 @@
 import React from "react";
-import signature from "../../assets/signature.png";
+//import signature from "../../assets/signature.png";
 import classes from "./Footer.module.scss";
 import logo from "../../assets/LetterHeadFooter.png";
 

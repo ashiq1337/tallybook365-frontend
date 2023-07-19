@@ -22,7 +22,7 @@ const useAxios = () => {
         ...requestConfig,
         signal: ctrl.signal,
       });
-      console.log(res.data);
+      // console.log(res.data);
       setResponse(res); //storing response in state
       setMessage(res?.data?.msg); //storing message in state
       customMessage = res?.data?.msg ? res?.data?.msg : "Success"; //if there is msg it will be toasted

@@ -1,7 +1,6 @@
 @use "../../global/colors" as c;
 
 .main {
-
   height: 100vh;
   padding: 20px;
   //overflow: scroll;
@@ -35,6 +34,10 @@
 
       table {
         width: 100%;
+      }
+
+      .contentMain {
+        font-size: 14px;
       }
     }
   }

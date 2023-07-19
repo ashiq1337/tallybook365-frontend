@@ -72,7 +72,7 @@ export default function Table({
             </td>
           </tr>
           <tr className={classes.itemRight}>
-            <td colSpan={6}>VAT {valueAddedTax} %</td>
+            <td colSpan={6}>VAT {valueAddedTax}%</td>
             <td>{(Math.round(vat * 100) / 100).toFixed(2)}</td>
           </tr>
           <tr className={classes.itemRight}>
