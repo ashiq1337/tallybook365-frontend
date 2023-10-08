@@ -341,6 +341,18 @@ export default function EditInvoice() {
             value={data?.due}
           /> */}
 
+          <p>
+            Total Advance Amount:{" "}
+            {data?.advance ? (
+              data?.advance
+            ) : (
+              0
+              // <small style={{ color: "gray" }}>
+              //   Please fill the advance amount section
+              // </small>
+            )}
+          </p>
+
           <label className={Styles.inputLabel}>Advance Amount</label>
           <input
             type="number"
@@ -348,6 +360,38 @@ export default function EditInvoice() {
             name="advance"
             onChange={handleChange}
             value={data?.advance}
+          />
+
+          <label className={Styles.inputLabel}>Advance Amount 1</label>
+          <input
+            type="number"
+            placeholder="Enter Advance Amount"
+            name="advance1"
+            onChange={handleChange}
+          />
+
+          <label className={Styles.inputLabel}>Advance Amount 2</label>
+          <input
+            type="number"
+            placeholder="Enter Advance Amount"
+            name="advance2"
+            onChange={handleChange}
+          />
+
+          <label className={Styles.inputLabel}>Advance Amount 3</label>
+          <input
+            type="number"
+            placeholder="Enter Advance Amount"
+            name="advance3"
+            onChange={handleChange}
+          />
+
+          <label className={Styles.inputLabel}>Advance Amount 4</label>
+          <input
+            type="number4"
+            placeholder="Enter Advance Amount"
+            name="advance4"
+            onChange={handleChange}
           />
 
           <br />

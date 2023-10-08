@@ -153,7 +153,7 @@ export default function Table({
       </div>
       <br />
       <p>
-        <b>In word:</b> BDT {toWords.convert(Math.round(gTotal).toFixed(2))}{" "}
+        <b>In word:</b> BDT {toWords.convert(Math.round(due).toFixed(2))}{" "}
         only.
       </p>
     </div>

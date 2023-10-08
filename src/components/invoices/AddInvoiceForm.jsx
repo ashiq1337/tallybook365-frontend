@@ -51,8 +51,19 @@ export default function AddInvoiceForm() {
     },
   ]);
 
+  // TODO:
+  const [inputAdvance, setInputAdvance] = useState([
+    {
+      advance1: "",
+      advance2: "",
+      advance3: "",
+      advance4: "",
+      advance: "",
+    },
+  ]);
+
   function handleChange(event) {
-    //console.log(data);
+    // console.log(data);
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   }
@@ -68,6 +79,17 @@ export default function AddInvoiceForm() {
       requestConfig: data,
     });
   };
+
+  // TODO:
+  // useEffect(() => {
+  //   // calculating total from items
+  //   var sum = 0;
+  //   inputAdvance.map((input, i) => {
+  //     sum = sum + parseInt(input.advance);
+  //   });
+  //   //setting the grand total in data object and the items array in data object
+  //   setData({ ...data, advance: sum, items: inputAdvance });
+  // }, [inputAdvance]);
 
   useEffect(() => {
     // calculating total from items
@@ -143,6 +165,28 @@ export default function AddInvoiceForm() {
 
     //updating input list
     setInputList(list);
+  };
+
+  // TODO:
+  // handle advance input change
+  const handleInputAdvanceChange = (event, index) => {
+    const { name, value } = event.target;
+    const list = [...inputAdvance];
+    list[index][name] = value;
+
+    //summation of total advance in a single row
+    let advanceSum =
+      (inputAdvance[index]?.advance1 ? inputAdvance[index]?.advance1 : 0) +
+      (inputAdvance[index]?.advance2 ? inputAdvance[index]?.advance2 : 0) +
+      (inputAdvance[index]?.advance3 ? inputAdvance[index]?.advance3 : 0) +
+      (inputAdvance[index]?.advance4 ? inputAdvance[index]?.advance4 : 0);
+
+      console.log(advanceSum)
+    //saving total advance in list
+    list[index]["advance"] = advanceSum;
+    
+    //updating input list
+    setInputAdvance(list);
   };
 
   // handle click event of the Remove button
@@ -355,7 +399,7 @@ export default function AddInvoiceForm() {
         <br />
         {/* showing the total value  */}
         <p>
-          Total amount:{" "}
+          Total Amount:{" "}
           {data?.grand_total ? (
             data?.grand_total
           ) : (
@@ -375,12 +419,56 @@ export default function AddInvoiceForm() {
           onChange={handleChange}
         /> */}
 
-        <label className={Styles.inputLabel}>Advance Amount</label>
+        <p>
+          Total Advance Amount:{" "}
+          {data?.advance ? (
+            data?.advance
+          ) : (
+            0
+            // <small style={{ color: "gray" }}>
+            //   Please fill the advance amount section
+            // </small>
+          )}
+        </p>
+
+        <label className={Styles.inputLabel}>Total Advance Amount</label>
         <input
           type="number"
           placeholder="Enter Advance Amount"
           name="advance"
           onChange={handleChange}
+        />
+
+        <label className={Styles.inputLabel}>Advance Amount 1</label>
+        <input
+          type="number"
+          placeholder="Enter Advance Amount"
+          name="advance1"
+          onChange={handleInputAdvanceChange}
+        />
+
+        <label className={Styles.inputLabel}>Advance Amount 2</label>
+        <input
+          type="number"
+          placeholder="Enter Advance Amount"
+          name="advance2"
+          onChange={handleInputAdvanceChange}
+        />
+
+        <label className={Styles.inputLabel}>Advance Amount 3</label>
+        <input
+          type="number"
+          placeholder="Enter Advance Amount"
+          name="advance3"
+          onChange={handleInputAdvanceChange}
+        />
+
+        <label className={Styles.inputLabel}>Advance Amount 4</label>
+        <input
+          type="number4"
+          placeholder="Enter Advance Amount"
+          name="advance4"
+          onChange={handleInputAdvanceChange}
         />
 
         <br />
