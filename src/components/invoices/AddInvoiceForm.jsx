@@ -51,17 +51,6 @@ export default function AddInvoiceForm() {
     },
   ]);
 
-  // TODO:
-  const [inputAdvance, setInputAdvance] = useState([
-    {
-      advance1: "",
-      advance2: "",
-      advance3: "",
-      advance4: "",
-      advance: "",
-    },
-  ]);
-
   function handleChange(event) {
     // console.log(data);
     const { name, value } = event.target;
@@ -80,16 +69,17 @@ export default function AddInvoiceForm() {
     });
   };
 
-  // TODO:
-  // useEffect(() => {
-  //   // calculating total from items
-  //   var sum = 0;
-  //   inputAdvance.map((input, i) => {
-  //     sum = sum + parseInt(input.advance);
-  //   });
-  //   //setting the grand total in data object and the items array in data object
-  //   setData({ ...data, advance: sum, items: inputAdvance });
-  // }, [inputAdvance]);
+  useEffect(() => {
+    let sum;
+    // calculating total advance from data
+    sum =
+      Number(data?.advance1 || 0) +
+      Number(data?.advance2 || 0) +
+      Number(data?.advance3 || 0) +
+      Number(data?.advance4 || 0);
+
+    setData({ ...data, advance: sum });
+  }, [data]);
 
   useEffect(() => {
     // calculating total from items
@@ -145,7 +135,6 @@ export default function AddInvoiceForm() {
       brand: responseQuotationInfo?.data?.brand,
       job_type: responseQuotationInfo?.data?.job_type,
     });
-    
   }, [responseQuotationInfo]);
 
   // handle input change
@@ -165,28 +154,6 @@ export default function AddInvoiceForm() {
 
     //updating input list
     setInputList(list);
-  };
-
-  // TODO:
-  // handle advance input change
-  const handleInputAdvanceChange = (event, index) => {
-    const { name, value } = event.target;
-    const list = [...inputAdvance];
-    list[index][name] = value;
-
-    //summation of total advance in a single row
-    let advanceSum =
-      (inputAdvance[index]?.advance1 ? inputAdvance[index]?.advance1 : 0) +
-      (inputAdvance[index]?.advance2 ? inputAdvance[index]?.advance2 : 0) +
-      (inputAdvance[index]?.advance3 ? inputAdvance[index]?.advance3 : 0) +
-      (inputAdvance[index]?.advance4 ? inputAdvance[index]?.advance4 : 0);
-
-      console.log(advanceSum)
-    //saving total advance in list
-    list[index]["advance"] = advanceSum;
-    
-    //updating input list
-    setInputAdvance(list);
   };
 
   // handle click event of the Remove button
@@ -275,19 +242,7 @@ export default function AddInvoiceForm() {
   return (
     <div className={Styles.main}>
       <form onSubmit={createInvoiceAsync} id="addInvoiceForm">
-        {/* <label className={Styles.inputLabel}>User ID</label>
-        <input
-          type="text"
-          placeholder="Enter User id"
-          name="user_id"
-          onChange={handleChange}
-          value={responseSelf ? responseSelf?.data?.user_id : ""}
-          readOnly
-        />
-
-        <br /> */}
         <label>Client Information</label>
-
         <label className={Styles.inputLabel}>Client's Name</label>
         <select
           name="client_name"
@@ -302,8 +257,10 @@ export default function AddInvoiceForm() {
                 responseClientData?.data[e.target.value]?.client_name,
               client_address:
                 responseClientData?.data[e.target.value]?.client_address,
-              bank_account: responseClientData?.data[e.target.value]?.bank_account,
-              bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
+              bank_account:
+                responseClientData?.data[e.target.value]?.bank_account,
+              bank_name_address:
+                responseClientData?.data[e.target.value]?.bank_name_address,
               swift: responseClientData?.data[e.target.value]?.swift,
               routing_no: responseClientData?.data[e.target.value]?.routing_no,
             });
@@ -320,20 +277,6 @@ export default function AddInvoiceForm() {
             </option>
           ))}
         </select>
-
-        {/* <label className={Styles.inputLabel}>Client's Id</label>
-        <input
-          type="text"
-          placeholder="Enter Client's ID"
-          name="client_id"
-          readOnly
-          onChange={handleChange}
-          value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?._id
-              : ""
-          }
-        /> */}
 
         <label className={Styles.inputLabel}>Client's Address</label>
         <input
@@ -412,63 +355,47 @@ export default function AddInvoiceForm() {
         <br />
         <label>Advance</label>
 
-        {/* <input
-          type="text"
-          placeholder="Enter due amount"
-          name="due"
-          onChange={handleChange}
-        /> */}
-
         <p>
-          Total Advance Amount:{" "}
+          Total Advance Amount BDT:{" "}
           {data?.advance ? (
             data?.advance
           ) : (
-            0
-            // <small style={{ color: "gray" }}>
-            //   Please fill the advance amount section
-            // </small>
+            <small style={{ color: "gray" }}>
+              Please fill the advance amount section
+            </small>
           )}
         </p>
-
-        <label className={Styles.inputLabel}>Total Advance Amount</label>
-        <input
-          type="number"
-          placeholder="Enter Advance Amount"
-          name="advance"
-          onChange={handleChange}
-        />
 
         <label className={Styles.inputLabel}>Advance Amount 1</label>
         <input
           type="number"
-          placeholder="Enter Advance Amount"
+          placeholder="Enter First Advance Amount"
           name="advance1"
-          onChange={handleInputAdvanceChange}
+          onChange={handleChange}
         />
 
         <label className={Styles.inputLabel}>Advance Amount 2</label>
         <input
           type="number"
-          placeholder="Enter Advance Amount"
+          placeholder="Enter Second Advance Amount"
           name="advance2"
-          onChange={handleInputAdvanceChange}
+          onChange={handleChange}
         />
 
         <label className={Styles.inputLabel}>Advance Amount 3</label>
         <input
           type="number"
-          placeholder="Enter Advance Amount"
+          placeholder="Enter Third Advance Amount"
           name="advance3"
-          onChange={handleInputAdvanceChange}
+          onChange={handleChange}
         />
 
         <label className={Styles.inputLabel}>Advance Amount 4</label>
         <input
-          type="number4"
-          placeholder="Enter Advance Amount"
+          type="number"
+          placeholder="Enter Fourth Advance Amount"
           name="advance4"
-          onChange={handleInputAdvanceChange}
+          onChange={handleChange}
         />
 
         <br />
