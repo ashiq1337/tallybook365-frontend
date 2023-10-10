@@ -89,6 +89,18 @@ export default function EditInvoice() {
     }
   }, [response]);
 
+  // useEffect(() => {
+  //   let sum;
+  //   // calculating total advance from data
+  //   sum =
+  //     Number(data?.advance1 || 0) +
+  //     Number(data?.advance2 || 0) +
+  //     Number(data?.advance3 || 0) +
+  //     Number(data?.advance4 || 0);
+
+  //   setData({ ...data, advance: sum });
+  // }, [data]);
+
   useEffect(() => {
     // calculating total from items
     var sum = 0;
@@ -333,47 +345,41 @@ export default function EditInvoice() {
           <br />
           <label>Advance</label>
 
-          {/* <input
-            type="number"
-            placeholder="Enter due amount"
-            name="due"
-            onChange={handleChange}
-            value={data?.due}
-          /> */}
-
           <p>
-            Total Advance Amount:{" "}
+            Total Advance Amount BDT:{" "}
             {data?.advance ? (
               data?.advance
             ) : (
-              0
-              // <small style={{ color: "gray" }}>
-              //   Please fill the advance amount section
-              // </small>
+              <small style={{ color: "gray" }}>
+                Please fill the advance amount section
+              </small>
             )}
           </p>
 
-          <label className={Styles.inputLabel}>Advance Amount</label>
+          {/* <label className={Styles.inputLabel}>Advance Amount</label>
           <input
             type="number"
             placeholder="Enter Advance Amount"
             name="advance"
             onChange={handleChange}
             value={data?.advance}
-          />
+          /> */}
 
           <label className={Styles.inputLabel}>Advance Amount 1</label>
           <input
             type="number"
-            placeholder="Enter Advance Amount"
+            placeholder="Enter First Advance Amount"
             name="advance1"
             onChange={handleChange}
+            value={data?.advance}
           />
+
+          {console.log(data)}
 
           <label className={Styles.inputLabel}>Advance Amount 2</label>
           <input
             type="number"
-            placeholder="Enter Advance Amount"
+            placeholder="Enter Second Advance Amount"
             name="advance2"
             onChange={handleChange}
           />
@@ -381,15 +387,15 @@ export default function EditInvoice() {
           <label className={Styles.inputLabel}>Advance Amount 3</label>
           <input
             type="number"
-            placeholder="Enter Advance Amount"
+            placeholder="Enter Third Advance Amount"
             name="advance3"
             onChange={handleChange}
           />
 
           <label className={Styles.inputLabel}>Advance Amount 4</label>
           <input
-            type="number4"
-            placeholder="Enter Advance Amount"
+            type="number"
+            placeholder="Enter Fourth Advance Amount"
             name="advance4"
             onChange={handleChange}
           />
