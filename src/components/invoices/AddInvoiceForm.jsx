@@ -78,8 +78,8 @@ export default function AddInvoiceForm() {
       Number(data?.advance3 || 0) +
       Number(data?.advance4 || 0);
 
-    setData({ ...data, advance: sum });
-  }, [data]);
+    setData({ ...data, total_advance: sum });
+  }, [data.advance1, data.advance2, data.advance3, data.advance4]);
 
   useEffect(() => {
     // calculating total from items
@@ -357,8 +357,8 @@ export default function AddInvoiceForm() {
 
         <p>
           Total Advance Amount BDT:{" "}
-          {data?.advance ? (
-            data?.advance
+          {data?.total_advance ? (
+            data?.total_advance
           ) : (
             <small style={{ color: "gray" }}>
               Please fill the advance amount section

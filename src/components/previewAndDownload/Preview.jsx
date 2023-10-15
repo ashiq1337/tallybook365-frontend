@@ -24,7 +24,7 @@ export default function Preview({
     swift: "",
     t_and_c: "",
     title: "",
-    advance: 0,
+    total_advance: 0,
     jobType: "",
     productionCost: "",
     grand_total: "",
@@ -63,7 +63,7 @@ export default function Preview({
     }
 
     body {
-      -webkit-print-color-adjust: exact; 
+      -webkit-print-color-adjust: exact;
       background-color: white !important;
     }
   }
@@ -134,7 +134,7 @@ export default function Preview({
                         <Table
                           productionCost={data?.grand_total}
                           lists={data.items}
-                          advance={data?.advance}
+                          advance={data?.total_advance}
                           valueAddedTax={data?.vat}
                           asf={data?.asf}
                         />
