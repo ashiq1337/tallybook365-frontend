@@ -218,19 +218,7 @@ export default function EditInvoice() {
       {loading && <p>Loading</p>}
       {response && !loading && !error && (
         <form onSubmit={editInvoiceAsync}>
-          {/* <label className={Styles.inputLabel}>User ID</label>
-          <input
-            type="text"
-            placeholder="Enter User ID"
-            name="user_id"
-            onChange={handleChange}
-            value={data?.user_id}
-            readOnly
-          />
-
-          <br /> */}
           <label>Client Information</label>
-
           <label className={Styles.inputLabel}>Client's Name</label>
           <select
             name="client_name"
@@ -356,15 +344,6 @@ export default function EditInvoice() {
             )}
           </p>
 
-          {/* <label className={Styles.inputLabel}>Advance Amount</label>
-          <input
-            type="number"
-            placeholder="Enter Advance Amount"
-            name="advance"
-            onChange={handleChange}
-            value={data?.advance}
-          /> */}
-
           <label className={Styles.inputLabel}>Advance Amount 1</label>
           <input
             type="number"
@@ -373,8 +352,6 @@ export default function EditInvoice() {
             onChange={handleChange}
             value={data?.advance1}
           />
-
-          {console.log(data)}
 
           <label className={Styles.inputLabel}>Advance Amount 2</label>
           <input
