@@ -1,5 +1,5 @@
 import Styles from "./SignUp.module.scss";
-import Logo from "../../assets/logo.png";
+// import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 
 export default function SignUp() {
@@ -13,7 +13,7 @@ export default function SignUp() {
         <br />
         <form>
           <input type="text" placeholder="Enter your name" />
-          <input type="email" placeholder="Enter your email" />
+          <input type="text" placeholder="Enter your phone number" />
           <input type="password" placeholder="Enter your password" />
           <input type="password" placeholder="Confirm your password" />
           <button>SignUp</button>
