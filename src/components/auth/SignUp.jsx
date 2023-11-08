@@ -13,7 +13,11 @@ export default function SignUp() {
         <br />
         <form>
           <input type="text" placeholder="Enter your name" />
-          <input type="text" placeholder="Enter your phone number" />
+          <input
+            type="text"
+            placeholder="Enter your phone number"
+            pattern="^01[3-9]\d{8}$"
+          />
           <input type="password" placeholder="Enter your password" />
           <input type="password" placeholder="Confirm your password" />
           <button>SignUp</button>

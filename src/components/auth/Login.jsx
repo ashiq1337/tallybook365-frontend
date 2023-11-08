@@ -60,6 +60,7 @@ export default function Login() {
             type="text"
             placeholder="Enter your phone number"
             name="phone"
+            pattern="^01[3-9]\d{8}$"
             onChange={handleChange}
           />
           <input
