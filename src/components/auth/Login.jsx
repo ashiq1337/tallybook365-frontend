@@ -1,6 +1,6 @@
 import Styles from "./Login.module.scss";
 import { useEffect, useLayoutEffect, useState } from "react";
-import Logo from "../../assets/logo.png";
+// import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
@@ -57,9 +57,10 @@ export default function Login() {
         <br />
         <form onSubmit={onLoginSubmitHandlerAsync}>
           <input
-            type="email"
-            placeholder="Enter your email"
-            name="email"
+            type="text"
+            placeholder="Enter your phone number"
+            name="phone"
+            pattern="^01[3-9]\d{8}$"
             onChange={handleChange}
           />
           <input
