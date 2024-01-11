@@ -9,7 +9,7 @@ import { AuthContext } from "../../context/context";
 
 export default function Self() {
   const [response, error, loading, axiosFetch, message] = useAxios();
-  const userInfo = useContext(AuthContext)
+  const {userInfo, setUserInfo} = useContext(AuthContext)
   const getSelfInfo = () => {
     axiosFetch({
       axiosInstance: instance,
@@ -17,7 +17,7 @@ export default function Self() {
       url: configuration.self,
     });
   };
-  console.log("userInfo", userInfo.userInfo)
+console.log(userInfo)
   useEffect(() => {
     getSelfInfo();
 
@@ -27,7 +27,9 @@ export default function Self() {
     if (response?.data?.mother_company && !error) {
       //storing the mother company of the user
       localStorage.setItem("motherCompany", response?.data?.mother_company);
+      setUserInfo(response?.data)
     }
+    console.log(response.data)
   }, [loading]);
 
   return (
@@ -37,7 +39,8 @@ export default function Self() {
           <div className={Styles.userInfoContainer}>
             <img
               className={Styles.dp}
-              src={userInfo.profile_image ? userInfo.profile_image : Avatar}
+              src={response?.data?.profile_image ? response?.data?.profile_image : Avatar}
+              //src="https://res.cloudinary.com/dwweqjspy/image/upload/v1704725096/tallybook365/zeeshan_ginfvz.jpg"
               alt="dp"
             />
             <div className={Styles.userInfo}>
