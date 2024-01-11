@@ -1,13 +1,15 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import Styles from "./Self.module.scss";
 import Avatar from "../../assets/avatar.png";
 import CompanyLogo from "../../assets/cpro.png";
+import { AuthContext } from "../../context/context";
 
 export default function Self() {
   const [response, error, loading, axiosFetch, message] = useAxios();
+  const userInfo = useContext(AuthContext)
   const getSelfInfo = () => {
     axiosFetch({
       axiosInstance: instance,
@@ -15,9 +17,10 @@ export default function Self() {
       url: configuration.self,
     });
   };
-
+  console.log("userInfo", userInfo.userInfo)
   useEffect(() => {
     getSelfInfo();
+
   }, []);
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function Self() {
           <div className={Styles.userInfoContainer}>
             <img
               className={Styles.dp}
-              src={Avatar}
+              src={userInfo.profile_image ? userInfo.profile_image : Avatar}
               alt="dp"
             />
             <div className={Styles.userInfo}>
