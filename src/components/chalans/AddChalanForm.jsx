@@ -37,7 +37,7 @@ export default function AddChalanForm() {
     axiosFetchQuotationInfo,
     messageQuotationInfo,
   ] = useAxios(); //for getting quotation info
-  
+
   const [selectedClientIndex, setSelectedClientIndex] = useState();
 
   const [inputList, setInputList] = useState([
@@ -59,7 +59,6 @@ export default function AddChalanForm() {
   const createChalanAsync = (e) => {
     e.preventDefault();
 
-    //console.log(data);
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
@@ -124,7 +123,7 @@ export default function AddChalanForm() {
       brand: responseQuotationInfo?.data?.brand,
       job_type: responseQuotationInfo?.data?.job_type,
     });
-    
+
   }, [responseQuotationInfo]);
 
   // handle input change
@@ -370,15 +369,15 @@ export default function AddChalanForm() {
           )}
         </p>
 
-        {/* <br /> 
-        <label>Advance</label> 
+        {/* <br />
+        <label>Advance</label>
 
         <input
           type="text"
           placeholder="Enter due amount"
           name="due"
           onChange={handleChange}
-        /> 
+        />
 
         <input
           type="number"

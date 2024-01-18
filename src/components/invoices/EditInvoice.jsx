@@ -47,8 +47,6 @@ export default function EditInvoice() {
 
   const editInvoiceAsync = (e) => {
     e.preventDefault();
-
-    //console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",

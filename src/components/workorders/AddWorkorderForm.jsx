@@ -58,8 +58,6 @@ export default function AddWorkorderForm() {
 
   const createWorkorderAsync = (e) => {
     e.preventDefault();
-
-    //console.log(data);
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
@@ -124,7 +122,7 @@ export default function AddWorkorderForm() {
       brand: responseQuotationInfo?.data?.brand,
       job_type: responseQuotationInfo?.data?.job_type,
     });
-    
+
   }, [responseQuotationInfo]);
 
   // handle input change
@@ -440,7 +438,7 @@ export default function AddWorkorderForm() {
         <br />
         <br />
         <label>Percentage</label>
-{/* 
+{/*
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input
           type="number"

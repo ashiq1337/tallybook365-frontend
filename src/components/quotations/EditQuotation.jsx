@@ -41,14 +41,12 @@ export default function EditQuotation() {
   const [getData, setGetData] = useToggler();
 
   function handleChange(event) {
-    console.log(data)
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   }
 
   const editQuotationAsync = (e) => {
     e.preventDefault();
-    //console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",
@@ -72,7 +70,7 @@ export default function EditQuotation() {
       url: configuration.clients,
     });
   };
-  
+
   useEffect(() => {
     getQuotationDetails();
     getClientsData();

@@ -86,8 +86,6 @@ export default function AllClients() {
                 <th></th>
               </tr>
               {tableRow}
-              {/* {console.log(response)}
-               */}
             </tbody>
           </table>
         </div>

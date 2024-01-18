@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/context";
 
 export default function SignedBy() {
   const userInfo = useContext(AuthContext)
-  console.log(userInfo.userInfo)
+
   return (
     <div className={classes.owner}>
       <img className={classes.img}

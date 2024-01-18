@@ -17,7 +17,7 @@ export default function Self() {
       url: configuration.self,
     });
   };
-console.log(userInfo)
+
   useEffect(() => {
     getSelfInfo();
 
@@ -29,7 +29,7 @@ console.log(userInfo)
       localStorage.setItem("motherCompany", response?.data?.mother_company);
       setUserInfo(response?.data)
     }
-    console.log(response.data)
+
   }, [loading]);
 
   return (

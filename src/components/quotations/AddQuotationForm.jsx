@@ -40,15 +40,12 @@ export default function AddQuotationForm() {
   ]);
 
   function handleChange(event) {
-    //console.log(data)
     const { name, value } = event.target;
     setData({ ...data, [name]: value });
   }
 
   const createQuotationAsync = (e) => {
     e.preventDefault();
-
-    //console.log(data);
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
@@ -347,7 +344,7 @@ export default function AddQuotationForm() {
               ? responseClientData?.data[selectedClientIndex]?.bank_account
               : ""
           }
-        /> 
+        />
 
         <label className={Styles.inputLabel}>Bank Name & Address</label>
         <input

@@ -22,7 +22,6 @@ const useAxios = () => {
         ...requestConfig,
         signal: ctrl.signal,
       });
-      // console.log(res.data);
       setResponse(res); //storing response in state
       setMessage(res?.data?.msg); //storing message in state
       customMessage = res?.data?.msg ? res?.data?.msg : "Success"; //if there is msg it will be toasted
@@ -33,7 +32,6 @@ const useAxios = () => {
         autoClose: 2000,
       }); //toasting success message
     } catch (err) {
-      //console.log(err.response);
       setMessage(err?.response?.data?.msg);
       setError(err.message);
       toast.update(customId, {
@@ -48,8 +46,6 @@ const useAxios = () => {
   };
 
   useEffect(() => {
-    //console.log("useAxios controller", controller);
-
     // useEffect cleanup function
     return () => controller && controller.abort();
   }, [controller]);

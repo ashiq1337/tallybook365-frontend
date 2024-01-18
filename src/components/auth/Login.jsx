@@ -29,7 +29,6 @@ export default function Login() {
 
   //storing token in local storage
   useLayoutEffect(() => {
-    //console.log(response?.data?.token);
     if (response?.data?.token && !error) {
       localStorage.setItem("token", response?.data?.token);
       localStorage.setItem(

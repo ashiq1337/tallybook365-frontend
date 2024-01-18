@@ -48,7 +48,6 @@ export default function EditChalan() {
   const editChalanAsync = (e) => {
     e.preventDefault();
 
-    console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",

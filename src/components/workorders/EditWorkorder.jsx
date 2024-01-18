@@ -47,8 +47,6 @@ export default function EditWorkorder() {
 
   const editWorkorderAsync = (e) => {
     e.preventDefault();
-
-    console.log(data);
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",
@@ -213,7 +211,7 @@ export default function EditWorkorder() {
             onChange={handleChange}
             value={data?.user_id}
             readOnly
-          /> 
+          />
 
           <br />*/}
           <label>Vendor Information</label>
