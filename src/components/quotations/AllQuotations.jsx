@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { configuration } from '../../configurations/configurations';
 import useAxios from '../../hooks/useAxios';
 import { instance } from '../../utilities/axiosInstance';
@@ -9,7 +9,6 @@ import useToggler from '../../hooks/useToggler';
 import { VscPreview } from 'react-icons/vsc';
 import { GrDocument } from 'react-icons/gr';
 import { AiOutlinePlus, AiOutlineDatabase } from 'react-icons/ai';
-import { ThisMonthsDataContext } from '../../context/context';
 
 export default function AllQuotations() {
 	//const currentMonth = new Date().getMonth() + 1;
@@ -28,8 +27,7 @@ export default function AllQuotations() {
 	const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
 	const [selectedMonth, setSelectedMonth] = useState("0"); //pagination month number.
 	const [selectedYear, setSelectedYear] = useState(currentYear); //pagination year limit.
-  const { thisMonthsData } = useContext(ThisMonthsDataContext);
-  console.log(thisMonthsData)
+
 	const getQuotations = () => {
 		//if request is sent with month and year then we will get specific data from that month and year
 		let urlForSpecificTask = '';

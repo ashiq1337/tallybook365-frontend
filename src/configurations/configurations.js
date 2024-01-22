@@ -23,4 +23,6 @@ export const configuration = {
   purchaseOrderJobNo: "/api/v1/purchaseorders/getpurchaseorderserialnumber",
   purchaseOrdersByQuote: "/api/v1/purchaseorders/getpurchaseordersbyquote",
   getQuotationByMonth: "/api/v1/quotes/getquotesbymonth?",
+  getThisMonthsTotalQuotationAmount: "/api/v1/companies/currentmonthquoted",
+  getThisMonthsTotalInvoiceAmount: "/api/v1/companies/currentmonthinvoiced",
 };
