@@ -6,6 +6,8 @@
 
   .topSection {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(219, 242, 253);
