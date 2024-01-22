@@ -1,6 +1,21 @@
 @use "../../global/colors" as c;
 @use "../../global/mixin" as m;
 
-.main{
+.main {
   @include m.globalAllItemContainer();
+
+  .topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(219, 242, 253);
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+
+    .monthSelect {
+      padding: 10px;
+      outline: none;
+    }
+  }
 }

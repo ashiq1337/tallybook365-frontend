@@ -20,7 +20,6 @@ export default function Self() {
 
   useEffect(() => {
     getSelfInfo();
-
   }, []);
 
   useEffect(() => {
@@ -29,7 +28,6 @@ export default function Self() {
       localStorage.setItem("motherCompany", response?.data?.mother_company);
       setUserInfo(response?.data)
     }
-
   }, [loading]);
 
   return (
@@ -40,12 +38,11 @@ export default function Self() {
             <img
               className={Styles.dp}
               src={response?.data?.profile_image ? response?.data?.profile_image : Avatar}
-              //src="https://res.cloudinary.com/dwweqjspy/image/upload/v1704725096/tallybook365/zeeshan_ginfvz.jpg"
-              alt="dp"
+              alt="profile_picture"
             />
             <div className={Styles.userInfo}>
               <h3>{response?.data?.name}</h3>
-              <p>Role: {response?.data?.role}</p>
+              <p>Role: {response?.data?.designation}</p>
               <p>Company: {response?.data?.mother_company}</p>
               <p>Email: {response?.data?.email}</p>
             </div>
