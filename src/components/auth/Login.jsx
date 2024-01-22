@@ -69,6 +69,8 @@ export default function Login() {
             onChange={handleChange}
           />
           <small className={Styles.msg}>{message}</small>
+          {error && <small className={Styles.msg}>{error}</small>}
+          {loading && <small className={Styles.msg}>loading...</small>}
           <button
             type="submit"
             disabled={loading}

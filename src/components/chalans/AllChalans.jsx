@@ -20,7 +20,7 @@ export default function AllChalans() {
     messageDelete,
   ] = useAxios();
   const [getData, setGetData] = useToggler();
-    const [pageNumber, setPageNumber] = useState(1); //pagination page number.
+  const [pageNumber, setPageNumber] = useState(1); //pagination page number.
   const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
 
   const getChalans = () => {
@@ -89,26 +89,9 @@ export default function AllChalans() {
 
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>No data found</p>}
-      {/* {(response && !loading && !error ) ? (
-        <div className={Styles.tableContainer}>
-          <table>
-            <tbody>
-              <tr>
-                <th>Ser</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Job no</th>
-                <th></th>
-                <th></th>
-                <th></th>
-              </tr>
-              {tableRow}
-            </tbody>
-          </table>
-        </div>
-      ):()} */}
-      {(response && !loading && !error ) ? (
+      {!response?.data?.length && !loading && <p>No data found</p>}
+      {loading && <p>Loading...</p>}
+      {(response?.data?.length > 0 && !loading && !error ) && (
         <div className={Styles.container}>
           <div className={Styles.tableContainer}>
             <table>
@@ -138,7 +121,7 @@ export default function AllChalans() {
             </button>
             <p className={Styles.currentPg}>Page: {pageNumber}</p>
             <button
-              disabled={!response?.data?.length}
+              disabled={!response?.data?.length }
               className={Styles.btn}
               onClick={() => {
                 setPageNumber(pageNumber + 1);
@@ -148,8 +131,6 @@ export default function AllChalans() {
             </button>
           </div>
         </div>
-      ) : (
-        <p>loading...</p>
       )}
     </div>
   );

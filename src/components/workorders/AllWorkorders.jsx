@@ -108,7 +108,8 @@ export default function AllWorkorders() {
 
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>No data found</p>}
+      {!response?.data?.length && !loading && <p>No data found</p>}
+      {loading && <p>Loading...</p>}
       {quotationId && (
         <div className={Styles.createNewBtnContainer}>
           <button
@@ -125,7 +126,7 @@ export default function AllWorkorders() {
         </div>
       )}
       <br />
-      {(response && !loading && !error) ? (
+      {(response?.data?.length > 0 && !loading && !error) && (
         <div className={Styles.container}>
         <div className={Styles.tableContainer}>
           <table>
@@ -166,7 +167,7 @@ export default function AllWorkorders() {
             </button>
           </div>
           </div>
-      ):  (<p>loading...</p>)}
+      )}
     </div>
   );
 }

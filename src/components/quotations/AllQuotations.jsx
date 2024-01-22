@@ -23,8 +23,8 @@ export default function AllQuotations() {
   const [getData, setGetData] = useToggler();
   const [pageNumber, setPageNumber] = useState(1); //pagination page number.
   const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
-  const [pageMonth, setPageMonth] = useState(1); //pagination page number.
-  const [pageYear, setPageYear] = useState(20); //pagination item limit.
+  const [pageMonth, setPageMonth] = useState(); //pagination month number.
+  const [pageYear, setPageYear] = useState(); //pagination year limit.
 
   const getQuotations = () => {
     axiosFetch({
@@ -65,7 +65,7 @@ export default function AllQuotations() {
       <td className={Styles.leftAlign}>{quote?.title}</td>
       <td>{quote?.date?.slice(0, 10)}</td>
       <td>{quote?.client_name}</td>
-      <td>{quote?.grand_total}</td>
+      <td>{quote?.grand_total.toLocaleString()}.00</td>
       <td>
         {quote?.purchaseOrder_id.length != 0 ? (
           <AiOutlineDatabase
@@ -131,8 +131,10 @@ export default function AllQuotations() {
   ));
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>No data found</p>}
-      {(response && !loading && !error ) ? (
+      hello
+      {!response?.data?.length && !loading && <p>No data found</p>}
+      {loading && <p>Loading...</p>}
+      {(response?.data?.length > 0 && !loading && !error ) && (
         <div className={Styles.container}>
           <div className={Styles.tableContainer}>
             <table>
@@ -164,9 +166,12 @@ export default function AllQuotations() {
             >
               Previous
             </button>
-            <p className={Styles.currentPg}>Page: {pageNumber}</p>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <p className={Styles.currentPg}>Page limit: {pageLimit}</p>
+              <p className={Styles.currentPg}>Page: {pageNumber}</p>
+            </div>
             <button
-              disabled={!response?.data?.length}
+              disabled={!response?.data?.length || response?.data?.length < pageLimit}
               className={Styles.btn}
               onClick={() => {
                 setPageNumber(pageNumber + 1);
@@ -176,8 +181,6 @@ export default function AllQuotations() {
             </button>
           </div>
         </div>
-      ) : (
-        <p>loading...</p>
       )}
     </div>
   );

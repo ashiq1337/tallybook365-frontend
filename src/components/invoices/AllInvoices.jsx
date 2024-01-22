@@ -62,7 +62,7 @@ export default function AllInvoices() {
       <td>{invoice.client_address}</td>
       <td>{invoice.job_no}</td>
       <td>
-        
+
         <VscPreview
           className={Styles.icon}
           onClick={() => preview(invoice?._id)}
@@ -89,8 +89,9 @@ export default function AllInvoices() {
 
   return (
     <div className={Styles.main}>
-      {!response?.data?.length && <p>no data found</p>}
-      {!loading ? (
+      {!response?.data?.length && !loading && <p>no data found</p>}
+      {loading && <p>Loading...</p>}
+      {(response?.data?.length > 0 && !loading && !error ) && (
         <div className={Styles.container}>
         <div className={Styles.tableContainer}>
           <table>
@@ -120,7 +121,7 @@ export default function AllInvoices() {
             </button>
             <p className={Styles.currentPg}>Page: {pageNumber}</p>
             <button
-              disabled={!response?.data?.length}
+              disabled={!response?.data?.length || response?.data?.length < pageLimit}
               className={Styles.btn}
               onClick={() => {
                 setPageNumber(pageNumber + 1);
@@ -130,8 +131,6 @@ export default function AllInvoices() {
             </button>
           </div>
         </div>
-      ): (
-        <p>loading...</p>
       )}
     </div>
   );

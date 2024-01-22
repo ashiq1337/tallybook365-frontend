@@ -72,8 +72,8 @@ export default function AllVendors() {
   ));
   return (
     <div className={Styles.main}>
-      {/* {!response?.data?.length && <p>no data found</p>} */}
-      {!loading ? (
+      {response?.data?.length < 1  && !loading && <p>No data found</p>}
+      {!loading && response?.data?.length >= 1 && (
         <div className={Styles.tableContainer}>
           <table>
             <tbody>
@@ -89,9 +89,8 @@ export default function AllVendors() {
             </tbody>
           </table>
         </div>
-      ) : (
-        <p>loading...</p>
       )}
+      {loading && <p>Loading ...</p>}
     </div>
   );
 }
