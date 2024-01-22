@@ -9,10 +9,10 @@ import useToggler from '../../hooks/useToggler';
 import { VscPreview } from 'react-icons/vsc';
 import { GrDocument } from 'react-icons/gr';
 import { AiOutlinePlus, AiOutlineDatabase } from 'react-icons/ai';
+import { currentMonthName, currentYear } from '../../utilities/date';
 
 export default function AllQuotations() {
-	//const currentMonth = new Date().getMonth() + 1;
-	const currentYear = new Date().getFullYear();
+
 	const navigate = useNavigate();
 	const [response, error, loading, axiosFetch, message] = useAxios();
 	const [
@@ -27,7 +27,8 @@ export default function AllQuotations() {
 	const [pageLimit, setPageLimit] = useState(20); //pagination item limit.
 	const [selectedMonth, setSelectedMonth] = useState("0"); //pagination month number.
 	const [selectedYear, setSelectedYear] = useState(currentYear); //pagination year limit.
-
+  const [responseThisMonthsQuotations, errorThisMonthsQuotations, loadingThisMonthsQuotations, axiosFetchThisMonthsQuotations, messageThisMonthsQuotations] = useAxios();
+  const [responseThisMonthsInvoices, errorThisMonthsInvoices, loadingThisMonthsInvoices, axiosFetchThisMonthsInvoices, messageThisMonthsInvoices] = useAxios();
 	const getQuotations = () => {
 		//if request is sent with month and year then we will get specific data from that month and year
 		let urlForSpecificTask = '';
@@ -42,6 +43,20 @@ export default function AllQuotations() {
 			url: urlForSpecificTask,
 		});
 	};
+  const getThisMonthsQuotations = () => {
+    axiosFetchThisMonthsQuotations({
+      axiosInstance: instance,
+      method: 'Get',
+      url: `${configuration.getThisMonthsTotalQuotationAmount}`,
+    });
+  }
+  const getThisMonthsInvoices = () => {
+    axiosFetchThisMonthsInvoices({
+      axiosInstance: instance,
+      method: 'Get',
+      url: `${configuration.getThisMonthsTotalInvoiceAmount}`,
+    });
+  }
 
 	const deleteQuotation = (quotationId) => {
 		if (confirm('Do you want to delete the quotation?')) {
@@ -54,11 +69,14 @@ export default function AllQuotations() {
 		}
 	};
 
+  useEffect(() => {
+    getThisMonthsQuotations();
+    getThisMonthsInvoices();
+  },[])
+
 	useEffect(() => {
 		getQuotations();
 	}, [getData, pageNumber, pageLimit, selectedMonth, selectedYear]);
-
-
 
 	function viewDetailsClickHandler(quotationId) {
 		navigate(`/quotation/${quotationId}`);
@@ -205,10 +223,16 @@ export default function AllQuotations() {
 		<div className={Styles.main}>
 			<div className={Styles.topSection}>
 				<div>
-					<p>This months total quotations: {thisMonthsData?.runningMonthQuoteTotal?.totalQuotedAmount}</p>
+          {loadingThisMonthsQuotations && <p>Loading...</p>}
+          {!loadingThisMonthsQuotations && !errorThisMonthsQuotations &&
+					  <p>{currentMonthName}, {currentYear} Quotation: <b>{responseThisMonthsQuotations?.data?.totalQuotedAmount}</b></p>
+          }
 				</div>
 				<div>
-					<p>This months total invoice: </p>
+          {loadingThisMonthsInvoices && <p>Loading...</p>}
+          {!loadingThisMonthsInvoices && !errorThisMonthsInvoices &&
+					  <p>{currentMonthName}, {currentYear} Invoice: <b>{responseThisMonthsInvoices?.data?.totalInvoicedAmount}</b>  </p>
+          }
 				</div>
 				<div>
 					{selectMonthBasedQuotations()}
