@@ -42,7 +42,7 @@ export default function Self() {
             />
             <div className={Styles.userInfo}>
               <h3>{response?.data?.name}</h3>
-              <p>Role: {response?.data?.designation}</p>
+              <p>Designation: {response?.data?.designation}</p>
               <p>Company: {response?.data?.mother_company}</p>
               <p>Email: {response?.data?.email}</p>
             </div>

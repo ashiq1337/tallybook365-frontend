@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "./Dashboard.module.scss";
-import Self from "./self";
+import Self from "./Self";
 import CurrentMonthTotal from "./CurrentMonthTotal";
 
 export default function Dashboard() {
