@@ -57,8 +57,8 @@ export default function CurrentMonthTotal() {
 							<p>
 								{
 									response?.data?.runningMonthQuoteTotal
-										?.currentMonth?.toLocaleString()
-								}.00
+										?.currentMonth
+								}
 							</p>
 							<small>Total quoted amount</small>
 							<h2

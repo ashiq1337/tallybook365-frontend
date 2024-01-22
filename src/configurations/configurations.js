@@ -25,4 +25,6 @@ export const configuration = {
   getQuotationByMonth: "/api/v1/quotes/getquotesbymonth?",
   getThisMonthsTotalQuotationAmount: "/api/v1/companies/currentmonthquoted",
   getThisMonthsTotalInvoiceAmount: "/api/v1/companies/currentmonthinvoiced",
+  passwordReset: "/api/v1/auth/reset-password",
+  requestOTP: "/api/v1/auth/request-otp",
 };

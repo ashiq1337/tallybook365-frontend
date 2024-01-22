@@ -31,6 +31,7 @@ import PreviewPage from "../pages/preview/PreviewPage";
 import Vendors from "../pages/vendors/Vendors";
 import AddVendors from "../pages/vendors/AddVendors";
 import VendorDetails from "../pages/vendors/VendorDetails";
+import PasswordReset from "../components/auth/PasswordReset";
 
 export default function Routers() {
   const router = createBrowserRouter(
@@ -84,6 +85,7 @@ export default function Routers() {
           </Route>
         </Route>
         <Route path="login" element={<Login />}></Route>
+        <Route path="password-reset" element={<PasswordReset/>}></Route>
         <Route path="reg" element={<SignUp />}></Route>
       </Route>
     )

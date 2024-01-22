@@ -86,6 +86,12 @@ export default function Login() {
             SignUp
           </Link>{" "}
         </small>
+        {/* <small>
+          Forgot Password?{" "}
+          <Link to="/password-reset" className={Styles.link}>
+            Reset Password
+          </Link>{" "}
+        </small> */}
       </div>
     </div>
   );
