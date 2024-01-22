@@ -3,7 +3,7 @@ import { configuration } from '../../configurations/configurations';
 import useAxios from '../../hooks/useAxios';
 import { instance } from '../../utilities/axiosInstance';
 import Styles from './CurrentMonthTotal.module.scss';
-
+import { getAmountsWithCommas } from '../../utilities/utils';
 export default function CurrentMonthTotal() {
 	const [response, error, loading, axiosFetch, message] = useAxios();
 	const getSelfInfo = () => {
@@ -31,7 +31,7 @@ export default function CurrentMonthTotal() {
 							: { color: 'red' }
 					}
 				>
-					{singleMonthsData?.totalQuotedAmount}
+					{getAmountsWithCommas(singleMonthsData?.totalQuotedAmount)}
 				</td>
 				<td
 					style={
@@ -41,7 +41,7 @@ export default function CurrentMonthTotal() {
 							: { color: 'red' }
 					}
 				>
-					{singleMonthsData?.totalInvoicedAmount}
+					{getAmountsWithCommas(singleMonthsData?.totalInvoicedAmount)}
 				</td>
 			</tr>
 		)
@@ -57,8 +57,8 @@ export default function CurrentMonthTotal() {
 							<p>
 								{
 									response?.data?.runningMonthQuoteTotal
-										?.currentMonth
-								}
+										?.currentMonth?.toLocaleString()
+								}.00
 							</p>
 							<small>Total quoted amount</small>
 							<h2
@@ -72,8 +72,7 @@ export default function CurrentMonthTotal() {
 								}
 							>
 								{
-									response?.data?.runningMonthQuoteTotal
-										?.totalQuotedAmount
+									getAmountsWithCommas(response?.data?.runningMonthQuoteTotal?.totalQuotedAmount)
 								}
 							</h2>
 						</>
@@ -101,8 +100,7 @@ export default function CurrentMonthTotal() {
 								}
 							>
 								{
-									response?.data?.runningMonthInvoiceTotal
-										?.totalInvoicedAmount
+									getAmountsWithCommas(response?.data?.runningMonthInvoiceTotal?.totalInvoicedAmount)
 								}
 							</h2>
 						</>

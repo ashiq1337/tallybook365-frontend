@@ -10,6 +10,7 @@ import { VscPreview } from 'react-icons/vsc';
 import { GrDocument } from 'react-icons/gr';
 import { AiOutlinePlus, AiOutlineDatabase } from 'react-icons/ai';
 import { currentMonthName, currentYear } from '../../utilities/date';
+import { getAmountsWithCommas } from '../../utilities/utils';
 
 export default function AllQuotations() {
 
@@ -94,7 +95,7 @@ export default function AllQuotations() {
 			<td className={Styles.leftAlign}>{quote?.title}</td>
 			<td>{quote?.date?.slice(0, 10)}</td>
 			<td>{quote?.client_name}</td>
-			<td>{quote?.grand_total.toLocaleString()}.00</td>
+			<td>{getAmountsWithCommas(quote?.grand_total)}</td>
 			<td>
 				{quote?.purchaseOrder_id.length != 0 ? (
 					<AiOutlineDatabase
@@ -225,13 +226,13 @@ export default function AllQuotations() {
 				<div>
           {loadingThisMonthsQuotations && <p>Loading...</p>}
           {!loadingThisMonthsQuotations && !errorThisMonthsQuotations &&
-					  <p>{currentMonthName}, {currentYear} Quotation: <b>{responseThisMonthsQuotations?.data?.totalQuotedAmount}</b></p>
+					  <p>{currentMonthName}, {currentYear} Quotation: <b>{getAmountsWithCommas(responseThisMonthsQuotations?.data?.totalQuotedAmount)}</b></p>
           }
 				</div>
 				<div>
           {loadingThisMonthsInvoices && <p>Loading...</p>}
           {!loadingThisMonthsInvoices && !errorThisMonthsInvoices &&
-					  <p>{currentMonthName}, {currentYear} Invoice: <b>{responseThisMonthsInvoices?.data?.totalInvoicedAmount}</b>  </p>
+					  <p>{currentMonthName}, {currentYear} Invoice: <b>{getAmountsWithCommas(responseThisMonthsInvoices?.data?.totalInvoicedAmount)}</b>  </p>
           }
 				</div>
 				<div>
