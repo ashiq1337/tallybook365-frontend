@@ -23,7 +23,7 @@ export default function PasswordReset() {
 		e.preventDefault();
 		if (data.newPassword !== confirmPassword) return
 		if (!data.phone || !data.otp || !data.newPassword) return
-		console.log('first');
+
 		axiosFetch({
 			axiosInstance: instance,
 			method: 'Post',

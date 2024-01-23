@@ -14,4 +14,5 @@ const month = [
 ];
 export const currentMonth = new Date().getMonth();
 export const currentMonthName = month[currentMonth];
+export const monthNameByNumber = (monthNumber) => month[monthNumber];
 export const currentYear = new Date().getFullYear();
