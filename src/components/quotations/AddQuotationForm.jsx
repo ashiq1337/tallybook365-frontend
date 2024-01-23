@@ -4,6 +4,7 @@ import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { MdAddCircle, MdDelete } from "react-icons/md";
+import { calculateGrandTotal } from "../../utilities/utils";
 
 export default function AddQuotationForm() {
   const [data, setData] = useState({
@@ -45,12 +46,13 @@ export default function AddQuotationForm() {
   }
 
   const createQuotationAsync = (e) => {
+    const finalData = {...data, grand_total: calculateGrandTotal(data?.sub_total, data?.asf, data?.vat)}
     e.preventDefault();
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
       url: configuration.quotations,
-      requestConfig: data,
+      requestConfig: finalData,
     });
   };
 
@@ -199,19 +201,7 @@ export default function AddQuotationForm() {
   return (
     <div className={Styles.main}>
       <form onSubmit={createQuotationAsync}>
-        {/* <label className={Styles.inputLabel}>User ID</label>
-        <input
-          type="text"
-          placeholder="Enter User id"
-          name="user_id"
-          onChange={handleChange}
-          value={responseSelf ? responseSelf?.data?.user_id : ""}
-          readOnly
-        />
-
-        <br /> */}
         <label>Client Information</label>
-
         <label className={Styles.inputLabel}>Client's Name</label>
         <select
           name="client_name"
@@ -226,10 +216,6 @@ export default function AddQuotationForm() {
                 responseClientData?.data[e.target.value]?.client_name,
               client_address:
                 responseClientData?.data[e.target.value]?.client_address,
-              // bank_account: responseClientData?.data[e.target.value]?.bank_account,
-              // bank_name_address: responseClientData?.data[e.target.value]?.bank_name_address,
-              // swift: responseClientData?.data[e.target.value]?.swift,
-              // routing_no: responseClientData?.data[e.target.value]?.routing_no,
             });
           }}
           defaultValue=""
@@ -244,20 +230,6 @@ export default function AddQuotationForm() {
             </option>
           ))}
         </select>
-
-        {/* <label className={Styles.inputLabel}>Client's Id</label>
-        <input
-          type="text"
-          placeholder="Enter Client's ID"
-          name="client_id"
-          readOnly
-          onChange={handleChange}
-          value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?._id
-              : ""
-          }
-        /> */}
 
         <label className={Styles.inputLabel}>Client's Address</label>
         <input
@@ -330,60 +302,6 @@ export default function AddQuotationForm() {
           )}
         </p>
 
-        {/* <br />
-        <label>Payment Information</label>
-
-        <label className={Styles.inputLabel}>Bank Account</label>
-        <input
-          type="text"
-          placeholder="Enter Bank Account No"
-          name="bank_account"
-          onChange={handleChange}
-          value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?.bank_account
-              : ""
-          }
-        />
-
-        <label className={Styles.inputLabel}>Bank Name & Address</label>
-        <input
-          type="text"
-          placeholder="Enter Bank Name & Address"
-          name="bank_name_address"
-          onChange={handleChange}
-          value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?.bank_name_address
-              : ""
-          }
-        />
-
-        <label className={Styles.inputLabel}>Swift No</label>
-        <input
-          type="text"
-          placeholder="Enter Swift No"
-          name="swift"
-          onChange={handleChange}
-          value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?.swift
-              : ""
-          }
-        />
-
-        <label className={Styles.inputLabel}>Routing No</label>
-        <input
-          type="text"
-          placeholder="Enter Routing No"
-          name="routing_no"
-          onChange={handleChange}
-          value={
-            selectedClientIndex
-              ? responseClientData?.data[selectedClientIndex]?.routing_no
-              : ""
-          }
-        /> */}
         <br />
         <label>Percentage</label>
 
