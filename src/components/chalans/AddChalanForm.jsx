@@ -73,8 +73,8 @@ export default function AddChalanForm() {
     inputList.map((input, i) => {
       sum = sum + parseInt(input.totalPrice);
     });
-    //setting the grand total in data object and the items array in data object
-    setData({ ...data, grand_total: sum, items: inputList });
+    //setting the sub total in data object and the items array in data object
+    setData({ ...data, sub_total: sum, items: inputList });
   }, [inputList]);
 
   const getClientsData = () => {
@@ -360,8 +360,8 @@ export default function AddChalanForm() {
         {/* showing the total value  */}
         <p>
           Total amount:{" "}
-          {data?.grand_total ? (
-            data?.grand_total
+          {data?.sub_total ? (
+            data?.sub_total
           ) : (
             <small style={{ color: "gray" }}>
               Please fill the amount section

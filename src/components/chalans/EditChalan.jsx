@@ -94,8 +94,8 @@ export default function EditChalan() {
     inputList.map((input, i) => {
       sum = sum + parseInt(input.totalPrice);
     });
-    //setting the grand total in data object and the items array in data object
-    setData({ ...data, grand_total: sum, items: inputList });
+    //setting the sub total in data object and the items array in data object
+    setData({ ...data, sub_total: sum, items: inputList });
   }, [inputList]);
 
   // handle input change

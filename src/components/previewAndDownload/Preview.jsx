@@ -27,7 +27,7 @@ export default function Preview({
     total_advance: 0,
     jobType: "",
     productionCost: "",
-    grand_total: "",
+    sub_total: "",
     items: [
       {
         day: "",
@@ -132,7 +132,7 @@ export default function Preview({
                         />
 
                         <Table
-                          productionCost={data?.grand_total}
+                          productionCost={data?.sub_total}
                           lists={data.items}
                           advance={data?.total_advance}
                           valueAddedTax={data?.vat}
