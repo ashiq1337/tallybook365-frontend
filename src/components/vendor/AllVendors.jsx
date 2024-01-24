@@ -79,7 +79,7 @@ export default function AllVendors() {
             <tbody>
               <tr>
                 <th>Ser</th>
-                <th>Name</th>
+                <th className={Styles.leftAlign}>Name</th>
                 <th>Address</th>
                 <th>Contact</th>
                 <th></th>

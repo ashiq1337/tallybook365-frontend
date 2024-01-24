@@ -77,7 +77,6 @@ export default function AllWorkorders() {
     <tr key={i}>
       <td>{i + 1}</td>
       <td className={Styles.leftAlign}>{workorder.vendor_name}</td>
-
       <td>{workorder.vendor_address}</td>
       <td>{workorder.job_no}</td>
       <td>{workorder?.date?.slice(0, 10)}</td>
@@ -133,7 +132,7 @@ export default function AllWorkorders() {
             <tbody>
               <tr>
                 <th>Ser</th>
-                <th>Vendor Name</th>
+                <th className={Styles.leftAlign}>Vendor Name</th>
                 <th>Vendor Address</th>
                 <th>Job no</th>
                 <th>Date</th>

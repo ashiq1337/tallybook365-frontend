@@ -248,7 +248,7 @@ export default function AllQuotations() {
 							<tbody>
 								<tr>
 									<th>Ser</th>
-									<th>Title</th>
+									<th className={Styles.leftAlign}>Title</th>
 									<th>Date</th>
 									<th>Client</th>
 									<th>Amount</th>

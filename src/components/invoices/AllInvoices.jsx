@@ -98,7 +98,7 @@ export default function AllInvoices() {
             <tbody>
               <tr>
                 <th>Ser</th>
-                <th>Name</th>
+                <th className={Styles.leftAlign}>Name</th>
                 <th>Address</th>
                 <th>Job no</th>
                 <th></th>
