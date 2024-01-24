@@ -30,7 +30,7 @@ export default function Table({
 						<th>Details</th>
 						<th>Quantity</th>
 						<th>Day</th>
-						<th className={classes.itemRight}>Unit Price (BDT)</th>
+						<th className={classes.itemRight}>Unit Price</th>
 						<th className={classes.itemRight}>Total (BDT)</th>
 					</tr>
 				</thead>
