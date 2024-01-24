@@ -1,10 +1,14 @@
 export const getAmountsWithCommas = (amount) => {
-	if (!amount) return 'BDT 0.00';
-	return amount.toLocaleString('en-IN', {
-		maximumFractionDigits: 2,
-		style: 'currency',
-		currency: 'BDT',
-	});
+	if (!amount) return '৳ 0.00';
+  const formattedAmount = amount.toLocaleString('en-IN', {
+    maximumFractionDigits: 2,
+    style: 'currency',
+    currency: 'BDT',
+    currencyDisplay: 'symbol',
+  });
+
+  // Manually replace the currency code with the symbol
+  return formattedAmount.replace('BDT', '৳');
 };
 
 export const calculateGrandTotal = (subtotal, asfPercentage, vatPercentage) => {
@@ -37,7 +41,9 @@ export const calculateGrandTotal = (subtotal, asfPercentage, vatPercentage) => {
 
 export const getPercentageToDecimal = (value, percentage) => {
 	if (!value && !percentage) return;
+
 	let _percentage = parseFloat(percentage);
 	let _value = parseFloat(value);
-	return ((_value * _percentage) / 100).toFixed(2);
+	const decimalValue = parseFloat(((_value * _percentage) / 100).toFixed(2));
+	return decimalValue;
 };

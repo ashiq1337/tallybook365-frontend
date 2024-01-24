@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Table.module.scss';
 import { ToWords } from 'to-words';
-import { getPercentageToDecimal } from '../../utilities/utils';
+import { getAmountsWithCommas, getPercentageToDecimal } from '../../utilities/utils';
 
 export default function Table({
 	lists,
@@ -48,10 +48,10 @@ export default function Table({
 								{list?.day}
 							</td>
 							<td className={classes.itemRight}>
-								{list?.unitPrice}
+								{getAmountsWithCommas(parseFloat(list?.unitPrice))}
 							</td>
 							<td className={classes.itemRight}>
-								{list?.totalPrice}
+								{getAmountsWithCommas(list?.totalPrice)}
 							</td>
 						</tr>
 					))}
@@ -62,14 +62,14 @@ export default function Table({
 						</td>
 						<td>
 							<b>
-								{subTotal}
+								{getAmountsWithCommas(subTotal)}
 							</b>
 						</td>
 					</tr>
 					<tr className={classes.itemRight}>
 						<td colSpan={6}>Agency Management Fees {asf}%</td>
 						<td>
-							{getPercentageToDecimal(subTotal, asf)}
+							{getAmountsWithCommas(getPercentageToDecimal(subTotal, asf))}
 						</td>
 					</tr>
 					<tr className={classes.itemRight}>
@@ -78,20 +78,20 @@ export default function Table({
 						</td>
 						<td>
 							<b>
-								{subTotal}
+								{getAmountsWithCommas(subTotal)}
 							</b>
 						</td>
 					</tr>
 					<tr className={classes.itemRight}>
 						<td colSpan={6}>VAT {vat}%</td>
-						<td>{getPercentageToDecimal(subTotal, vat)}</td>
+						<td>{getAmountsWithCommas(getPercentageToDecimal(subTotal, vat))}</td>
 					</tr>
 					<tr className={classes.itemRight}>
 						<td colSpan={6}>
 							<b>Grand Total Amount</b>
 						</td>
 						<td>
-							<b>{grandTotal}</b>
+							<b>{getAmountsWithCommas(grandTotal)}</b>
 						</td>
 					</tr>
 					{advance ? (
@@ -109,7 +109,7 @@ export default function Table({
 					{due ? (
 						<tr className={classes.itemRight}>
 							<td colSpan={6}>Due / Total Payable Amount</td>
-							<td>{due}</td>
+							<td>{getAmountsWithCommas(Math.round(due))}</td>
 						</tr>
 					) : null}
 				</tbody>
