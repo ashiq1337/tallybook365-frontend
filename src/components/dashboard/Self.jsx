@@ -6,6 +6,7 @@ import Styles from "./Self.module.scss";
 import Avatar from "../../assets/avatar.png";
 import CompanyLogo from "../../assets/cpro.png";
 import { AuthContext } from "../../context/context";
+import { getAmountsWithCommas } from "../../utilities/utils";
 
 export default function Self() {
   const [response, error, loading, axiosFetch, message] = useAxios();
@@ -65,7 +66,7 @@ export default function Self() {
             <h5>
               Company Remaining Amount:&nbsp;
               <span className={Styles.amount}>
-                {response?.data?.company?.company_remaining_amount}
+                {getAmountsWithCommas(response?.data?.company?.company_remaining_amount)}
               </span>
             </h5>
           </div>
