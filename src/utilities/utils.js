@@ -9,24 +9,35 @@ export const getAmountsWithCommas = (amount) => {
 
 export const calculateGrandTotal = (subtotal, asfPercentage, vatPercentage) => {
 	let grandTotal = 0;
-	if (!subtotal && !asfPercentage && !vatPercentage) return ;
-	if (subtotal){
-		if (asfPercentage) {
-			if (vatPercentage) {
-				grandTotal = Math.round(subtotal + (subtotal * asfPercentage) / 100 + (subtotal * vatPercentage) / 100).toFixed(2);
+	if (!subtotal && !asfPercentage && !vatPercentage) return;
+
+	let sub_total = parseFloat(subtotal);
+	let asf = parseFloat(asfPercentage);
+	let vat = parseFloat(vatPercentage);
+
+	if (sub_total) {
+		if (asf) {
+			if (vat) {
+				grandTotal = sub_total + (sub_total * asf) / 100 + (sub_total * vat) / 100;
 			} else {
-				grandTotal = Math.round(subtotal + (subtotal * asfPercentage) / 100).toFixed(2);
+				grandTotal = sub_total + (sub_total * asf) / 100;
 			}
 		} else {
-			if (vatPercentage) {
-				grandTotal = Math.round(subtotal + (subtotal * vatPercentage) / 100).toFixed(2);
+			if (vat) {
+				grandTotal = sub_total + (sub_total * vat) / 100;
 			} else {
-				grandTotal = subtotal.toFixed(2);
+				grandTotal = sub_total;
 			}
 		}
 	} else {
 		return grandTotal;
 	}
+	return grandTotal.toFixed(2);
+};
 
-	return parseInt(grandTotal);
+export const getPercentageToDecimal = (value, percentage) => {
+	if (!value && !percentage) return;
+	let _percentage = parseFloat(percentage);
+	let _value = parseFloat(value);
+	return ((_value * _percentage) / 100).toFixed(2);
 };

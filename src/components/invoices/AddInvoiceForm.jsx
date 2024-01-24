@@ -81,8 +81,8 @@ export default function AddInvoiceForm() {
   useEffect(() => {
     // calculating total from items
     var sum = 0;
-    inputList.map((input, i) => {
-      sum = sum + parseInt(input.totalPrice);
+    inputList.map((input) => {
+      sum = sum + parseFloat(input.totalPrice);
     });
     //setting the sub total in data object and the items array in data object
     setData({ ...data, sub_total: sum, items: inputList });

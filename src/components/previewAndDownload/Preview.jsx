@@ -130,13 +130,13 @@ export default function Preview({
                           brand={data?.brand}
                           jobType={data?.job_type}
                         />
-
                         <Table
-                          productionCost={data?.sub_total}
+                          subTotal={data?.sub_total}
                           lists={data.items}
                           advance={data?.total_advance}
-                          valueAddedTax={data?.vat}
+                          vat={data?.vat}
                           asf={data?.asf}
+                          grandTotal={data?.grand_total}
                         />
                         <Terms terms={data?.t_and_c} />
                         <BankInfo
