@@ -90,7 +90,7 @@ export default function AllClients() {
           </table>
         </div>
       ) : (
-        <p>loading...</p>
+        <p>Loading...</p>
       )}
     </div>
   );

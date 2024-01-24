@@ -1,6 +1,5 @@
 import Styles from "./Login.module.scss";
 import { useEffect, useLayoutEffect, useState } from "react";
-// import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
@@ -48,7 +47,6 @@ export default function Login() {
 
   return (
     <div className={Styles.main}>
-      {/* <img className={Styles.img} src={Logo} alt="logo" /> */}
       <p className={Styles.logoText}>TallyBook365</p>
       <br />
       <div className={Styles.container}>
@@ -70,7 +68,7 @@ export default function Login() {
           />
           <small className={Styles.msg}>{message}</small>
           {error && <small className={Styles.msg}>{error}</small>}
-          {loading && <small className={Styles.msg}>loading...</small>}
+          {loading && <small className={Styles.msg}>Loading...</small>}
           <button
             type="submit"
             disabled={loading}
@@ -86,12 +84,12 @@ export default function Login() {
             SignUp
           </Link>{" "}
         </small>
-        {/* <small>
+        <small>
           Forgot Password?{" "}
           <Link to="/password-reset" className={Styles.link}>
-            Reset Password
+            Forgot Password
           </Link>{" "}
-        </small> */}
+        </small>
       </div>
     </div>
   );
