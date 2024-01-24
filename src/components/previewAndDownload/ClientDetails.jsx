@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./ClientDetails.module.scss";
+import { formatDate } from "../../utilities/date";
 
 export default function ClientDetails({
   docType,
@@ -21,7 +22,7 @@ export default function ClientDetails({
             <p className={classes.cell}>Address: {address}</p>
           </div>
           <div className={classes.row}>
-            <p className={classes.cell}>Date: {invoiceDate}</p>
+            <p className={classes.cell}>Date: {formatDate(invoiceDate)}</p>
             <p className={classes.cell}>Job No: {jobNumber}</p>
           </div>
         </div>
@@ -29,7 +30,7 @@ export default function ClientDetails({
           <div className={classes.row}>
             <p className={classes.cell}>Brand: {brand}</p>
             <p className={classes.cell}>
-              Job Type: {jobType} 
+              Job Type: {jobType}
             </p>
           </div>
         </div>

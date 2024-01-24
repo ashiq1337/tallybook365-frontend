@@ -49,7 +49,7 @@ export default function AllVendors() {
   const tableRow = response?.data?.map((vendor, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{vendor?.vendor_name}</td>
+      <td className={Styles.leftAlign}>{vendor?.vendor_name}</td>
       <td>{vendor?.vendor_address}</td>
       <td>{vendor?.vendor_contact_no}</td>
       <td>

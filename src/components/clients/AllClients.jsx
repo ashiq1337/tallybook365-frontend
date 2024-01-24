@@ -49,7 +49,7 @@ export default function AllClients() {
   const tableRow = response?.data?.map((client, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{client.client_name}</td>
+      <td className={Styles.leftAlign}>{client.client_name}</td>
       <td>{client.client_address}</td>
       <td>{client.client_contact_no}</td>
       <td>

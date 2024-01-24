@@ -76,7 +76,7 @@ export default function AllWorkorders() {
   const tableRow = response?.data?.map((workorder, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{workorder.vendor_name}</td>
+      <td className={Styles.leftAlign}>{workorder.vendor_name}</td>
 
       <td>{workorder.vendor_address}</td>
       <td>{workorder.job_no}</td>

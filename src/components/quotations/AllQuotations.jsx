@@ -9,7 +9,7 @@ import useToggler from '../../hooks/useToggler';
 import { VscPreview } from 'react-icons/vsc';
 import { GrDocument } from 'react-icons/gr';
 import { AiOutlinePlus, AiOutlineDatabase } from 'react-icons/ai';
-import { currentMonthName, currentYear, currentMonth, monthNameByNumber } from '../../utilities/date';
+import { currentMonthName, currentYear, currentMonth, monthNameByNumber, formatDate } from '../../utilities/date';
 import { getAmountsWithCommas } from '../../utilities/utils';
 
 export default function AllQuotations() {
@@ -92,9 +92,9 @@ export default function AllQuotations() {
 		<tr key={i}>
 			<td>{i + 1}</td>
 			<td className={Styles.leftAlign}>{quote?.title}</td>
-			<td>{quote?.date?.slice(0, 10)}</td>
+			<td>{formatDate(quote?.date?.slice(0, 10))}</td>
 			<td>{quote?.client_name}</td>
-			<td>{getAmountsWithCommas(quote?.grand_total)}</td>
+			<td className={Styles.rightAlign}>{getAmountsWithCommas(quote?.grand_total)}</td>
 			<td>
 				{quote?.purchaseOrder_id.length != 0 ? (
 					<AiOutlineDatabase

@@ -58,7 +58,7 @@ export default function AllInvoices() {
   const tableRow = response?.data?.map((invoice, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{invoice.title}</td>
+      <td className={Styles.leftAlign}>{invoice.title}</td>
       <td>{invoice.client_address}</td>
       <td>{invoice.job_no}</td>
       <td>

@@ -59,7 +59,7 @@ export default function AllChalans() {
   const tableRow = response?.data?.map((chalan, i) => (
     <tr key={i}>
       <td>{i + 1}</td>
-      <td>{chalan.title}</td>
+      <td className={Styles.leftAlign}>{chalan.title}</td>
       <td>{chalan.client_address}</td>
       <td>{chalan.job_no}</td>
       <td>

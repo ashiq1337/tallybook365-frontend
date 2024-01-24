@@ -126,7 +126,7 @@ $Breakpoint-mobile: 480px;
     border-collapse: collapse;
     width: 100%;
     //border: solid;
-    
+
     td,
     th {
       border: 1px solid #dddddd;
@@ -135,7 +135,7 @@ $Breakpoint-mobile: 480px;
       border: none;
       text-align: center;
       max-width: 250px;
-      
+
     }
 
     th {
@@ -153,6 +153,10 @@ $Breakpoint-mobile: 480px;
 
     .leftAlign {
       text-align: left;
+    }
+
+    .rightAlign {
+      text-align: right;
     }
 
     .deleteIcon {
