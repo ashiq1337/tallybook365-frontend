@@ -123,8 +123,8 @@ export default function Preview({
                         <ClientDetails
                           docType={title}
                           title={data?.title}
-                          company={data?.client_name}
-                          address={data?.client_address}
+                          company={data?.client_name ? data?.client_name : data?.vendor_name}
+                          address={data?.client_address ? data?.client_address : data?.vendor_address}
                           invoiceDate={data?.date?.slice(0, 10)}
                           jobNumber={data?.job_no}
                           brand={data?.brand}

@@ -7,6 +7,7 @@ import { instance } from "../../utilities/axiosInstance";
 import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { calculateGrandTotal } from "../../utilities/utils";
+import {useNavigate} from 'react-router-dom';
 
 export default function EditInvoice() {
   const { invoiceId } = useParams();
@@ -40,6 +41,7 @@ export default function EditInvoice() {
     },
   ]);
   const [getData, setGetData] = useToggler();
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -65,6 +67,10 @@ export default function EditInvoice() {
       url: `${configuration.invoices}/${invoiceId}`,
     });
   };
+
+  const handlePreview =()=>{
+    navigate(`/preview/Invoice/invoices/${invoiceId}`)
+  }
 
   const getClientsData = () => {
     axiosFetchClientData({
@@ -215,13 +221,14 @@ export default function EditInvoice() {
 
   return (
     <div className={Styles.main}>
-      {loading && <p>Loading</p>}
+      {loading && <p>Loading...</p>}
       {response && !loading && !error && (
         <form onSubmit={editInvoiceAsync}>
           <label>Client Information</label>
           <label className={Styles.inputLabel}>Client's Name</label>
           <select
             name="client_name"
+            defaultValue={data?.client_name}
             onChange={(e) => {
               setSelectedClientIndex(e.target.value);
               setData({
@@ -237,8 +244,6 @@ export default function EditInvoice() {
                   routing_no: responseClientData?.data[e.target.value]?.routing_no,
               });
             }}
-            defaultValue={data?.client_name}
-            required
           >
             <option value="" disabled>
               Select Client
@@ -249,20 +254,7 @@ export default function EditInvoice() {
               </option>
             ))}
           </select>
-
-          {/* <label className={Styles.inputLabel}>Client's Id</label>
-          <input
-            type="text"
-            placeholder="Enter Client's ID"
-            name="client_id"
-            readOnly
-            onChange={handleChange}
-            value={
-              selectedClientIndex
-                ? responseClientData?.data[selectedClientIndex]?._id
-                : data?.client_id
-            }
-          /> */}
+          <p>{data.client_name}</p>
 
           <label className={Styles.inputLabel}>Client's Address</label>
           <input
@@ -471,7 +463,10 @@ export default function EditInvoice() {
 
           <p>{message}</p>
           <p>{messageUpdate}</p>
-          <button type="submit">Save</button>
+          <div className={Styles.btnContainer}>
+            <button type="submit">Save</button>
+            <button className={Styles.btnPreview} onClick={handlePreview}>Preview</button>
+          </div>
           <br />
           <br />
           <br />

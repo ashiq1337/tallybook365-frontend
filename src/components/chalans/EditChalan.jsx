@@ -7,6 +7,7 @@ import { instance } from "../../utilities/axiosInstance";
 import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { calculateGrandTotal } from "../../utilities/utils";
+import {useNavigate} from 'react-router-dom';
 
 export default function EditChalan() {
   const { chalanId } = useParams();
@@ -40,6 +41,7 @@ export default function EditChalan() {
     },
   ]);
   const [getData, setGetData] = useToggler();
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -65,6 +67,10 @@ export default function EditChalan() {
       url: `${configuration.chalans}/${chalanId}`,
     });
   };
+
+  const handlePreview =()=>{
+    navigate(`/preview/Chalan/chalans/${chalanId}`)
+  }
 
   const getClientsData = () => {
     axiosFetchClientData({
@@ -211,6 +217,7 @@ export default function EditChalan() {
           <label className={Styles.inputLabel}>Client's Name</label>
           <select
             name="client_name"
+            defaultValue={data?.client_name}
             onChange={(e) => {
               setSelectedClientIndex(e.target.value);
               setData({
@@ -226,8 +233,6 @@ export default function EditChalan() {
                   routing_no: responseClientData?.data[e.target.value]?.routing_no,
               });
             }}
-            defaultValue={data?.client_name}
-            required
           >
             <option value="" disabled>
               Select Client
@@ -397,7 +402,7 @@ export default function EditChalan() {
           <p>{messageUpdate}</p>
           <div className={Styles.btnContainer}>
             <button type="submit">Save</button>
-            <button>Preview</button>
+            <button className={Styles.btnPreview} onClick={handlePreview}>Preview</button>
           </div>
 
           <br />

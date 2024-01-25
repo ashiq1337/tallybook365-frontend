@@ -6,12 +6,17 @@
 
   form {
     @include m.globalFormContainer();
-    .btnContainer {
-      @include m.globalBtnContainer();
-    }
     button {
       @include m.globalButton(c.$Color-primary-green);
       margin-top: 50px;
+    }
+    .btnContainer {
+      @include m.globalBtnContainer();
+      .btnPreview{
+        background: white;
+        border: solid 2px c.$Color-primary-green;
+        color: c.$Color-primary-green;
+      }
     }
   }
   .itemsContainer {

@@ -7,6 +7,7 @@ import { instance } from "../../utilities/axiosInstance";
 import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { calculateGrandTotal } from "../../utilities/utils";
+import {useNavigate} from 'react-router-dom';
 
 export default function EditWorkorder() {
   const { workorderId } = useParams();
@@ -40,6 +41,7 @@ export default function EditWorkorder() {
     },
   ]);
   const [getData, setGetData] = useToggler();
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -65,6 +67,10 @@ export default function EditWorkorder() {
       url: `${configuration.purchaseOrders}/${workorderId}`,
     });
   };
+
+  const handlePreview =()=>{
+    navigate(`/preview/Workorder/purchaseorders/${workorderId}`)
+  }
 
   const getVendorsData = () => {
     axiosFetchVendorData({
@@ -441,7 +447,10 @@ export default function EditWorkorder() {
 
           <p>{message}</p>
           <p>{messageUpdate}</p>
-          <button type="submit">Save</button>
+          <div className={Styles.btnContainer}>
+            <button type="submit">Save</button>
+            <button className={Styles.btnPreview} onClick={handlePreview}>Preview</button>
+          </div>
           <br />
           <br />
           <br />

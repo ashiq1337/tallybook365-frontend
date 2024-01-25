@@ -7,6 +7,7 @@ import { instance } from "../../utilities/axiosInstance";
 import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { calculateGrandTotal } from "../../utilities/utils";
+import {useNavigate} from 'react-router-dom';
 
 export default function EditQuotation() {
   const { quotationId } = useParams();
@@ -40,6 +41,7 @@ export default function EditQuotation() {
     },
   ]);
   const [getData, setGetData] = useToggler();
+  const navigate = useNavigate();
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -65,6 +67,11 @@ export default function EditQuotation() {
       url: `${configuration.quotations}/${quotationId}`,
     });
   };
+
+  const handlePreview =()=>{
+    navigate(`/preview/Estimate/quotes/${quotationId}`)
+  }
+
   const getClientsData = () => {
     axiosFetchClientData({
       axiosInstance: instance,
@@ -322,7 +329,11 @@ export default function EditQuotation() {
         ></textarea>
         <p>{message}</p>
         <p>{messageUpdate}</p>
-        <button type="submit">Save</button> <br />
+        <div className={Styles.btnContainer}>
+          <button type="submit">Save</button>
+          <button className={Styles.btnPreview} onClick={handlePreview}>Preview</button>
+        </div>
+        <br />
         <br />
         <br />
         <br />

@@ -63,7 +63,8 @@ $Breakpoint-mobile: 480px;
   background: $color;
   cursor: pointer;
   width: fit-content;
-  border: none;
+  font-weight: 500;
+  border: solid 2px $color;
   padding: 9px 30px;
   color: white;
   transition: transform 0.6s ease-in-out;
@@ -80,7 +81,7 @@ $Breakpoint-mobile: 480px;
 
   &:hover {
     // transform: scale(1.03)  perspective(1px);
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.3);
   }
 }
 
