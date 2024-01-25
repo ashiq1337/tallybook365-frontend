@@ -203,20 +203,9 @@ export default function EditChalan() {
 
   return (
     <div className={Styles.main}>
-      {loading && <p>Loading</p>}
+      {loading && <p>Loading...</p>}
       {response && !loading && !error && (
         <form onSubmit={editChalanAsync}>
-          {/* <label className={Styles.inputLabel}>User ID</label>
-          <input
-            type="text"
-            placeholder="Enter User ID"
-            name="user_id"
-            onChange={handleChange}
-            value={data?.user_id}
-            readOnly
-          />
-
-          <br /> */}
           <label>Client Information</label>
 
           <label className={Styles.inputLabel}>Client's Name</label>
@@ -249,20 +238,6 @@ export default function EditChalan() {
               </option>
             ))}
           </select>
-
-          {/* <label className={Styles.inputLabel}>Client's Id</label>
-          <input
-            type="text"
-            placeholder="Enter Client's ID"
-            name="client_id"
-            readOnly
-            onChange={handleChange}
-            value={
-              selectedClientIndex
-                ? responseClientData?.data[selectedClientIndex]?._id
-                : data?.client_id
-            }
-          /> */}
 
           <label className={Styles.inputLabel}>Client's Address</label>
           <input
@@ -330,28 +305,7 @@ export default function EditChalan() {
           <label>Add items</label>
           {itemsAddInObject}
 
-          {/* <br />
-           <label>Advance</label> */}
-
-          {/* <input
-            type="number"
-            placeholder="Enter due amount"
-            name="due"
-            onChange={handleChange}
-            value={data?.due}
-          /> */}
-
-          {/* <label className={Styles.inputLabel}>Advance Amount</label>
-          <input
-            type="number"
-            placeholder="Enter Advance Amount"
-            name="advance"
-            onChange={handleChange}
-            value={data?.advance}
-          /> */}
-
           <br />
-
           <label>Bank Account Information</label>
 
           <label className={Styles.inputLabel}>Bank Account</label>
@@ -430,7 +384,6 @@ export default function EditChalan() {
           />
 
           <br />
-
           <label>Terms & Conditions</label>
           <textarea
             name="t_and_c"
@@ -442,7 +395,11 @@ export default function EditChalan() {
 
           <p>{message}</p>
           <p>{messageUpdate}</p>
-          <button type="submit">Save</button>
+          <div className={Styles.btnContainer}>
+            <button type="submit">Save</button>
+            <button>Preview</button>
+          </div>
+
           <br />
           <br />
           <br />

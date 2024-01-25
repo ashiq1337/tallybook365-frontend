@@ -6,41 +6,19 @@
 
   form {
     @include m.globalFormContainer();
-
+    .btnContainer {
+      @include m.globalBtnContainer();
+    }
     button {
       @include m.globalButton(c.$Color-primary-green);
       margin-top: 50px;
     }
   }
-
   .itemsContainer {
-    //border: solid;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-
-    .btnBox {
-      display: flex;
-      gap: 10px;
-    }
-
-    .remove {
-      color: red;
-      font-size: 2rem;
-      cursor: pointer;
-    }
-
-    .add {
-      color: green;
-      font-size: 2rem;
-      cursor: pointer;
-    }
+    @include m.globalItemContainer();
   }
 
   .inputLabel {
-    display: flex;
-    font-size: 12px;
-    // margin-left: 10px;
-    font-family: "Poppins", sans-serif;
+    @include m.globalInputLabel();
   }
 }

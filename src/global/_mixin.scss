@@ -117,6 +117,11 @@ $Breakpoint-mobile: 480px;
   text-align: center;
 }
 
+@mixin globalBtnContainer {
+  display: flex;
+  gap: 10px;
+}
+
 @mixin globalTableContainer {
   overflow-x: auto;
   box-shadow: c.$Color-box-shadow;
@@ -179,6 +184,7 @@ $Breakpoint-mobile: 480px;
   flex-direction: column;
   background-color: c.$Color-background-table;
   padding: 20px;
+
   input,
   textarea,
   select {
@@ -202,7 +208,36 @@ $Breakpoint-mobile: 480px;
 
 }
 
-@mixin globalAllItemContainer(){
+@mixin globalItemContainer() {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .btnBox {
+    display: flex;
+    gap: 10px;
+  }
+
+  .remove {
+    color: red;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .add {
+    color: green;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+
+@mixin globalInputLabel() {
+  font-size: .8rem;
+  color: gray;
+  transform: translate(0px,5px);
+}
+
+@mixin globalAllItemContainer() {
   padding: 20px;
 
   .container {
