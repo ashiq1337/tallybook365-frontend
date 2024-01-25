@@ -214,7 +214,7 @@ export default function EditWorkorder() {
 
   return (
     <div className={Styles.main}>
-      {loading && <p>Loading</p>}
+      {loading && <p>Loading...</p>}
       {response && !loading && !error && (
         <form onSubmit={editWorkorderAsync}>
           <label>Vendor Information</label>
