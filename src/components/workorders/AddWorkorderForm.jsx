@@ -5,6 +5,7 @@ import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { useParams } from "react-router-dom";
+import { calculateGrandTotal } from "../../utilities/utils";
 
 export default function AddWorkorderForm() {
   const { quotationId } = useParams();
@@ -57,12 +58,13 @@ export default function AddWorkorderForm() {
   }
 
   const createWorkorderAsync = (e) => {
+    const finalData = {...data, grand_total: calculateGrandTotal(data?.sub_total, data?.asf, data?.vat)}
     e.preventDefault();
     axiosFetch({
       axiosInstance: instance,
       method: "Post",
       url: configuration.purchaseOrders,
-      requestConfig: data,
+      requestConfig: finalData,
     });
   };
 

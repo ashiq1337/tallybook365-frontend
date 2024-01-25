@@ -6,6 +6,7 @@ import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
+import { calculateGrandTotal } from "../../utilities/utils";
 
 export default function EditInvoice() {
   const { invoiceId } = useParams();
@@ -46,12 +47,13 @@ export default function EditInvoice() {
   }
 
   const editInvoiceAsync = (e) => {
+    const finalData = {...data, grand_total: calculateGrandTotal(data?.sub_total, data?.asf, data?.vat)}
     e.preventDefault();
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",
       url: `${configuration.invoices}/${invoiceId}`,
-      requestConfig: data,
+      requestConfig: finalData,
     });
     setGetData();
   };

@@ -6,6 +6,7 @@ import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
+import { calculateGrandTotal } from "../../utilities/utils";
 
 export default function EditChalan() {
   const { chalanId } = useParams();
@@ -46,13 +47,13 @@ export default function EditChalan() {
   }
 
   const editChalanAsync = (e) => {
+    const finalData = {...data, grand_total: calculateGrandTotal(data?.sub_total, data?.asf, data?.vat)}
     e.preventDefault();
-
     axiosFetchUpdate({
       axiosInstance: instance,
       method: "Patch",
       url: `${configuration.chalans}/${chalanId}`,
-      requestConfig: data,
+      requestConfig: finalData,
     });
     setGetData();
   };
