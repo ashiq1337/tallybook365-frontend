@@ -96,6 +96,12 @@ export default function EditInvoice() {
   }, [response]);
 
   useEffect(() => {
+    if(responseClientData?.data?.length>0){
+      setSelectedClientIndex(responseClientData?.data?.findIndex(item => item.client_name === data?.client_name))
+    }
+  }, [responseClientData?.data]);
+
+  useEffect(() => {
     let sum;
     // calculating total advance from data
     sum =
@@ -228,7 +234,6 @@ export default function EditInvoice() {
           <label className={Styles.inputLabel}>Client's Name</label>
           <select
             name="client_name"
-            defaultValue={data?.client_name}
             onChange={(e) => {
               setSelectedClientIndex(e.target.value);
               setData({
@@ -244,6 +249,7 @@ export default function EditInvoice() {
                   routing_no: responseClientData?.data[e.target.value]?.routing_no,
               });
             }}
+            value={selectedClientIndex}
           >
             <option value="" disabled>
               Select Client

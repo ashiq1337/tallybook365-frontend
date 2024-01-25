@@ -96,6 +96,12 @@ export default function EditQuotation() {
   }, [response]);
 
   useEffect(() => {
+    if(responseClientData?.data?.length>0){
+      setSelectedClientIndex(responseClientData?.data?.findIndex(item => item.client_name === data?.client_name))
+    }
+  }, [responseClientData?.data]);
+
+  useEffect(() => {
     // calculating total from items
     var sum = 0;
     inputList.map((input) => {
@@ -225,8 +231,7 @@ export default function EditQuotation() {
                 responseClientData?.data[e.target.value]?.client_address,
             });
           }}
-          defaultValue={data?.client_name}
-          required
+          value={selectedClientIndex}
         >
           <option value="" disabled>
             Select Client

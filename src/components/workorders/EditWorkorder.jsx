@@ -85,6 +85,12 @@ export default function EditWorkorder() {
   }, [getData]);
 
   useEffect(() => {
+    if(responseVendorData?.data?.length>0){
+      setSelectedVendorIndex(responseVendorData?.data?.findIndex(item => item.vendor_name === data?.vendor_name))
+    }
+  }, [responseVendorData?.data]);
+
+  useEffect(() => {
     //checking if response has its values
     if (response.data) {
       //setting data to data
@@ -211,17 +217,6 @@ export default function EditWorkorder() {
       {loading && <p>Loading</p>}
       {response && !loading && !error && (
         <form onSubmit={editWorkorderAsync}>
-          {/* <label className={Styles.inputLabel}>User ID</label>
-          <input
-            type="text"
-            placeholder="Enter User ID"
-            name="user_id"
-            onChange={handleChange}
-            value={data?.user_id}
-            readOnly
-          />
-
-          <br />*/}
           <label>Vendor Information</label>
 
           <label className={Styles.inputLabel}>Vendor's Name</label>
@@ -244,8 +239,7 @@ export default function EditWorkorder() {
                 // routing_no: responseVendorData?.data[e.target.value]?.routing_no,
               });
             }}
-            defaultValue={data?.vendor_name}
-            required
+            value={selectedVendorIndex}
           >
             <option value="" disabled>
               Select Vendor

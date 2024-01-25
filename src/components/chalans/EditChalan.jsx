@@ -86,6 +86,12 @@ export default function EditChalan() {
   }, [getData]);
 
   useEffect(() => {
+    if(responseClientData?.data?.length>0){
+      setSelectedClientIndex(responseClientData?.data?.findIndex(item => item.client_name === data?.client_name))
+    }
+  }, [responseClientData?.data]);
+
+  useEffect(() => {
     //checking if response has its values
     if (response.data) {
       //setting data to data
@@ -217,7 +223,6 @@ export default function EditChalan() {
           <label className={Styles.inputLabel}>Client's Name</label>
           <select
             name="client_name"
-            defaultValue={data?.client_name}
             onChange={(e) => {
               setSelectedClientIndex(e.target.value);
               setData({
@@ -233,6 +238,7 @@ export default function EditChalan() {
                   routing_no: responseClientData?.data[e.target.value]?.routing_no,
               });
             }}
+            value={selectedClientIndex}
           >
             <option value="" disabled>
               Select Client
