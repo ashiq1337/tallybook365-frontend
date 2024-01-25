@@ -329,6 +329,19 @@ export default function EditInvoice() {
           {itemsAddInObject}
 
           <br />
+          {/* showing the total value  */}
+          <p>
+            Sub Total amount:{" "}
+            {data?.sub_total ? (
+              data?.sub_total
+            ) : (
+              <small style={{ color: "gray" }}>
+                Please fill the amount section
+              </small>
+            )}
+          </p>
+
+          <br />
           <label>Advance</label>
 
           <p>

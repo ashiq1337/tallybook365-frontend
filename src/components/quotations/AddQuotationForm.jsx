@@ -292,7 +292,7 @@ export default function AddQuotationForm() {
         <br />
         {/* showing the total value  */}
         <p>
-          Total amount:{" "}
+          Sub Total amount:{" "}
           {data?.sub_total ? (
             data?.sub_total
           ) : (

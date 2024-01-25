@@ -305,6 +305,19 @@ export default function EditQuotation() {
         {itemsAddInObject}
 
         <br />
+        {/* showing the total value  */}
+        <p>
+          Sub Total amount:{" "}
+          {data?.sub_total ? (
+            data?.sub_total
+          ) : (
+            <small style={{ color: "gray" }}>
+              Please fill the amount section
+            </small>
+          )}
+        </p>
+
+        <br />
         <label>Percentage</label>
         <label className={Styles.inputLabel}>ASF Percentage</label>
         <input

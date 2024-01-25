@@ -45,19 +45,23 @@ export default function AllQuotations() {
 		});
 	};
   const getThisMonthsQuotations = () => {
+		//checking if all quotation is selected or not
 		const month = selectedMonth !== "0" ? selectedMonth : currentMonth + 1
+		const year = selectedMonth !== "0" ? selectedYear : currentYear
     axiosFetchThisMonthsQuotations({
       axiosInstance: instance,
       method: 'Get',
-      url: `${configuration.getThisMonthsTotalQuotationAmount}?month=${month}&year=${selectedYear}`,
+      url: `${configuration.getThisMonthsTotalQuotationAmount}?month=${month}&year=${year}`,
     });
   }
   const getThisMonthsInvoices = () => {
-		const month = selectedMonth ? selectedMonth : currentMonth + 1
+		//checking if all quotation is selected or not
+		const month = selectedMonth !== "0" ? selectedMonth : currentMonth + 1
+		const year = selectedMonth !== "0" ? selectedYear : currentYear
     axiosFetchThisMonthsInvoices({
       axiosInstance: instance,
       method: 'Get',
-      url: `${configuration.getThisMonthsTotalInvoiceAmount}?month=${month}&year=${selectedYear}`,
+      url: `${configuration.getThisMonthsTotalInvoiceAmount}?month=${month}&year=${year}`,
     });
   }
 
@@ -225,13 +229,13 @@ export default function AllQuotations() {
 				<div>
           {loadingThisMonthsQuotations && <p>Loading...</p>}
           {!loadingThisMonthsQuotations && !errorThisMonthsQuotations &&
-					  <p>{selectedMonth === "0" ? currentMonthName : monthNameByNumber(selectedMonth - 1)}, {selectedYear} Quotation: <b>{getAmountsWithCommas(responseThisMonthsQuotations?.data?.totalQuotedAmount)}</b></p>
+					  <p>{selectedMonth === "0" ? `${currentMonthName}, ${currentYear}` : `${monthNameByNumber(selectedMonth - 1)}, ${selectedYear}`} Quotation: <b>{getAmountsWithCommas(responseThisMonthsQuotations?.data?.totalQuotedAmount)}</b></p>
           }
 				</div>
 				<div>
           {loadingThisMonthsInvoices && <p>Loading...</p>}
           {!loadingThisMonthsInvoices && !errorThisMonthsInvoices &&
-					  <p>{selectedMonth === "0" ? currentMonthName : monthNameByNumber(selectedMonth - 1)}, {selectedYear} Invoice: <b>{getAmountsWithCommas(responseThisMonthsInvoices?.data?.totalInvoicedAmount)}</b>  </p>
+					  <p>{selectedMonth === "0" ? `${currentMonthName}, ${currentYear}` : `${monthNameByNumber(selectedMonth - 1)}, ${selectedYear}`} Invoice: <b>{getAmountsWithCommas(responseThisMonthsInvoices?.data?.totalInvoicedAmount)}</b>  </p>
           }
 				</div>
 				<div>
