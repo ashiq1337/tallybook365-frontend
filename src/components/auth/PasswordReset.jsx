@@ -7,7 +7,7 @@ import { instance } from '../../utilities/axiosInstance';
 import { configuration } from '../../configurations/configurations';
 
 export default function PasswordReset() {
-//	const navigate = useNavigate();
+	//const navigate = useNavigate();
 	const [data, setData] = useState({});
 	const [response, error, loading, axiosFetch, message] = useAxios();
 	const [responseOTP, errorOTP, loadingOTP, axiosFetchOTP, messageOTP] = useAxios();
@@ -152,7 +152,6 @@ export default function PasswordReset() {
 
 	return (
 		<div className={Styles.main}>
-			{/* <img className={Styles.img} src={Logo} alt="logo" /> */}
 			<p className={Styles.logoText}>TallyBook365</p>
 			<br />
 			<div className={Styles.container}>

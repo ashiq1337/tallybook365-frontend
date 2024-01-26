@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import { VscPreview } from "react-icons/vsc";
+import Loading from "../error/Loading";
 
 export default function AllInvoices() {
   const navigate = useNavigate();
@@ -90,7 +91,7 @@ export default function AllInvoices() {
   return (
     <div className={Styles.main}>
       {!response?.data?.length && !loading && <p>no data found</p>}
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
       {(response?.data?.length > 0 && !loading && !error ) && (
         <div className={Styles.container}>
         <div className={Styles.tableContainer}>

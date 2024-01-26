@@ -8,6 +8,7 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import Preview from "../previewAndDownload/Preview";
 import { VscPreview } from "react-icons/vsc";
+import Loading from "../error/Loading";
 
 export default function AllChalans() {
   const navigate = useNavigate();
@@ -90,7 +91,7 @@ export default function AllChalans() {
   return (
     <div className={Styles.main}>
       {!response?.data?.length && !loading && <p>No data found</p>}
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
       {(response?.data?.length > 0 && !loading && !error ) && (
         <div className={Styles.container}>
           <div className={Styles.tableContainer}>

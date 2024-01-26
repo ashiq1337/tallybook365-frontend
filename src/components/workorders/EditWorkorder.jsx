@@ -8,6 +8,7 @@ import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { calculateGrandTotal } from "../../utilities/utils";
 import {useNavigate} from 'react-router-dom';
+import Loading from "../error/Loading";
 
 export default function EditWorkorder() {
   const { workorderId } = useParams();
@@ -214,7 +215,7 @@ export default function EditWorkorder() {
 
   return (
     <div className={Styles.main}>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
       {response && !loading && !error && (
         <form onSubmit={editWorkorderAsync}>
           <label>Vendor Information</label>

@@ -4,6 +4,7 @@ import useAxios from '../../hooks/useAxios';
 import { instance } from '../../utilities/axiosInstance';
 import Styles from './CurrentMonthTotal.module.scss';
 import { getAmountsWithCommas } from '../../utilities/utils';
+import Loading from '../error/Loading';
 export default function CurrentMonthTotal() {
 	const [response, error, loading, axiosFetch, message] = useAxios();
 	const getSelfInfo = () => {
@@ -51,7 +52,7 @@ export default function CurrentMonthTotal() {
 		<div className={Styles.main}>
 			<div className={Styles.topSection}>
 				<div className={Styles.left}>
-					{loading && <p>Loading...</p>}
+					{loading && <Loading/>}
 					{response?.data && !loading && !error && (
 						<>
 							<p>
@@ -79,7 +80,7 @@ export default function CurrentMonthTotal() {
 					)}
 				</div>
 				<div className={Styles.right}>
-					{loading && <p>Loading...</p>}
+					{loading && <Loading/>}
 					{response?.data && !loading && !error && (
 						<>
 							<p>
@@ -111,7 +112,7 @@ export default function CurrentMonthTotal() {
 			<h3>Last Six Months Dues:</h3>
 			<br />
 			<div className={Styles.bottomSection}>
-				{loading && <p>Loading...</p>}
+				{loading && <Loading/>}
 				{response?.data && !loading && !error && (
 					<div className={Styles.tableContainer}>
 						<table>

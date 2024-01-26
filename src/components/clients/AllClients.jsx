@@ -6,6 +6,7 @@ import { instance } from "../../utilities/axiosInstance";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import { useNavigate } from "react-router-dom";
+import Loading from "../error/Loading";
 
 export default function AllClients() {
   const [response, error, loading, axiosFetch, message] = useAxios();
@@ -72,8 +73,9 @@ export default function AllClients() {
   ));
   return (
     <div className={Styles.main}>
-      {/* {!response?.data?.length && <p>no data found</p>} */}
-      {!loading ? (
+      {response?.data?.length < 1  && !loading && <p>No data found</p>}
+      {loading && <Loading/>}
+      {response?.data?.length > 0 && !loading && !error &&(
         <div className={Styles.tableContainer}>
           <table>
             <tbody>
@@ -89,8 +91,6 @@ export default function AllClients() {
             </tbody>
           </table>
         </div>
-      ) : (
-        <p>Loading...</p>
       )}
     </div>
   );

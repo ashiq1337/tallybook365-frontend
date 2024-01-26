@@ -7,6 +7,7 @@ import Avatar from "../../assets/avatar.png";
 import CompanyLogo from "../../assets/cpro.png";
 import { AuthContext } from "../../context/context";
 import { getAmountsWithCommas } from "../../utilities/utils";
+import Loading from "../error/Loading";
 
 export default function Self() {
   const [response, error, loading, axiosFetch, message] = useAxios();
@@ -34,7 +35,9 @@ export default function Self() {
   return (
     <div className={Styles.main}>
       <div className={Styles.box}>
-        {response?.data ? (
+        {loading && <Loading/>}
+        {!response?.data && !loading && <p>No data found</p>}
+        {response?.data && !loading && !error &&(
           <div className={Styles.userInfoContainer}>
             <img
               className={Styles.dp}
@@ -48,14 +51,12 @@ export default function Self() {
               <p>Email: {response?.data?.email}</p>
             </div>
           </div>
-        ) : (
-          <div>
-            <p>No data found</p>
-          </div>
         )}
       </div>
       <div className={Styles.box}>
-        {response?.data ? (
+        {loading && <Loading/>}
+        {!response?.data && !loading && <p>No data found</p>}
+        {response?.data && !loading && !error && (
           <div className={Styles.companyInfoContainer}>
             <img
               className={Styles.companyLogo}
@@ -69,10 +70,6 @@ export default function Self() {
                 {getAmountsWithCommas(response?.data?.company?.company_remaining_amount)}
               </span>
             </h5>
-          </div>
-        ) : (
-          <div>
-            <p>No data found</p>
           </div>
         )}
       </div>

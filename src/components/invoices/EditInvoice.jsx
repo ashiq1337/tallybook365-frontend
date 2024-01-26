@@ -8,6 +8,7 @@ import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { calculateGrandTotal } from "../../utilities/utils";
 import {useNavigate} from 'react-router-dom';
+import Loading from "../error/Loading";
 
 export default function EditInvoice() {
   const { invoiceId } = useParams();
@@ -227,7 +228,7 @@ export default function EditInvoice() {
 
   return (
     <div className={Styles.main}>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
       {response && !loading && !error && (
         <form onSubmit={editInvoiceAsync}>
           <label>Client Information</label>

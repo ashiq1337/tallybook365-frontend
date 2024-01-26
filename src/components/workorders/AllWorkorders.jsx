@@ -9,6 +9,7 @@ import useToggler from "../../hooks/useToggler";
 import { AiOutlinePlus } from "react-icons/ai";
 import { VscPreview } from "react-icons/vsc";
 import { useParams } from "react-router-dom";
+import Loading from "../error/Loading";
 
 export default function AllWorkorders() {
   const { quotationId } = useParams(); //using this param to get quote id
@@ -108,7 +109,7 @@ export default function AllWorkorders() {
   return (
     <div className={Styles.main}>
       {!response?.data?.length && !loading && <p>No data found</p>}
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
       {quotationId && (
         <div className={Styles.createNewBtnContainer}>
           <button

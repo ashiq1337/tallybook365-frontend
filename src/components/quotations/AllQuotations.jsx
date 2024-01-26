@@ -11,6 +11,7 @@ import { GrDocument } from 'react-icons/gr';
 import { AiOutlinePlus, AiOutlineDatabase } from 'react-icons/ai';
 import { currentMonthName, currentYear, currentMonth, monthNameByNumber, formatDate } from '../../utilities/date';
 import { getAmountsWithCommas } from '../../utilities/utils';
+import Loading from '../error/Loading';
 
 export default function AllQuotations() {
 
@@ -227,13 +228,13 @@ export default function AllQuotations() {
 		<div className={Styles.main}>
 			<div className={Styles.topSection}>
 				<div>
-          {loadingThisMonthsQuotations && <p>Loading...</p>}
+          {loadingThisMonthsQuotations && <Loading/>}
           {!loadingThisMonthsQuotations && !errorThisMonthsQuotations &&
 					  <p>{selectedMonth === "0" ? `${currentMonthName}, ${currentYear}` : `${monthNameByNumber(selectedMonth - 1)}, ${selectedYear}`} Quotation: <b>{getAmountsWithCommas(responseThisMonthsQuotations?.data?.totalQuotedAmount)}</b></p>
           }
 				</div>
 				<div>
-          {loadingThisMonthsInvoices && <p>Loading...</p>}
+          {loadingThisMonthsInvoices && <Loading/>}
           {!loadingThisMonthsInvoices && !errorThisMonthsInvoices &&
 					  <p>{selectedMonth === "0" ? `${currentMonthName}, ${currentYear}` : `${monthNameByNumber(selectedMonth - 1)}, ${selectedYear}`} Invoice: <b>{getAmountsWithCommas(responseThisMonthsInvoices?.data?.totalInvoicedAmount)}</b>  </p>
           }
@@ -244,7 +245,7 @@ export default function AllQuotations() {
 				</div>
 			</div>
 			{!response?.data?.length && !loading && <p>No data found</p>}
-			{loading && <p>Loading...</p>}
+			{loading && <Loading/>}
 			{response?.data?.length > 0 && !loading && !error && (
 				<div className={Styles.container}>
 					<div className={Styles.tableContainer}>

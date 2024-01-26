@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
+import Loading from "../../components/error/Loading";
 
 export default function PreviewPage() {
   const { previewName, previewId, title } = useParams();
@@ -26,7 +27,7 @@ export default function PreviewPage() {
       {(response?.data) ? (
         <Preview data={response.data} title={title} />
       ) : (
-        <p>Loading...</p>
+        <Loading/>
       )}
     </div>
   );

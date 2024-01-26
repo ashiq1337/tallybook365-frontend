@@ -8,6 +8,7 @@ import useToggler from "../../hooks/useToggler";
 import { MdAddCircle, MdDelete } from "react-icons/md";
 import { calculateGrandTotal } from "../../utilities/utils";
 import {useNavigate} from 'react-router-dom';
+import Loading from "../error/Loading";
 
 export default function EditChalan() {
   const { chalanId } = useParams();
@@ -215,7 +216,7 @@ export default function EditChalan() {
 
   return (
     <div className={Styles.main}>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading/>}
       {response && !loading && !error && (
         <form onSubmit={editChalanAsync}>
           <label>Client Information</label>

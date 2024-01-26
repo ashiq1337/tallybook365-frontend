@@ -6,6 +6,7 @@ import { instance } from "../../utilities/axiosInstance";
 import { MdEdit, MdDelete } from "react-icons/md";
 import useToggler from "../../hooks/useToggler";
 import { useNavigate } from "react-router-dom";
+import Loading from "../error/Loading";
 
 export default function AllVendors() {
   const [response, error, loading, axiosFetch, message] = useAxios();
@@ -90,7 +91,7 @@ export default function AllVendors() {
           </table>
         </div>
       )}
-      {loading && <p>Loading ...</p>}
+      {loading && <Loading/>}
     </div>
   );
 }
