@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import useAxios from '../../hooks/useAxios';
 import { instance } from '../../utilities/axiosInstance';
 import { configuration } from '../../configurations/configurations';
+import Loading from '../error/Loading';
 
 export default function PasswordReset() {
 	//const navigate = useNavigate();
@@ -145,7 +146,7 @@ export default function PasswordReset() {
 			<div className={Styles.msg}>
 				{message || messageOTP && <p>{message || messageOTP}</p>}
 				{/* {(error || errorOTP) && (<small className={Styles.msg}>{error || errorOTP}</small>)} */}
-				{loading || loadingOTP && <p>Loading...</p>}
+				{loading || loadingOTP && <Loading/>}
 			</div>
 		)
 	}

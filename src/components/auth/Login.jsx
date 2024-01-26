@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import { configuration } from "../../configurations/configurations";
+import Loading from "../error/Loading";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ export default function Login() {
           />
           <small className={Styles.msg}>{message}</small>
           {error && <small className={Styles.msg}>{error}</small>}
-          {loading && <small className={Styles.msg}>Loading...</small>}
+          {loading && <small className={Styles.msg}><Loading/></small>}
           <button
             type="submit"
             disabled={loading}
