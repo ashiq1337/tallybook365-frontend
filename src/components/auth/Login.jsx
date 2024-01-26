@@ -87,7 +87,7 @@ export default function Login() {
         <small>
           Forgot Password?{" "}
           <Link to="/password-reset" className={Styles.link}>
-            Forgot Password
+            Click here
           </Link>{" "}
         </small>
       </div>

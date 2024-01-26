@@ -61,6 +61,7 @@ export default function PasswordReset() {
 					name="phone"
 					pattern="^01[3-9]\d{8}$"
 					onChange={handleChange}
+					value = {data.phone}
 				/>
 				{renderMessages()}
 				<button type='submit'
@@ -78,9 +79,18 @@ export default function PasswordReset() {
 				<form onSubmit={onPasswordResetHandlerAsync}>
 					<input
 						type="text"
+						placeholder="Enter your phone number"
+						name="phone"
+						pattern="^01[3-9]\d{8}$"
+						onChange={handleChange}
+						value = {data.phone}
+					/>
+					<input
+						type="text"
 						placeholder="Enter OTP"
 						name="otp"
 						onChange={handleChange}
+						value = {data.otp}
 					/>
 					<input
 						style={
@@ -92,6 +102,7 @@ export default function PasswordReset() {
 						placeholder="Enter your new password"
 						name="newPassword"
 						onChange={handleChange}
+						value = {data.newPassword}
 					/>
 					<input
 						style={
@@ -102,6 +113,7 @@ export default function PasswordReset() {
 						type="password"
 						placeholder="Confirm your new password"
 						name="password"
+						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 					/>
 					{renderMessages()}
