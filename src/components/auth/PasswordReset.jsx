@@ -66,7 +66,7 @@ export default function PasswordReset() {
 				{renderMessages()}
 				<button type='submit'
 					disabled={loadingOTP || !data.phone}
-					style={loadingOTP || !data.phone? { background: 'gray' }: null}
+					style={loadingOTP || !data.phone? { background: 'gray', border: 'none' }: null}
 				>
 					Request OTP
 				</button>
@@ -130,7 +130,7 @@ export default function PasswordReset() {
 							loadingOTP ||
 							confirmPassword !== data.newPassword ||
 							!confirmPassword
-								? { background: 'gray' }
+								? { background: 'gray', border: 'none' }
 								: null
 						}
 					>
