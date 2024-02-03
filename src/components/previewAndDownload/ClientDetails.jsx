@@ -11,6 +11,7 @@ export default function ClientDetails({
   jobNumber,
   brand,
   jobType,
+  poNumber
 }) {
   return (
     <div className={classes.container}>
@@ -32,6 +33,7 @@ export default function ClientDetails({
             <p className={classes.cell}>
               Job Type: {jobType}
             </p>
+            {poNumber && <p className={classes.cell}>PO Number: {poNumber}</p>}
           </div>
         </div>
       </section>

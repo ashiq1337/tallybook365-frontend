@@ -317,6 +317,15 @@ export default function EditInvoice() {
             value={data?.job_type}
           />
 
+          <label className={Styles.inputLabel}>PO Number</label>
+          <input
+            type="text"
+            placeholder="Enter PO Number"
+            name="po_number"
+            onChange={handleChange}
+            value={data?.po_number}
+          />
+
           <label className={Styles.inputLabel}>Date</label>
           <input
             type="date"

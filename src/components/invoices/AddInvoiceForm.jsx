@@ -331,6 +331,15 @@ export default function AddInvoiceForm() {
           value={responseQuotationInfo?.data?.job_type}
         />
 
+        <label className={Styles.inputLabel}>PO Number</label>
+        <input
+          type="text"
+          placeholder="Enter PO Number"
+          name="po_number"
+          onChange={handleChange}
+          value={responseQuotationInfo?.data?.po_number}
+        />
+
         <label className={Styles.inputLabel}>Date</label>
         <input type="date" name="date" onChange={handleChange} />
 

@@ -129,6 +129,7 @@ export default function Preview({
                           jobNumber={data?.job_no}
                           brand={data?.brand}
                           jobType={data?.job_type}
+                          poNumber={data?.po_number}
                         />
                         <Table
                           subTotal={data?.sub_total}
