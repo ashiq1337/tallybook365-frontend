@@ -1,17 +1,16 @@
-import React, { useContext, useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { configuration } from "../../configurations/configurations";
 import useAxios from "../../hooks/useAxios";
 import { instance } from "../../utilities/axiosInstance";
 import Styles from "./Self.module.scss";
 import Avatar from "../../assets/avatar.png";
 import CompanyLogo from "../../assets/cpro.png";
-import { AuthContext } from "../../context/context";
 import { getAmountsWithCommas } from "../../utilities/utils";
 import Loading from "../error/Loading";
 
 export default function Self() {
   const [response, error, loading, axiosFetch, message] = useAxios();
-  const {userInfo, setUserInfo} = useContext(AuthContext)
+
   const getSelfInfo = () => {
     axiosFetch({
       axiosInstance: instance,
@@ -25,12 +24,12 @@ export default function Self() {
   }, []);
 
   useEffect(() => {
-    if (response?.data?.mother_company && !error) {
-      //storing the mother company of the user
+    if (response?.data && !error && !loading) {
+      //storing the data of the user
       localStorage.setItem("motherCompany", response?.data?.mother_company);
-      setUserInfo(response?.data)
+      localStorage.setItem("userInfo", JSON.stringify(response?.data));
     }
-  }, [loading]);
+  }, [response?.data]);
 
   return (
     <div className={Styles.main}>

@@ -1,20 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import signature from "../../assets/signature.png";
 import classes from "./SignedBy.module.scss";
-import { AuthContext } from "../../context/context";
-//import logo from "../../assets/LetterHeadFooter.png";
 
 export default function SignedBy() {
-  const userInfo = useContext(AuthContext)
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"))
 
   return (
     <div className={classes.owner}>
       <img className={classes.img}
-        src={userInfo.userInfo.signature ? userInfo.userInfo.signature :signature}
+        src={userInfo?.signature ? userInfo?.signature :signature}
         alt="signature" />
       <h4>Authorized By:</h4>
-      <p>{userInfo.userInfo.name ? userInfo.userInfo.name : "Kazi Md Asif"}</p>
-      <p>{userInfo.userInfo.designation ? userInfo.userInfo.designation : "Managing Director"}</p>
+      <p>{userInfo?.name ? userInfo?.name : "No data found"}</p>
+      <p>{userInfo?.designation ? userInfo?.designation : "No data found"}</p>
     </div>
   );
 }

@@ -2,11 +2,8 @@ import Routers from '../routes/routers';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Styles from './App.module.scss';
-import { useState } from 'react';
-import { AuthContext } from '../context/context';
 
 export default function App() {
-	const [userInfo, setUserInfo] = useState({});
 	//clears the local storage if the tab closes
 	function clearStorage() {
 		let session = sessionStorage.getItem('register');
@@ -19,11 +16,9 @@ export default function App() {
 	window.addEventListener('load', clearStorage);
 
 	return (
-		<AuthContext.Provider value={{ userInfo, setUserInfo }}>
 			<div className={Styles.main}>
 				<Routers />
 				<ToastContainer />
 			</div>
-		</AuthContext.Provider>
 	);
 }
