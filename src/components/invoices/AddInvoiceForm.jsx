@@ -20,7 +20,7 @@ export default function AddInvoiceForm() {
     loadingJobNo,
     axiosFetchJobNo,
     messageJobNo,
-  ] = useAxios(); //for getting recent job no
+  ] = useAxios(); //for getting recent job no (job number is the same as invoice number)
   const [responseSelf, errorSelf, loadingSelf, axiosFetchSelf, messageSelf] =
     useAxios();
   const [
@@ -303,10 +303,11 @@ export default function AddInvoiceForm() {
           value={responseQuotationInfo?.data?.title}
         />
 
-        <label className={Styles.inputLabel}>Job No</label>
+        {/* Job Number is auto generated and same as invoice number */}
+        <label className={Styles.inputLabel}>Invoice Number</label>
         <input
           type="string"
-          placeholder="Enter Job No"
+          placeholder="Enter Invoice No"
           name="job_no"
           onChange={handleChange}
           value={responseJobNo?.data}

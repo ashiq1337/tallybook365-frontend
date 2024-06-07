@@ -24,7 +24,7 @@ export default function ClientDetails({
           </div>
           <div className={classes.row}>
             <p className={classes.cell}>Date: {formatDate(invoiceDate)}</p>
-            <p className={classes.cell}>Job No: {jobNumber}</p>
+            <p className={classes.cell}>{docType === "Invoice" ? "Invoice No:" : "Job No:"} {jobNumber}</p>
           </div>
         </div>
         <div className={classes.companyDetails}>

@@ -289,10 +289,11 @@ export default function EditInvoice() {
             value={data?.title}
           />
 
-          <label className={Styles.inputLabel}>Job No</label>
+          {/* Job Number is auto generated and same as invoice number */}
+          <label className={Styles.inputLabel}>Invoice Number</label>
           <input
             type="string"
-            placeholder="Enter Job No"
+            placeholder="Enter Invoice No"
             name="job_no"
             onChange={handleChange}
             value={data?.job_no}
